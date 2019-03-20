@@ -1,0 +1,109 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap";
+ @import url(https://fonts.googleapis.com/css?family=Sumana);
+
+
+ $color-primary-0: #E3E3DE;
+ $color-font-0: #525252;
+ $color-background-0: #FFFFFF;
+
+
+ @mixin fonty($size) {
+     font-family:Garamond, Georgia, serif;
+     font-size: $size;
+     font-weight: 200;
+     font-style: normal;
+}
+
+.fixed-bottom {
+  position: absolute;
+  padding: 0px;
+  bottom: -110px;
+  height: 70px;
+  clear: both;
+}
+
+.green-background {
+  background-color: #4C7401;
+}
+
+.nav-link {
+  color: #4C7401;
+}
+
+.navbar{
+    margin: 0 20px;
+    border-radius: 5px;
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    width: 100%;
+}
+
+body{
+  font-family:Garamond, Georgia, serif;
+  background-color: $color-background-0;
+  background-image: url("https://assets.forwardcdn.com/images/cropped/colgate-hill-panorama-2-1501084567.jpg");
+  margin-bottom: 100px;
+  margin-top: 10px;
+  position: relative;
+  opacity: 0.9;
+
+  .login{
+    text-align: right;
+    padding-right: 20px;
+  }
+
+  .sign_in {
+    color: #022015;
+  }
+
+  .sign_out{
+    color: #022015;
+  }
+  .title{
+    color: #5DBF01;
+    line-height: 100%;
+    text-align: center;
+    font-size: 14pt;
+  }
+
+  .main {
+    font-family:Garamond, Georgia, serif;
+    font-size: 24px;
+    font-weight: 200;
+    font-style: normal;
+  }
+
+    .field {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        width: 50vw;
+    }
+
+    .form-page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .centered {
+      text-align: center;
+    }
+
+}

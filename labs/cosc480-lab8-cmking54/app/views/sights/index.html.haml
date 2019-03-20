@@ -1,0 +1,24 @@
+%br
+
+.row
+  %table.table
+    %thead
+      %tr
+        %th
+        %th What
+        %th Description
+        %th Last updated
+        %th 
+        
+    %tbody
+      - @sights.each do |sight|
+        %tr
+          %td
+            =octicon "triangle-up" 
+            %span.text-success="#{sight.upvotes}"
+            =octicon "triangle-down" 
+            %span.text-danger="#{sight.downvotes}"
+          %td= link_to "#{sight.title}", sight_path(sight)
+          %td= truncate(sight.description)
+          %td= sight.updated_at
+          %td= random_image_if_available(sight)

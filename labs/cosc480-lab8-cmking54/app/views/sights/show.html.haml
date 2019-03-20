@@ -1,0 +1,54 @@
+%br
+
+.row
+  .offset-md-1.col-md-4
+    %h2= @sight.title
+  .offset-md-1.col-md-1
+    %h4
+      =octicon "triangle-up"
+      %span#upcount.text-success="#{@sight.upvotes}"
+  .col-md-1
+    %h4
+      =octicon "triangle-down"
+      %span#downcount.text-danger="#{@sight.downvotes}"
+  .offset-md-1.col-md-2
+    -if user_signed_in?
+      %span.badge.badge-dark Vote
+      %span
+        =link_to octicon("thumbsup"), upvote_path(@sight.id), :method => :post, :id => :upvote, :remote => true, "data-type" => "json"
+      %span
+        =link_to octicon("thumbsdown"), downvote_path(@sight.id), :method => :post, :id => :downvote, :remote => true, "data-type" => "json"
+    -else
+      .alert.alert-secondary.small Sign in or sign up to vote sights up or down.
+
+.row
+  .offset-md-1.col-md.10
+    %p= @sight.description
+-@sight.photos.each_slice(3) do |arr|
+  .row
+    .offset-md-1
+    -arr.each do |photo|
+      .col-md-3.card.imgcard
+        =image_tag photo.image.url(:normal), :class => "card-img-top img-fluid"
+        .card-body
+          %p.card-text= photo.caption
+%br
+%comments.row
+  %h3 Comments
+  %ul
+    -@comments.each do |comment|
+      =render :partial => comment
+
+.row
+  -if user_signed_in?
+    =form_with(id: :comment_form, model: Comment.new, url: comments_path(@sight), data: { type: :html } ) do |f|
+      =f.label :comment
+      =f.text_area :comment, :id => "commentbox"
+
+      =f.submit "Add comment"
+  -else
+    %p Sign in to post a comment.
+%br
+%br
+.row
+  .col-md-2= link_to "Back to all sights", sights_path, :class => "btn btn-primary"

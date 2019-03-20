@@ -1,0 +1,1507 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (259.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (53.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateSights (20180305004701)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "sights" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180305004701"]]
+  [1m[35m (10.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreatePhotos (20180305004842)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "photos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "caption" varchar, "image_file_name" varchar, "image_content_type" varchar, "image_file_size" integer, "image_updated_at" datetime, "sight_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_676d85ea3c"
+FOREIGN KEY ("sight_id")
+  REFERENCES "sights" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_photos_on_sight_id" ON "photos" ("sight_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180305004842"]]
+  [1m[35m (12.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to DeviseCreateUsers (20180306012159)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "username" varchar NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_username" ON "users" ("username")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180306012159"]]
+  [1m[35m (28.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUpDownVotes (20180306012459)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "up_down_votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "upvote" boolean NOT NULL, "user_id" integer, "sight_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_c01880cffd"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_fba55dc243"
+FOREIGN KEY ("sight_id")
+  REFERENCES "sights" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_up_down_votes_on_user_id" ON "up_down_votes" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_up_down_votes_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_up_down_votes_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_up_down_votes_on_sight_id" ON "up_down_votes" ("sight_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180306012459"]]
+  [1m[35m (17.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (19.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-04-06 17:30:05.517851"], ["updated_at", "2018-04-06 17:30:05.517851"]]
+  [1m[35m (16.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_photos_on_sight_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_photos_on_sight_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_up_down_votes_on_sight_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_up_down_votes_on_sight_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_up_down_votes_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_up_down_votes_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_username' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_username' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "sights" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "McGregory Hall Lounge"], ["description", "Everyone's favorite spot to study, sleep, relax, scribble on whiteboards, and take advantage of free food."], ["created_at", "2018-04-06 17:30:25.361308"], ["updated_at", "2018-04-06 17:30:25.361308"]]
+[paperclip] Trying to link app/assets/images/IMG_0888.jpg to /tmp/a10286f93ad51dc88f229dd45f90cf0920180406-186-1bnxiy6.jpg
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_0888.jpg, /tmp/a10286f93ad51dc88f229dd45f90cf0920180406-186-1bnxiy6.jpg); copying link app/assets/images/IMG_0888.jpg to /tmp/a10286f93ad51dc88f229dd45f90cf0920180406-186-1bnxiy6.jpg
+[paperclip] Trying to link /tmp/a10286f93ad51dc88f229dd45f90cf0920180406-186-1bnxiy6.jpg to /tmp/a10286f93ad51dc88f229dd45f90cf0920180406-186-1sgl0ah.jpg
+Command :: file -b --mime '/tmp/a10286f93ad51dc88f229dd45f90cf0920180406-186-1sgl0ah.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/a10286f93ad51dc88f229dd45f90cf0920180406-186-1bnxiy6.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/a10286f93ad51dc88f229dd45f90cf0920180406-186-1bnxiy6.jpg[0]'
+Command :: convert '/tmp/a10286f93ad51dc88f229dd45f90cf0920180406-186-1bnxiy6.jpg[0]' -auto-orient -resize "400x400>" '/tmp/763d3d081ff76d2ce9ea6b55076ef10420180406-186-1toeub6'
+[paperclip] Trying to link /tmp/763d3d081ff76d2ce9ea6b55076ef10420180406-186-1toeub6 to /tmp/385ad0622a48b798e3ed93315f993e2120180406-186-1ysjpja
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/a10286f93ad51dc88f229dd45f90cf0920180406-186-1bnxiy6.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/a10286f93ad51dc88f229dd45f90cf0920180406-186-1bnxiy6.jpg[0]'
+Command :: convert '/tmp/a10286f93ad51dc88f229dd45f90cf0920180406-186-1bnxiy6.jpg[0]' -auto-orient -resize "100x100>" '/tmp/763d3d081ff76d2ce9ea6b55076ef10420180406-186-y4yckb'
+[paperclip] Trying to link /tmp/763d3d081ff76d2ce9ea6b55076ef10420180406-186-y4yckb to /tmp/a9f07d5b2baa9dd47125444f44f8674520180406-186-yu0dhk
+[paperclip] Trying to link /tmp/a10286f93ad51dc88f229dd45f90cf0920180406-186-1bnxiy6.jpg to /tmp/a10286f93ad51dc88f229dd45f90cf0920180406-186-18fu3sz.jpg
+Command :: file -b --mime '/tmp/a10286f93ad51dc88f229dd45f90cf0920180406-186-18fu3sz.jpg'
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Space to work and lounge.  Photo taken when the lounge was first constructed."], ["image_file_name", "IMG_0888.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 1159015], ["image_updated_at", "2018-04-06 17:30:26.388107"], ["sight_id", 1], ["created_at", "2018-04-06 17:30:30.793233"], ["updated_at", "2018-04-06 17:30:30.793233"]]
+[paperclip] Trying to link app/assets/images/IMG_0889.jpg to /tmp/b791456298c0224acdb70d10c5373fc820180406-186-nf8pjw.jpg
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_0889.jpg, /tmp/b791456298c0224acdb70d10c5373fc820180406-186-nf8pjw.jpg); copying link app/assets/images/IMG_0889.jpg to /tmp/b791456298c0224acdb70d10c5373fc820180406-186-nf8pjw.jpg
+[paperclip] Trying to link /tmp/b791456298c0224acdb70d10c5373fc820180406-186-nf8pjw.jpg to /tmp/b791456298c0224acdb70d10c5373fc820180406-186-1tluczd.jpg
+Command :: file -b --mime '/tmp/b791456298c0224acdb70d10c5373fc820180406-186-1tluczd.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/b791456298c0224acdb70d10c5373fc820180406-186-nf8pjw.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/b791456298c0224acdb70d10c5373fc820180406-186-nf8pjw.jpg[0]'
+Command :: convert '/tmp/b791456298c0224acdb70d10c5373fc820180406-186-nf8pjw.jpg[0]' -auto-orient -resize "400x400>" '/tmp/a88e946734eac476dc620d2324f1066a20180406-186-1apfknd'
+[paperclip] Trying to link /tmp/a88e946734eac476dc620d2324f1066a20180406-186-1apfknd to /tmp/dd847f14dcdf373fcfb517f56c73b9bc20180406-186-wvweuw
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/b791456298c0224acdb70d10c5373fc820180406-186-nf8pjw.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/b791456298c0224acdb70d10c5373fc820180406-186-nf8pjw.jpg[0]'
+Command :: convert '/tmp/b791456298c0224acdb70d10c5373fc820180406-186-nf8pjw.jpg[0]' -auto-orient -resize "100x100>" '/tmp/a88e946734eac476dc620d2324f1066a20180406-186-v80xys'
+[paperclip] Trying to link /tmp/a88e946734eac476dc620d2324f1066a20180406-186-v80xys to /tmp/8b14c754349feb7d272739c188412cde20180406-186-s6l0t8
+[paperclip] Trying to link /tmp/b791456298c0224acdb70d10c5373fc820180406-186-nf8pjw.jpg to /tmp/b791456298c0224acdb70d10c5373fc820180406-186-1sclfrh.jpg
+Command :: file -b --mime '/tmp/b791456298c0224acdb70d10c5373fc820180406-186-1sclfrh.jpg'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Another photo taken when the lounge was first constructed."], ["image_file_name", "IMG_0889.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 1017510], ["image_updated_at", "2018-04-06 17:30:30.890894"], ["sight_id", 1], ["created_at", "2018-04-06 17:30:33.216774"], ["updated_at", "2018-04-06 17:30:33.216774"]]
+[paperclip] Trying to link app/assets/images/IMG_7270.JPG to /tmp/2ec00e2c1e155185c5492e20ca5f6b7520180406-186-snra9m.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7270.JPG, /tmp/2ec00e2c1e155185c5492e20ca5f6b7520180406-186-snra9m.JPG); copying link app/assets/images/IMG_7270.JPG to /tmp/2ec00e2c1e155185c5492e20ca5f6b7520180406-186-snra9m.JPG
+[paperclip] Trying to link /tmp/2ec00e2c1e155185c5492e20ca5f6b7520180406-186-snra9m.JPG to /tmp/2ec00e2c1e155185c5492e20ca5f6b7520180406-186-3l25bq.JPG
+Command :: file -b --mime '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180406-186-3l25bq.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180406-186-snra9m.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180406-186-snra9m.JPG[0]'
+Command :: convert '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180406-186-snra9m.JPG[0]' -auto-orient -resize "400x400>" '/tmp/5de6aea3273fd804a6a9eb6734d9e44a20180406-186-zn51rl'
+[paperclip] Trying to link /tmp/5de6aea3273fd804a6a9eb6734d9e44a20180406-186-zn51rl to /tmp/f9c070d50428588249df1d61674f750d20180406-186-spsr8d
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180406-186-snra9m.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180406-186-snra9m.JPG[0]'
+Command :: convert '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180406-186-snra9m.JPG[0]' -auto-orient -resize "100x100>" '/tmp/5de6aea3273fd804a6a9eb6734d9e44a20180406-186-ddmh4b'
+[paperclip] Trying to link /tmp/5de6aea3273fd804a6a9eb6734d9e44a20180406-186-ddmh4b to /tmp/3aabcf76aafdf0d288630f3373dee52d20180406-186-1rxklft
+[paperclip] Trying to link /tmp/2ec00e2c1e155185c5492e20ca5f6b7520180406-186-snra9m.JPG to /tmp/2ec00e2c1e155185c5492e20ca5f6b7520180406-186-14hc7mp.JPG
+Command :: file -b --mime '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180406-186-14hc7mp.JPG'
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Spacious and whiteboardy!"], ["image_file_name", "IMG_7270.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 969916], ["image_updated_at", "2018-04-06 17:30:33.268685"], ["sight_id", 1], ["created_at", "2018-04-06 17:30:34.983425"], ["updated_at", "2018-04-06 17:30:34.983425"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "sights" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Taylor Lake"], ["description", "This is a lake?  Really?  Yes, by the strict definition of lake, this qualifies.  Sadly, Adam and Eve the swans have gone elsewhere and all we are left with are Canadian geese and the occasional mallard duck."], ["created_at", "2018-04-06 17:30:35.092892"], ["updated_at", "2018-04-06 17:30:35.092892"]]
+[paperclip] Trying to link app/assets/images/IMG_7278.JPG to /tmp/e3c5f0e515a665ebb2468a086aaf495e20180406-186-1ppsugu.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7278.JPG, /tmp/e3c5f0e515a665ebb2468a086aaf495e20180406-186-1ppsugu.JPG); copying link app/assets/images/IMG_7278.JPG to /tmp/e3c5f0e515a665ebb2468a086aaf495e20180406-186-1ppsugu.JPG
+[paperclip] Trying to link /tmp/e3c5f0e515a665ebb2468a086aaf495e20180406-186-1ppsugu.JPG to /tmp/e3c5f0e515a665ebb2468a086aaf495e20180406-186-kld5sv.JPG
+Command :: file -b --mime '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180406-186-kld5sv.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180406-186-1ppsugu.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180406-186-1ppsugu.JPG[0]'
+Command :: convert '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180406-186-1ppsugu.JPG[0]' -auto-orient -resize "400x400>" '/tmp/a24cb22507be76671cb381a59822e39f20180406-186-pbkyhh'
+[paperclip] Trying to link /tmp/a24cb22507be76671cb381a59822e39f20180406-186-pbkyhh to /tmp/4e8713850e6fcd03e318c70e1524cedf20180406-186-1sec94t
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180406-186-1ppsugu.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180406-186-1ppsugu.JPG[0]'
+Command :: convert '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180406-186-1ppsugu.JPG[0]' -auto-orient -resize "100x100>" '/tmp/a24cb22507be76671cb381a59822e39f20180406-186-dxnlcq'
+[paperclip] Trying to link /tmp/a24cb22507be76671cb381a59822e39f20180406-186-dxnlcq to /tmp/eae0fdfa87f19e2eb005293559a1925220180406-186-1vnozkk
+[paperclip] Trying to link /tmp/e3c5f0e515a665ebb2468a086aaf495e20180406-186-1ppsugu.JPG to /tmp/e3c5f0e515a665ebb2468a086aaf495e20180406-186-cb31e7.JPG
+Command :: file -b --mime '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180406-186-cb31e7.JPG'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "The willow path, adjacent to Taylor Lake."], ["image_file_name", "IMG_7278.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 1200565], ["image_updated_at", "2018-04-06 17:30:35.107604"], ["sight_id", 2], ["created_at", "2018-04-06 17:30:36.716368"], ["updated_at", "2018-04-06 17:30:36.716368"]]
+[paperclip] Trying to link app/assets/images/IMG_7279.JPG to /tmp/04c1eba4d1916ebe888e91e20ae49f6320180406-186-16g7s7a.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7279.JPG, /tmp/04c1eba4d1916ebe888e91e20ae49f6320180406-186-16g7s7a.JPG); copying link app/assets/images/IMG_7279.JPG to /tmp/04c1eba4d1916ebe888e91e20ae49f6320180406-186-16g7s7a.JPG
+[paperclip] Trying to link /tmp/04c1eba4d1916ebe888e91e20ae49f6320180406-186-16g7s7a.JPG to /tmp/04c1eba4d1916ebe888e91e20ae49f6320180406-186-1xrcxt6.JPG
+Command :: file -b --mime '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180406-186-1xrcxt6.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180406-186-16g7s7a.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180406-186-16g7s7a.JPG[0]'
+Command :: convert '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180406-186-16g7s7a.JPG[0]' -auto-orient -resize "400x400>" '/tmp/f9b4e7cd7e286054d4af9066caed438c20180406-186-1i5wls'
+[paperclip] Trying to link /tmp/f9b4e7cd7e286054d4af9066caed438c20180406-186-1i5wls to /tmp/c75a284d9946aa1be07deaf2a0c9d2a820180406-186-16l1s62
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180406-186-16g7s7a.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180406-186-16g7s7a.JPG[0]'
+Command :: convert '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180406-186-16g7s7a.JPG[0]' -auto-orient -resize "100x100>" '/tmp/f9b4e7cd7e286054d4af9066caed438c20180406-186-i50lgr'
+[paperclip] Trying to link /tmp/f9b4e7cd7e286054d4af9066caed438c20180406-186-i50lgr to /tmp/03179ce36c8622d75598ac327f857fb620180406-186-2d3vis
+[paperclip] Trying to link /tmp/04c1eba4d1916ebe888e91e20ae49f6320180406-186-16g7s7a.JPG to /tmp/04c1eba4d1916ebe888e91e20ae49f6320180406-186-lxvyui.JPG
+Command :: file -b --mime '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180406-186-lxvyui.JPG'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "The ice on Taylor Lake recedes in July, just."], ["image_file_name", "IMG_7279.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 1017661], ["image_updated_at", "2018-04-06 17:30:36.770426"], ["sight_id", 2], ["created_at", "2018-04-06 17:30:38.397603"], ["updated_at", "2018-04-06 17:30:38.397603"]]
+[paperclip] Trying to link app/assets/images/IMG_7280.JPG to /tmp/90219f8bbf2fd5a47e7414636fbf1eb820180406-186-itxtlh.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7280.JPG, /tmp/90219f8bbf2fd5a47e7414636fbf1eb820180406-186-itxtlh.JPG); copying link app/assets/images/IMG_7280.JPG to /tmp/90219f8bbf2fd5a47e7414636fbf1eb820180406-186-itxtlh.JPG
+[paperclip] Trying to link /tmp/90219f8bbf2fd5a47e7414636fbf1eb820180406-186-itxtlh.JPG to /tmp/90219f8bbf2fd5a47e7414636fbf1eb820180406-186-vgohcw.JPG
+Command :: file -b --mime '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180406-186-vgohcw.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180406-186-itxtlh.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180406-186-itxtlh.JPG[0]'
+Command :: convert '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180406-186-itxtlh.JPG[0]' -auto-orient -resize "400x400>" '/tmp/88a33e3eeb7c742cc6b50fc4fdee3cd120180406-186-1h7ecjb'
+[paperclip] Trying to link /tmp/88a33e3eeb7c742cc6b50fc4fdee3cd120180406-186-1h7ecjb to /tmp/26421fa621b7be2b3df8116d9c54c8ff20180406-186-2z8mst
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180406-186-itxtlh.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180406-186-itxtlh.JPG[0]'
+Command :: convert '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180406-186-itxtlh.JPG[0]' -auto-orient -resize "100x100>" '/tmp/88a33e3eeb7c742cc6b50fc4fdee3cd120180406-186-859i82'
+[paperclip] Trying to link /tmp/88a33e3eeb7c742cc6b50fc4fdee3cd120180406-186-859i82 to /tmp/910023c15bb5b6438abdd8901d011b5d20180406-186-1hmy5o6
+[paperclip] Trying to link /tmp/90219f8bbf2fd5a47e7414636fbf1eb820180406-186-itxtlh.JPG to /tmp/90219f8bbf2fd5a47e7414636fbf1eb820180406-186-1q59vng.JPG
+Command :: file -b --mime '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180406-186-1q59vng.JPG'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Resident aliens from Canada enjoying the lake."], ["image_file_name", "IMG_7280.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 713817], ["image_updated_at", "2018-04-06 17:30:38.442595"], ["sight_id", 2], ["created_at", "2018-04-06 17:30:39.945457"], ["updated_at", "2018-04-06 17:30:39.945457"]]
+[paperclip] Trying to link app/assets/images/IMG_7281.JPG to /tmp/1125a054fece2c8d17a17d9e9dbc1bf520180406-186-8oi8yo.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7281.JPG, /tmp/1125a054fece2c8d17a17d9e9dbc1bf520180406-186-8oi8yo.JPG); copying link app/assets/images/IMG_7281.JPG to /tmp/1125a054fece2c8d17a17d9e9dbc1bf520180406-186-8oi8yo.JPG
+[paperclip] Trying to link /tmp/1125a054fece2c8d17a17d9e9dbc1bf520180406-186-8oi8yo.JPG to /tmp/1125a054fece2c8d17a17d9e9dbc1bf520180406-186-er4mg9.JPG
+Command :: file -b --mime '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180406-186-er4mg9.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180406-186-8oi8yo.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180406-186-8oi8yo.JPG[0]'
+Command :: convert '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180406-186-8oi8yo.JPG[0]' -auto-orient -resize "400x400>" '/tmp/940e3e4b5f6031dc46d3725f9cbac45b20180406-186-1g2b0vm'
+[paperclip] Trying to link /tmp/940e3e4b5f6031dc46d3725f9cbac45b20180406-186-1g2b0vm to /tmp/2ba4204268972a0376f6ed32ca53b14220180406-186-133n42r
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180406-186-8oi8yo.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180406-186-8oi8yo.JPG[0]'
+Command :: convert '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180406-186-8oi8yo.JPG[0]' -auto-orient -resize "100x100>" '/tmp/940e3e4b5f6031dc46d3725f9cbac45b20180406-186-d6wovs'
+[paperclip] Trying to link /tmp/940e3e4b5f6031dc46d3725f9cbac45b20180406-186-d6wovs to /tmp/2efa31caec2bf358e98b23f585a8d15b20180406-186-1o4830d
+[paperclip] Trying to link /tmp/1125a054fece2c8d17a17d9e9dbc1bf520180406-186-8oi8yo.JPG to /tmp/1125a054fece2c8d17a17d9e9dbc1bf520180406-186-1hpuip6.JPG
+Command :: file -b --mime '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180406-186-1hpuip6.JPG'
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Resident aliens from Canada enjoying the lake."], ["image_file_name", "IMG_7281.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 596646], ["image_updated_at", "2018-04-06 17:30:39.990691"], ["sight_id", 2], ["created_at", "2018-04-06 17:30:41.482007"], ["updated_at", "2018-04-06 17:30:41.482007"]]
+[paperclip] Trying to link app/assets/images/IMG_7282.JPG to /tmp/d156b98973eb7018edc9653dd5f599c120180406-186-gudwdy.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7282.JPG, /tmp/d156b98973eb7018edc9653dd5f599c120180406-186-gudwdy.JPG); copying link app/assets/images/IMG_7282.JPG to /tmp/d156b98973eb7018edc9653dd5f599c120180406-186-gudwdy.JPG
+[paperclip] Trying to link /tmp/d156b98973eb7018edc9653dd5f599c120180406-186-gudwdy.JPG to /tmp/d156b98973eb7018edc9653dd5f599c120180406-186-1xfxf8l.JPG
+Command :: file -b --mime '/tmp/d156b98973eb7018edc9653dd5f599c120180406-186-1xfxf8l.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/d156b98973eb7018edc9653dd5f599c120180406-186-gudwdy.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/d156b98973eb7018edc9653dd5f599c120180406-186-gudwdy.JPG[0]'
+Command :: convert '/tmp/d156b98973eb7018edc9653dd5f599c120180406-186-gudwdy.JPG[0]' -auto-orient -resize "400x400>" '/tmp/01e6e338dc9d2d8bd8e9644289657d0e20180406-186-151p7ly'
+[paperclip] Trying to link /tmp/01e6e338dc9d2d8bd8e9644289657d0e20180406-186-151p7ly to /tmp/bd7ea924fe543ee14b65dc4eb0d1c42220180406-186-9dbo6g
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/d156b98973eb7018edc9653dd5f599c120180406-186-gudwdy.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/d156b98973eb7018edc9653dd5f599c120180406-186-gudwdy.JPG[0]'
+Command :: convert '/tmp/d156b98973eb7018edc9653dd5f599c120180406-186-gudwdy.JPG[0]' -auto-orient -resize "100x100>" '/tmp/01e6e338dc9d2d8bd8e9644289657d0e20180406-186-2izuad'
+[paperclip] Trying to link /tmp/01e6e338dc9d2d8bd8e9644289657d0e20180406-186-2izuad to /tmp/2a81557ce7453aac2b67c8b6f17162c420180406-186-1o03jd2
+[paperclip] Trying to link /tmp/d156b98973eb7018edc9653dd5f599c120180406-186-gudwdy.JPG to /tmp/d156b98973eb7018edc9653dd5f599c120180406-186-1b1d746.JPG
+Command :: file -b --mime '/tmp/d156b98973eb7018edc9653dd5f599c120180406-186-1b1d746.JPG'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Looking across Taylor Lake."], ["image_file_name", "IMG_7282.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 641984], ["image_updated_at", "2018-04-06 17:30:41.527550"], ["sight_id", 2], ["created_at", "2018-04-06 17:30:43.063696"], ["updated_at", "2018-04-06 17:30:43.063696"]]
+[paperclip] Trying to link app/assets/images/IMG_7283.JPG to /tmp/6fcf3845b62919ec56cddef71752172a20180406-186-kpugs4.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7283.JPG, /tmp/6fcf3845b62919ec56cddef71752172a20180406-186-kpugs4.JPG); copying link app/assets/images/IMG_7283.JPG to /tmp/6fcf3845b62919ec56cddef71752172a20180406-186-kpugs4.JPG
+[paperclip] Trying to link /tmp/6fcf3845b62919ec56cddef71752172a20180406-186-kpugs4.JPG to /tmp/6fcf3845b62919ec56cddef71752172a20180406-186-19hr4s4.JPG
+Command :: file -b --mime '/tmp/6fcf3845b62919ec56cddef71752172a20180406-186-19hr4s4.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/6fcf3845b62919ec56cddef71752172a20180406-186-kpugs4.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/6fcf3845b62919ec56cddef71752172a20180406-186-kpugs4.JPG[0]'
+Command :: convert '/tmp/6fcf3845b62919ec56cddef71752172a20180406-186-kpugs4.JPG[0]' -auto-orient -resize "400x400>" '/tmp/684c9aa8e47e42793f3059c01712527020180406-186-1e9cxup'
+[paperclip] Trying to link /tmp/684c9aa8e47e42793f3059c01712527020180406-186-1e9cxup to /tmp/6d0c5eba2932a171009f30460ae8765c20180406-186-ybbxqf
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/6fcf3845b62919ec56cddef71752172a20180406-186-kpugs4.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/6fcf3845b62919ec56cddef71752172a20180406-186-kpugs4.JPG[0]'
+Command :: convert '/tmp/6fcf3845b62919ec56cddef71752172a20180406-186-kpugs4.JPG[0]' -auto-orient -resize "100x100>" '/tmp/684c9aa8e47e42793f3059c01712527020180406-186-u4lyvf'
+[paperclip] Trying to link /tmp/684c9aa8e47e42793f3059c01712527020180406-186-u4lyvf to /tmp/cc089f90747b5c163d7ed8826d3a534a20180406-186-hucmzb
+[paperclip] Trying to link /tmp/6fcf3845b62919ec56cddef71752172a20180406-186-kpugs4.JPG to /tmp/6fcf3845b62919ec56cddef71752172a20180406-186-1p5822x.JPG
+Command :: file -b --mime '/tmp/6fcf3845b62919ec56cddef71752172a20180406-186-1p5822x.JPG'
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Payne Creek feeding into Taylor Lake, providing some evidence for the lakehood of said lake."], ["image_file_name", "IMG_7283.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 737389], ["image_updated_at", "2018-04-06 17:30:43.114868"], ["sight_id", 2], ["created_at", "2018-04-06 17:30:44.625107"], ["updated_at", "2018-04-06 17:30:44.625107"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "sights" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Cooley Library"], ["description", "Colgate University's best kept secret.  Complete with a mosh pit of learning."], ["created_at", "2018-04-06 17:30:44.661529"], ["updated_at", "2018-04-06 17:30:44.661529"]]
+[paperclip] Trying to link app/assets/images/IMG_7271.JPG to /tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180406-186-vn9ube.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7271.JPG, /tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180406-186-vn9ube.JPG); copying link app/assets/images/IMG_7271.JPG to /tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180406-186-vn9ube.JPG
+[paperclip] Trying to link /tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180406-186-vn9ube.JPG to /tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180406-186-9e1bdm.JPG
+Command :: file -b --mime '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180406-186-9e1bdm.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180406-186-vn9ube.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180406-186-vn9ube.JPG[0]'
+Command :: convert '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180406-186-vn9ube.JPG[0]' -auto-orient -resize "400x400>" '/tmp/816a0aa6932a07fe9abf7f6890801d5f20180406-186-1jn6ekb'
+[paperclip] Trying to link /tmp/816a0aa6932a07fe9abf7f6890801d5f20180406-186-1jn6ekb to /tmp/8ebd1544ad1fa307d6915b91f42b214d20180406-186-ypwylu
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180406-186-vn9ube.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180406-186-vn9ube.JPG[0]'
+Command :: convert '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180406-186-vn9ube.JPG[0]' -auto-orient -resize "100x100>" '/tmp/816a0aa6932a07fe9abf7f6890801d5f20180406-186-1ul02mb'
+[paperclip] Trying to link /tmp/816a0aa6932a07fe9abf7f6890801d5f20180406-186-1ul02mb to /tmp/a3ae1ade4f576cf173514ac5f6fd96ea20180406-186-dvc2d5
+[paperclip] Trying to link /tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180406-186-vn9ube.JPG to /tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180406-186-bhemy3.JPG
+Command :: file -b --mime '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180406-186-bhemy3.JPG'
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Enter all who dare."], ["image_file_name", "IMG_7271.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 515982], ["image_updated_at", "2018-04-06 17:30:44.676413"], ["sight_id", 3], ["created_at", "2018-04-06 17:30:46.192933"], ["updated_at", "2018-04-06 17:30:46.192933"]]
+[paperclip] Trying to link app/assets/images/IMG_7272.JPG to /tmp/8a17189e065c0bb3bbbbc3f97210683720180406-186-19pfcdb.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7272.JPG, /tmp/8a17189e065c0bb3bbbbc3f97210683720180406-186-19pfcdb.JPG); copying link app/assets/images/IMG_7272.JPG to /tmp/8a17189e065c0bb3bbbbc3f97210683720180406-186-19pfcdb.JPG
+[paperclip] Trying to link /tmp/8a17189e065c0bb3bbbbc3f97210683720180406-186-19pfcdb.JPG to /tmp/8a17189e065c0bb3bbbbc3f97210683720180406-186-1c3izqa.JPG
+Command :: file -b --mime '/tmp/8a17189e065c0bb3bbbbc3f97210683720180406-186-1c3izqa.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/8a17189e065c0bb3bbbbc3f97210683720180406-186-19pfcdb.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/8a17189e065c0bb3bbbbc3f97210683720180406-186-19pfcdb.JPG[0]'
+Command :: convert '/tmp/8a17189e065c0bb3bbbbc3f97210683720180406-186-19pfcdb.JPG[0]' -auto-orient -resize "400x400>" '/tmp/94582179476547bf781d8a0db6a205a020180406-186-1bdhgfu'
+[paperclip] Trying to link /tmp/94582179476547bf781d8a0db6a205a020180406-186-1bdhgfu to /tmp/4b4be917273d2801491699380d486fcc20180406-186-16d1dp8
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/8a17189e065c0bb3bbbbc3f97210683720180406-186-19pfcdb.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/8a17189e065c0bb3bbbbc3f97210683720180406-186-19pfcdb.JPG[0]'
+Command :: convert '/tmp/8a17189e065c0bb3bbbbc3f97210683720180406-186-19pfcdb.JPG[0]' -auto-orient -resize "100x100>" '/tmp/94582179476547bf781d8a0db6a205a020180406-186-crg8u5'
+[paperclip] Trying to link /tmp/94582179476547bf781d8a0db6a205a020180406-186-crg8u5 to /tmp/823fc5b3acf73a673bcbebe09f09824e20180406-186-1lnv6zr
+[paperclip] Trying to link /tmp/8a17189e065c0bb3bbbbc3f97210683720180406-186-19pfcdb.JPG to /tmp/8a17189e065c0bb3bbbbc3f97210683720180406-186-6yo359.JPG
+Command :: file -b --mime '/tmp/8a17189e065c0bb3bbbbc3f97210683720180406-186-6yo359.JPG'
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "A distinguishing feature of the Cooley library.  Music, unfortunately, not included."], ["image_file_name", "IMG_7272.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 499513], ["image_updated_at", "2018-04-06 17:30:46.240386"], ["sight_id", 3], ["created_at", "2018-04-06 17:30:47.765577"], ["updated_at", "2018-04-06 17:30:47.765577"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "sights" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Hamilton Village Green"], ["description", "In winter, a good place to sculpt snow creatures.  In the summer, a good place to have a picnic.  Great place to bring takeaway from Maxwells, F&S, or HWF to enjoy on a nice day."], ["created_at", "2018-04-06 17:30:47.816841"], ["updated_at", "2018-04-06 17:30:47.816841"]]
+[paperclip] Trying to link app/assets/images/IMG_7274.JPG to /tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180406-186-6uduzn.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7274.JPG, /tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180406-186-6uduzn.JPG); copying link app/assets/images/IMG_7274.JPG to /tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180406-186-6uduzn.JPG
+[paperclip] Trying to link /tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180406-186-6uduzn.JPG to /tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180406-186-aq5ma.JPG
+Command :: file -b --mime '/tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180406-186-aq5ma.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180406-186-6uduzn.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180406-186-6uduzn.JPG[0]'
+Command :: convert '/tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180406-186-6uduzn.JPG[0]' -auto-orient -resize "400x400>" '/tmp/97358bfc8670784b136a9ffce056899220180406-186-1pyyd5r'
+[paperclip] Trying to link /tmp/97358bfc8670784b136a9ffce056899220180406-186-1pyyd5r to /tmp/3e67680f3f65c63a1df9918c42d4515520180406-186-19c5l
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180406-186-6uduzn.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180406-186-6uduzn.JPG[0]'
+Command :: convert '/tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180406-186-6uduzn.JPG[0]' -auto-orient -resize "100x100>" '/tmp/97358bfc8670784b136a9ffce056899220180406-186-1u7jk05'
+[paperclip] Trying to link /tmp/97358bfc8670784b136a9ffce056899220180406-186-1u7jk05 to /tmp/fb7877d378d5a4547606b0418161090320180406-186-uetxi1
+[paperclip] Trying to link /tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180406-186-6uduzn.JPG to /tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180406-186-3619rf.JPG
+Command :: file -b --mime '/tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180406-186-3619rf.JPG'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Village green, dressed in white."], ["image_file_name", "IMG_7274.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 878463], ["image_updated_at", "2018-04-06 17:30:47.830499"], ["sight_id", 4], ["created_at", "2018-04-06 17:30:49.396289"], ["updated_at", "2018-04-06 17:30:49.396289"]]
+[paperclip] Trying to link app/assets/images/IMG_7275.JPG to /tmp/3aa3d9d069b826fb3313acc79f7d9ef720180406-186-1qqo0vm.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7275.JPG, /tmp/3aa3d9d069b826fb3313acc79f7d9ef720180406-186-1qqo0vm.JPG); copying link app/assets/images/IMG_7275.JPG to /tmp/3aa3d9d069b826fb3313acc79f7d9ef720180406-186-1qqo0vm.JPG
+[paperclip] Trying to link /tmp/3aa3d9d069b826fb3313acc79f7d9ef720180406-186-1qqo0vm.JPG to /tmp/3aa3d9d069b826fb3313acc79f7d9ef720180406-186-dkmhri.JPG
+Command :: file -b --mime '/tmp/3aa3d9d069b826fb3313acc79f7d9ef720180406-186-dkmhri.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/3aa3d9d069b826fb3313acc79f7d9ef720180406-186-1qqo0vm.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/3aa3d9d069b826fb3313acc79f7d9ef720180406-186-1qqo0vm.JPG[0]'
+Command :: convert '/tmp/3aa3d9d069b826fb3313acc79f7d9ef720180406-186-1qqo0vm.JPG[0]' -auto-orient -resize "400x400>" '/tmp/b6052ff853131718585c57c915a7856f20180406-186-1o8crmi'
+[paperclip] Trying to link /tmp/b6052ff853131718585c57c915a7856f20180406-186-1o8crmi to /tmp/b3e5982f069a6c6c8235eb0488eb15e120180406-186-1l61hp8
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/3aa3d9d069b826fb3313acc79f7d9ef720180406-186-1qqo0vm.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/3aa3d9d069b826fb3313acc79f7d9ef720180406-186-1qqo0vm.JPG[0]'
+Command :: convert '/tmp/3aa3d9d069b826fb3313acc79f7d9ef720180406-186-1qqo0vm.JPG[0]' -auto-orient -resize "100x100>" '/tmp/b6052ff853131718585c57c915a7856f20180406-186-cewg2r'
+[paperclip] Trying to link /tmp/b6052ff853131718585c57c915a7856f20180406-186-cewg2r to /tmp/16145748f874b5903951dae56e7c42e120180406-186-133kuok
+[paperclip] Trying to link /tmp/3aa3d9d069b826fb3313acc79f7d9ef720180406-186-1qqo0vm.JPG to /tmp/3aa3d9d069b826fb3313acc79f7d9ef720180406-186-f34ppb.JPG
+Command :: file -b --mime '/tmp/3aa3d9d069b826fb3313acc79f7d9ef720180406-186-f34ppb.JPG'
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "A lovely fountain, which only spouts ice.  That happens all year round, it seems."], ["image_file_name", "IMG_7275.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 710766], ["image_updated_at", "2018-04-06 17:30:49.574203"], ["sight_id", 4], ["created_at", "2018-04-06 17:30:51.159126"], ["updated_at", "2018-04-06 17:30:51.159126"]]
+[paperclip] Trying to link app/assets/images/IMG_7276.JPG to /tmp/591e65513c5d67285f28a04c418316fa20180406-186-7719ol.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7276.JPG, /tmp/591e65513c5d67285f28a04c418316fa20180406-186-7719ol.JPG); copying link app/assets/images/IMG_7276.JPG to /tmp/591e65513c5d67285f28a04c418316fa20180406-186-7719ol.JPG
+[paperclip] Trying to link /tmp/591e65513c5d67285f28a04c418316fa20180406-186-7719ol.JPG to /tmp/591e65513c5d67285f28a04c418316fa20180406-186-16wui0g.JPG
+Command :: file -b --mime '/tmp/591e65513c5d67285f28a04c418316fa20180406-186-16wui0g.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/591e65513c5d67285f28a04c418316fa20180406-186-7719ol.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/591e65513c5d67285f28a04c418316fa20180406-186-7719ol.JPG[0]'
+Command :: convert '/tmp/591e65513c5d67285f28a04c418316fa20180406-186-7719ol.JPG[0]' -auto-orient -resize "400x400>" '/tmp/923c06905d6ecea857f655da0b09dfb920180406-186-377hd1'
+[paperclip] Trying to link /tmp/923c06905d6ecea857f655da0b09dfb920180406-186-377hd1 to /tmp/14918ec541e203110cfadca7e9c1328e20180406-186-xpemvo
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/591e65513c5d67285f28a04c418316fa20180406-186-7719ol.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/591e65513c5d67285f28a04c418316fa20180406-186-7719ol.JPG[0]'
+Command :: convert '/tmp/591e65513c5d67285f28a04c418316fa20180406-186-7719ol.JPG[0]' -auto-orient -resize "100x100>" '/tmp/923c06905d6ecea857f655da0b09dfb920180406-186-3c5x1'
+[paperclip] Trying to link /tmp/923c06905d6ecea857f655da0b09dfb920180406-186-3c5x1 to /tmp/39ac9d7f45f7f21a2ff1fbec01587c5820180406-186-456o4e
+[paperclip] Trying to link /tmp/591e65513c5d67285f28a04c418316fa20180406-186-7719ol.JPG to /tmp/591e65513c5d67285f28a04c418316fa20180406-186-yacslu.JPG
+Command :: file -b --mime '/tmp/591e65513c5d67285f28a04c418316fa20180406-186-yacslu.JPG'
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "For concerts on the village green in the summer, they just push the snow aside and play."], ["image_file_name", "IMG_7276.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 992666], ["image_updated_at", "2018-04-06 17:30:51.213567"], ["sight_id", 4], ["created_at", "2018-04-06 17:30:52.778633"], ["updated_at", "2018-04-06 17:30:52.778633"]]
+[paperclip] Trying to link app/assets/images/IMG_7277.JPG to /tmp/7af207537e25cfb86b51118c8b6217e720180406-186-bwlsz8.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7277.JPG, /tmp/7af207537e25cfb86b51118c8b6217e720180406-186-bwlsz8.JPG); copying link app/assets/images/IMG_7277.JPG to /tmp/7af207537e25cfb86b51118c8b6217e720180406-186-bwlsz8.JPG
+[paperclip] Trying to link /tmp/7af207537e25cfb86b51118c8b6217e720180406-186-bwlsz8.JPG to /tmp/7af207537e25cfb86b51118c8b6217e720180406-186-10a8xdf.JPG
+Command :: file -b --mime '/tmp/7af207537e25cfb86b51118c8b6217e720180406-186-10a8xdf.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/7af207537e25cfb86b51118c8b6217e720180406-186-bwlsz8.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/7af207537e25cfb86b51118c8b6217e720180406-186-bwlsz8.JPG[0]'
+Command :: convert '/tmp/7af207537e25cfb86b51118c8b6217e720180406-186-bwlsz8.JPG[0]' -auto-orient -resize "400x400>" '/tmp/68ce038e366878be2c1faa34ed5863a720180406-186-1hkjulb'
+[paperclip] Trying to link /tmp/68ce038e366878be2c1faa34ed5863a720180406-186-1hkjulb to /tmp/cceeeacfece0bc41e525615dc1a8f39720180406-186-mxbslv
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/7af207537e25cfb86b51118c8b6217e720180406-186-bwlsz8.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/7af207537e25cfb86b51118c8b6217e720180406-186-bwlsz8.JPG[0]'
+Command :: convert '/tmp/7af207537e25cfb86b51118c8b6217e720180406-186-bwlsz8.JPG[0]' -auto-orient -resize "100x100>" '/tmp/68ce038e366878be2c1faa34ed5863a720180406-186-1divifb'
+[paperclip] Trying to link /tmp/68ce038e366878be2c1faa34ed5863a720180406-186-1divifb to /tmp/2d127e687513c774a9a7e2d0be73c86520180406-186-5cm1zt
+[paperclip] Trying to link /tmp/7af207537e25cfb86b51118c8b6217e720180406-186-bwlsz8.JPG to /tmp/7af207537e25cfb86b51118c8b6217e720180406-186-acwz2a.JPG
+Command :: file -b --mime '/tmp/7af207537e25cfb86b51118c8b6217e720180406-186-acwz2a.JPG'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Some great old trees on the green, looking fierce and bare."], ["image_file_name", "IMG_7277.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 1004348], ["image_updated_at", "2018-04-06 17:30:52.837919"], ["sight_id", 4], ["created_at", "2018-04-06 17:30:54.427703"], ["updated_at", "2018-04-06 17:30:54.427703"]]
+  [1m[35m (21.8ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for 127.0.0.1 at 2018-04-06 13:31:30 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (1.0ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.5ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.8ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (1132.7ms)
+Completed 200 OK in 12208ms (Views: 10100.4ms | ActiveRecord: 9.6ms)
+
+
+Started GET "/sights/1" for 127.0.0.1 at 2018-04-06 13:32:41 -0400
+Processing by SightsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sights/show.html.haml within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  Rendered sights/show.html.haml within layouts/application (21.4ms)
+Completed 200 OK in 126ms (Views: 70.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/sights" for 127.0.0.1 at 2018-04-06 13:32:55 -0400
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (1.0ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.5ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (48.6ms)
+Completed 200 OK in 114ms (Views: 99.0ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/sights/2" for 127.0.0.1 at 2018-04-06 13:32:58 -0400
+Processing by SightsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering sights/show.html.haml within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  Rendered sights/show.html.haml within layouts/application (17.7ms)
+Completed 200 OK in 78ms (Views: 70.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/sights" for 127.0.0.1 at 2018-04-06 13:33:27 -0400
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.5ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (1.0ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.6ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (51.9ms)
+Completed 200 OK in 123ms (Views: 109.8ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/sights/3" for 127.0.0.1 at 2018-04-06 13:33:32 -0400
+Processing by SightsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering sights/show.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  Rendered sights/show.html.haml within layouts/application (15.5ms)
+Completed 200 OK in 83ms (Views: 77.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/sights" for 127.0.0.1 at 2018-04-06 13:33:41 -0400
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.6ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (43.9ms)
+Completed 200 OK in 115ms (Views: 103.4ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/sights/4" for 127.0.0.1 at 2018-04-06 13:33:42 -0400
+Processing by SightsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering sights/show.html.haml within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  Rendered sights/show.html.haml within layouts/application (23.9ms)
+Completed 200 OK in 85ms (Views: 77.1ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/sights" for 127.0.0.1 at 2018-04-06 13:34:25 -0400
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.5ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.6ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (60.4ms)
+Completed 200 OK in 191ms (Views: 175.2ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-04-06 13:34:29 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (1472.6ms)
+Completed 200 OK in 1579ms (Views: 1561.2ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-04-06 13:34:35 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"S4SXBY+vw5eoFUScyEzBuAmTSKP7x3QJRfXwJyg7HLH2pmUTJqYK5FS1GDoNHOj559ejxrqAivwZ4A3HpQqVLg==", "user"=>{"login"=>"", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"S4SXBY+vw5eoFUScyEzBuAmTSKP7x3QJRfXwJyg7HLH2pmUTJqYK5FS1GDoNHOj559ejxrqAivwZ4A3HpQqVLg==", "user"=>{"login"=>"", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 65ms (Views: 62.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-04-06 13:34:42 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XdyXKVqIOEJ63lSki2OYFG8RKubo2qeGbPMqxSP+/dHg/mU/84HxMYZ+CAJOM7FVgVXBg6mdWXMw5tclrs90Tg==", "user"=>{"login"=>"dcd", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE (lower(username) = 'dcd' OR lower(email) = 'dcd') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.4ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XdyXKVqIOEJ63lSki2OYFG8RKubo2qeGbPMqxSP+/dHg/mU/84HxMYZ+CAJOM7FVgVXBg6mdWXMw5tclrs90Tg==", "user"=>{"login"=>"dcd", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 1569ms (Views: 898.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-04-06 13:34:47 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (120.7ms)
+Completed 200 OK in 199ms (Views: 198.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-04-06 13:40:50 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/mnt/c/Users/Chris`/Desktop Dickhead/Spring_2018_Colgate/Soft_Engi/07/cosc480-lab7-cmking54/app/controllers/application_controller.rb:19: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/application_controller.rb:19: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/" for 127.0.0.1 at 2018-04-06 13:41:05 -0400
+  
+SyntaxError (/mnt/c/Users/Chris`/Desktop Dickhead/Spring_2018_Colgate/Soft_Engi/07/cosc480-lab7-cmking54/app/controllers/application_controller.rb:19: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/application_controller.rb:19: syntax error, unexpected end-of-input, expecting keyword_end
+app/controllers/sights_controller.rb:1:in `<top (required)>'
+Started GET "/" for 127.0.0.1 at 2018-04-06 13:41:55 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (1.0ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.6ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (122.8ms)
+Completed 200 OK in 1343ms (Views: 1174.5ms | ActiveRecord: 8.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-06 13:42:04 -0400
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.5ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.5ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.5ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (49.7ms)
+Completed 200 OK in 109ms (Views: 95.4ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-06 14:10:36 -0400
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.8ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (122.8ms)
+Completed 200 OK in 919ms (Views: 735.5ms | ActiveRecord: 8.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-06 15:02:21 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.5ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (137.0ms)
+Completed 500 Internal Server Error in 327ms (ActiveRecord: 9.0ms)
+
+
+  
+SyntaxError (/mnt/c/Users/Chris`/Desktop Dickhead/Spring_2018_Colgate/Soft_Engi/07/cosc480-lab7-cmking54/app/views/layouts/application.html.haml:16: syntax error, unexpected ';', expecting ')'
+)).to_s);).to_s);; _hamlout.buffer << (
+         ^
+/mnt/c/Users/Chris`/Desktop Dickhead/Spring_2018_Colgate/Soft_Engi/07/cosc480-lab7-cmking54/app/views/layouts/application.html.haml:17: syntax error, unexpected keyword_end, expecting ')'
+.buffer << ("\n".freeze);; end;; _hamlout.buffer << ((::Haml
+                              ^
+/mnt/c/Users/Chris`/Desktop Dickhead/Spring_2018_Colgate/Soft_Engi/07/cosc480-lab7-cmking54/app/views/layouts/application.html.haml:38: syntax error, unexpected keyword_ensure, expecting ')'
+Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer.u
+                              ^
+/mnt/c/Users/Chris`/Desktop Dickhead/Spring_2018_Colgate/Soft_Engi/07/cosc480-lab7-cmking54/app/views/layouts/application.html.haml:38: syntax error, unexpected keyword_end, expecting ')'
+ffer.upper if @haml_buffer;end;
+                              ^
+/mnt/c/Users/Chris`/Desktop Dickhead/Spring_2018_Colgate/Soft_Engi/07/cosc480-lab7-cmking54/app/views/layouts/application.html.haml:41: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/layouts/application.html.haml:16: syntax error, unexpected ';', expecting ')'
+app/views/layouts/application.html.haml:17: syntax error, unexpected keyword_end, expecting ')'
+app/views/layouts/application.html.haml:38: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/layouts/application.html.haml:38: syntax error, unexpected keyword_end, expecting ')'
+app/views/layouts/application.html.haml:41: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/" for 127.0.0.1 at 2018-04-06 15:16:42 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (1.0ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.6ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.5ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.8ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (136.5ms)
+Completed 500 Internal Server Error in 754ms (ActiveRecord: 10.1ms)
+
+
+  
+ActionView::Template::Error (no implicit conversion of Symbol into Integer):
+    12:         .col-md-4
+    13:           %h1= t "sitename"
+    14:           =form_tag sights_path, :method => :get do |f|
+    15:             =select_tag "Language", options_for_select(["en", "la"]), "la"
+    16:             =submit_tag
+    17:         .offset-md-6
+    18:         .col-md-2
+  
+app/views/layouts/application.html.haml:15:in `block in _app_views_layouts_application_html_haml___2255032864835594862_18605380'
+app/views/layouts/application.html.haml:14:in `_app_views_layouts_application_html_haml___2255032864835594862_18605380'
+Started GET "/" for 127.0.0.1 at 2018-04-06 15:32:11 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.6ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.5ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (134.8ms)
+Completed 500 Internal Server Error in 720ms (ActiveRecord: 9.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `select_tag' for nil:NilClass):
+    12:         .col-md-4
+    13:           %h1= t "sitename"
+    14:           =form_tag sights_path, :method => :get do |f|
+    15:             =f.select_tag "Language", options_for_select(["en", "la"]), "la"
+    16:             =f.submit_tag
+    17:         .offset-md-6
+    18:         .col-md-2
+  
+app/views/layouts/application.html.haml:15:in `block in _app_views_layouts_application_html_haml___2299002762902008736_24466440'
+app/views/layouts/application.html.haml:14:in `_app_views_layouts_application_html_haml___2299002762902008736_24466440'
+Started GET "/" for 127.0.0.1 at 2018-04-06 15:41:35 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.8ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.6ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (1.1ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (139.8ms)
+Completed 500 Internal Server Error in 688ms (ActiveRecord: 9.5ms)
+
+
+  
+ActionView::Template::Error (no implicit conversion of Symbol into Integer):
+    12:         .col-md-4
+    13:           %h1= t "sitename"
+    14:           =form_tag sights_path, :method => "get" do |f|
+    15:             =select_tag "Language", options_for_select(["en", "la"]), "la"
+    16:             =submit_tag
+    17:         .offset-md-6
+    18:         .col-md-2
+  
+app/views/layouts/application.html.haml:15:in `block in _app_views_layouts_application_html_haml__4155646077508679961_18470920'
+app/views/layouts/application.html.haml:14:in `_app_views_layouts_application_html_haml__4155646077508679961_18470920'
+Started GET "/" for 127.0.0.1 at 2018-04-06 16:15:54 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.4ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.7ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.5ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (295.7ms)
+Completed 500 Internal Server Error in 2394ms (ActiveRecord: 9.0ms)
+
+
+  
+ActionView::Template::Error (no implicit conversion of Symbol into Integer):
+    12:         .col-md-4
+    13:           %h1= t "sitename"
+    14:           =form_for sights_path, :method => "get" do |f|
+    15:             =select_tag "Language", options_for_select(["en", "la"]), "la"
+    16:             =submit_tag
+    17:         .offset-md-6
+    18:         .col-md-2
+  
+app/views/layouts/application.html.haml:15:in `block in _app_views_layouts_application_html_haml__4043253499169342428_70025082937700'
+app/views/layouts/application.html.haml:14:in `_app_views_layouts_application_html_haml__4043253499169342428_70025082937700'
+Started GET "/" for 127.0.0.1 at 2018-04-06 16:19:14 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (100.3ms)
+Completed 500 Internal Server Error in 261ms (ActiveRecord: 6.4ms)
+
+
+  
+ActionView::Template::Error (Illegal nesting: content can't be both given on the same line as %h1 and nested within it.):
+    11:       .row
+    12:         .col-md-4
+    13:           %h1= t "sitename"
+    14:             -form_for sights_path do |f|
+    15:               =select_tag "Language", options_for_select(["en", "la"]), "la"
+    16:               =submit_tag
+    17:         .offset-md-6
+  
+app/views/layouts/application.html.haml:14
+Started GET "/" for 127.0.0.1 at 2018-04-06 16:20:09 -0400
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.7ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.5ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (29.6ms)
+Completed 500 Internal Server Error in 425ms (ActiveRecord: 5.7ms)
+
+
+  
+ActionView::Template::Error (no implicit conversion of Symbol into Integer):
+    12:         .col-md-4
+    13:           %h1= t "sitename"
+    14:           -form_for sights_path do |f|
+    15:             =select_tag "Language", options_for_select(["en", "la"]), "la"
+    16:             =submit_tag
+    17:         .offset-md-6
+    18:         .col-md-2
+  
+app/views/layouts/application.html.haml:15:in `block in _app_views_layouts_application_html_haml___4110296773719376861_70246175467400'
+app/views/layouts/application.html.haml:14:in `_app_views_layouts_application_html_haml___4110296773719376861_70246175467400'
+Started GET "/" for 127.0.0.1 at 2018-04-06 16:21:24 -0400
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.7ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (29.6ms)
+Completed 200 OK in 95ms (Views: 85.0ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-06 16:21:57 -0400
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.5ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (28.4ms)
+Completed 200 OK in 81ms (Views: 70.8ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-06 16:22:11 -0400
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (26.9ms)
+Completed 200 OK in 75ms (Views: 66.7ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-06 16:22:48 -0400
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (26.8ms)
+Completed 200 OK in 73ms (Views: 65.8ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-06 16:23:15 -0400
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (25.9ms)
+Completed 200 OK in 79ms (Views: 69.2ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/sights?utf8=%E2%9C%93&Language=en&commit=Save+changes" for 127.0.0.1 at 2018-04-06 16:23:20 -0400
+Processing by SightsController#index as HTML
+  Parameters: {"utf8"=>"✓", "Language"=>"en", "commit"=>"Save changes"}
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (26.1ms)
+Completed 200 OK in 69ms (Views: 60.7ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/sights?utf8=%E2%9C%93&Language=en&commit=Save+changes" for 127.0.0.1 at 2018-04-06 16:23:25 -0400
+Processing by SightsController#index as HTML
+  Parameters: {"utf8"=>"✓", "Language"=>"en", "commit"=>"Save changes"}
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.5ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (29.0ms)
+Completed 200 OK in 76ms (Views: 65.6ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/sights?utf8=%E2%9C%93&Language=en&commit=Save+changes" for 127.0.0.1 at 2018-04-06 16:24:53 -0400
+Processing by SightsController#index as HTML
+  Parameters: {"utf8"=>"✓", "Language"=>"en", "commit"=>"Save changes"}
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (27.9ms)
+Completed 200 OK in 87ms (Views: 78.4ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/sights?utf8=%E2%9C%93&lang=en&commit=Save+changes" for 127.0.0.1 at 2018-04-06 16:24:57 -0400
+Processing by SightsController#index as HTML
+  Parameters: {"utf8"=>"✓", "lang"=>"en", "commit"=>"Save changes"}
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (26.9ms)
+Completed 200 OK in 75ms (Views: 63.4ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/sights?utf8=%E2%9C%93&lang=en&commit=Save+changes" for 127.0.0.1 at 2018-04-06 16:26:02 -0400
+Processing by SightsController#index as HTML
+  Parameters: {"utf8"=>"✓", "lang"=>"en", "commit"=>"Save changes"}
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (29.0ms)
+Completed 200 OK in 94ms (Views: 85.2ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/sights?utf8=%E2%9C%93&locale=en&commit=Save+changes" for 127.0.0.1 at 2018-04-06 16:26:06 -0400
+Processing by SightsController#index as HTML
+  Parameters: {"utf8"=>"✓", "locale"=>"en", "commit"=>"Save changes"}
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (28.6ms)
+Completed 200 OK in 73ms (Views: 64.7ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/sights?utf8=%E2%9C%93&locale=en&commit=Save+changes" for 127.0.0.1 at 2018-04-06 16:31:14 -0400
+Processing by SightsController#index as HTML
+  Parameters: {"utf8"=>"✓", "locale"=>"en", "commit"=>"Save changes"}
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (39.0ms)
+Completed 200 OK in 107ms (Views: 79.4ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/sights?utf8=%E2%9C%93&locale=la&commit=Save+changes" for 127.0.0.1 at 2018-04-06 16:31:22 -0400
+Processing by SightsController#index as HTML
+  Parameters: {"utf8"=>"✓", "locale"=>"la", "commit"=>"Save changes"}
+  [1m[36mSight Load (0.5ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (1.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (27.1ms)
+Completed 200 OK in 75ms (Views: 63.0ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/sights?utf8=%E2%9C%93&locale=en&commit=Save+changes" for 127.0.0.1 at 2018-04-06 16:31:25 -0400
+Processing by SightsController#index as HTML
+  Parameters: {"utf8"=>"✓", "locale"=>"en", "commit"=>"Save changes"}
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (28.8ms)
+Completed 200 OK in 76ms (Views: 67.3ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/sights?utf8=%E2%9C%93&locale=la&commit=Save+changes" for 127.0.0.1 at 2018-04-06 16:32:14 -0400
+Processing by SightsController#index as HTML
+  Parameters: {"utf8"=>"✓", "locale"=>"la", "commit"=>"Save changes"}
+  [1m[36mSight Load (0.4ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (27.7ms)
+Completed 200 OK in 84ms (Views: 74.3ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/sights?utf8=%E2%9C%93&locale=en&commit=Save+changes" for 127.0.0.1 at 2018-04-06 16:32:27 -0400
+Processing by SightsController#index as HTML
+  Parameters: {"utf8"=>"✓", "locale"=>"en", "commit"=>"Save changes"}
+  [1m[36mSight Load (0.5ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (28.4ms)
+Completed 200 OK in 78ms (Views: 68.5ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-06 16:32:34 -0400
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.7ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (24.6ms)
+Completed 200 OK in 69ms (Views: 61.3ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/sights?utf8=%E2%9C%93&locale=la&commit=Save+changes" for 127.0.0.1 at 2018-04-06 16:32:38 -0400
+Processing by SightsController#index as HTML
+  Parameters: {"utf8"=>"✓", "locale"=>"la", "commit"=>"Save changes"}
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (28.4ms)
+Completed 200 OK in 77ms (Views: 65.8ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/sights?utf8=%E2%9C%93&locale=en&commit=Save+changes" for 127.0.0.1 at 2018-04-06 16:32:41 -0400
+Processing by SightsController#index as HTML
+  Parameters: {"utf8"=>"✓", "locale"=>"en", "commit"=>"Save changes"}
+  [1m[36mSight Load (0.4ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (27.7ms)
+Completed 200 OK in 77ms (Views: 66.4ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/sights?utf8=%E2%9C%93&locale=la&commit=Save+changes" for 127.0.0.1 at 2018-04-06 16:32:43 -0400
+Processing by SightsController#index as HTML
+  Parameters: {"utf8"=>"✓", "locale"=>"la", "commit"=>"Save changes"}
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (27.0ms)
+Completed 200 OK in 81ms (Views: 70.3ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/sights?utf8=%E2%9C%93&locale=la&commit=Save+changes" for 127.0.0.1 at 2018-04-06 16:32:45 -0400
+Processing by SightsController#index as HTML
+  Parameters: {"utf8"=>"✓", "locale"=>"la", "commit"=>"Save changes"}
+  [1m[36mSight Load (0.4ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (28.2ms)
+Completed 200 OK in 74ms (Views: 64.4ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-06 18:55:34 -0400
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (48.0ms)
+Completed 200 OK in 442ms (Views: 400.6ms | ActiveRecord: 8.0ms)
+
+

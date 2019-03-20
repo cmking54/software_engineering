@@ -1,0 +1,17 @@
+Generating
+
+rails generate model Meeting title:string location:string description:string points:integer date:datetime image:attachment
+
+rails generate model Person first_name:string last_name:string admin:boolean points:integer image:attachment
+
+rails generate controller People index show new create edit update destroy about
+
+rails generate controller Meetings index show new create edit update destroy about
+
+rails generate migration AddRoleToPeople role:string
+
+rails generate model Registration person:references meeting:references
+
+rails generate controller Registrations new edit show
+
+rails generate migration AddBioToPeople bio:string

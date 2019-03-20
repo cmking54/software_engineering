@@ -1,0 +1,46 @@
+#main.container
+  %h3.header Edit rental property details
+
+  =form_for @property, :method => :patch do |f|
+    .field
+      =f.label :title, "Title"
+      =f.text_field :title
+
+    .field
+      =f.label :description, "Description"
+      =f.text_field :description
+
+    .field
+      =f.label :address, "Address"
+      =f.text_field :address
+
+    .field
+      =f.label :maxpersons, "Maximum occupancy"
+      =f.number_field :maxpersons
+
+    .field
+      =f.label :bedrooms, "Number of bedrooms"
+      =f.number_field :bedrooms
+
+    .field
+      =f.label :beds, "Total number of beds"
+      =f.number_field :beds
+
+    .field
+      =f.label :bathrooms, "Total number of bathrooms"
+      =f.number_field :bathrooms
+
+    .field
+      =f.label :pets_allowed, "Are pets allowed?"
+      =f.check_box :pets_allowed
+
+    .field
+      =f.label :price, "Price"
+      =f.number_field :price, in: 0.0..1000.0, step: 0.01
+
+    .field
+      =f.label :image, "Image"
+      =f.file_field :image, accept: "image/png,image/gif,image/jpeg"
+
+    .field
+      =f.submit "Update rental property details"

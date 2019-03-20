@@ -1,0 +1,25 @@
+#main.container
+
+  %h3.header.centered Register for #{@meeting.title}
+  %h5.centered #{@meeting.date.try(:to_formatted_s, :custom_long_ordinal)}
+  %h5.centered #{@meeting.location}
+  %h5.centered Points Value: #{@meeting.points}
+
+  %br
+  %h5.centered Registering as #{@person.first_name} #{@person.last_name}
+
+  %br
+  =form_for @registration, :method => :post, html: {class: 'form-horizontal'} do |f|
+
+    =f.hidden_field :person_id, value: @person.id
+
+    =f.hidden_field :meeting_id, value: @meeting.id
+
+    .form-group.centered
+      =f.submit 'Register',class: "btn-success"
+
+  %p.centered= link_to "Cancel", meeting_path(@meeting.id)
+  %br
+
+  %p.centered= image_tag @meeting.image.url
+  %br

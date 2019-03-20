@@ -1,0 +1,40 @@
+%br
+
+.row
+  .offset-md-1.col-md-4
+    %h2= @sight.title
+  .offset-md-1.col-md-1
+    %h4
+      =octicon "triangle-up"
+      %span#upcount.text-success="#{@sight.upvotes}"
+  .col-md-1
+    %h4
+      =octicon "triangle-down"
+      %span#downcount.text-danger="#{@sight.downvotes}"
+  .offset-md-1.col-md-2
+    -if user_signed_in?
+      %span.badge.badge-dark= t "vote"
+      %span
+        =link_to octicon("thumbsup"), upvote_path(@sight.id), :method => :post, :id => :upvote
+      %span
+        =link_to octicon("thumbsdown"), downvote_path(@sight.id), :method => :post, :id => :downvote
+    -else
+      .alert.alert-secondary.small= t "sign_in_up_block"
+
+.row
+  .offset-md-1.col-md.10
+    %p= @sight.description
+-@sight.photos.each_slice(3) do |arr|
+  .row
+    .offset-md-1
+    -arr.each do |photo|
+      .col-md-3.card.imgcard
+        =image_tag photo.image.url(:normal), :class => "card-img-top img-fluid"
+        .card-body
+          %p.card-text= photo.caption
+
+%br
+%br
+%br
+.row
+  .col-md-2= link_to t("back_to_all_sights"), sights_path, :class => "btn btn-primary"

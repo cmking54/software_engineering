@@ -1,0 +1,55 @@
+#main.container
+  %br
+  %h3.centered My Events
+
+  %br
+  %h4 Upcoming Events
+  -unless @upcoming_meetings.length > 0
+    %p.content= "You have no upcoming events."
+  -else
+    %br
+    %table.table.table-responsive-lg.table-bordered
+      %thead.thead-light
+        %tr
+          %th Title
+          %th Date and Time
+          %th Location
+          %th Points Value
+          %th Description
+
+      %tbody
+        -@upcoming_meetings.each do |meeting|
+          %tr.eventbody
+            %td.header= link_to "#{meeting.title}", meeting_path(meeting)
+            %td.content= "#{meeting.date.try(:to_formatted_s, :custom_long_ordinal)}"
+            %td.content= "#{meeting.location}"
+            %td.content= "#{meeting.points}"
+            %td.content= truncate(meeting.description, length: 150)
+      %br
+
+  %br
+  %h4 Past Events
+  -unless @past_meetings.length > 0
+    %p.content= "You have no past events."
+  -else
+    %br
+    %table.table.table-responsive-lg.table-bordered
+      %thead.thead-light
+        %tr
+          %th Title
+          %th Date and Time
+          %th Location
+          %th Points Value
+          %th Description
+
+      %tbody
+        -@past_meetings.each do |meeting|
+          %tr.eventbody
+            %td.header= link_to "#{meeting.title}", meeting_path(meeting)
+            %td.content= "#{meeting.date.try(:to_formatted_s, :custom_long_ordinal)}"
+            %td.content= "#{meeting.location}"
+            %td.content= "#{meeting.points}"
+            %td.content= truncate(meeting.description, length: 150)
+
+  %p.centered= link_to "Back to My Profile", person_path(@person.id)
+  %br

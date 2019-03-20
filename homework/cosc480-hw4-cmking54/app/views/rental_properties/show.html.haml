@@ -1,0 +1,26 @@
+#main.container
+    .row
+        %h3.header.title= "#{@property.title}"
+
+    .row
+        .col-md-offset-2
+        .col-md-8.description= "#{@property.description}"
+    .row
+        .center= image_tag(@property.image.url(:medium)) # may display odd
+    .row
+        .col-md-offset-2
+        .col-md-8= "Sleeps #{@property.maxpersons}, with #{@property.bedrooms} bedrooms, #{@property.beds} beds and #{@property.bathrooms} bathrooms. Pets are #{@property.pets_allowed ? '' : 'not'} allowed."
+    .row
+        .col-md-offset-2
+        .col-md-4.distance= "#{number_to_human(@property.distance_from(@location), units: {unit: 'mi'}) || 'Unknown distance'} away from you."
+        .col-md-4.price= "#{number_to_currency(@property.price)} per night."
+
+    %br
+    %br
+
+    .row
+        .col-md-offset-1
+        .col-md-2= link_to('Create a new rental property listing', new_rental_property_path)
+        .col-md-2= link_to('Edit rental property details', edit_rental_property_path)
+        .col-md-2= link_to('Delete rental property', rental_property_path(@property), :method => :delete) 
+        .col-md-2= link_to('Leave Me', rental_properties_path)

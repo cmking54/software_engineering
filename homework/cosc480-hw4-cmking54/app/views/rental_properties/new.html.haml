@@ -1,0 +1,36 @@
+=form_for @property do |form|
+    %table.table
+        %thead
+            %tr
+                %th= form.label :title
+                %th= form.label :address
+                %th= form.label :description
+                %th= form.label :price
+        %tbody
+            %tr
+                %td= form.text_field :title, :placeholder => 'Short, but eye-catching'
+                %td= form.text_area :address, :placeholder => 'Be as specific as possible'
+                %td= form.text_area :description, :placeholder => 'Any Important details' 
+                %td= form.number_field :price, :step => 0.01, :min => 0
+    %table.table
+        %thead
+            %tr
+                %th= form.label :bedrooms
+                %th= form.label :beds
+                %th= form.label :maxpersons
+                %th= form.label :pets_allowed
+        %tbody
+            %tr
+                %td= form.number_field :bedrooms, :min => 0
+                %td= form.number_field :beds, :min => 0
+                %td= form.number_field :maxpersons, :min => 0
+                %td= form.check_box :pets_allowed
+    %table.table
+        %thead
+            %tr
+                %th= form.label "Add A Picture".to_sym # should be :image, I got fancy
+        %tbody
+            %tr
+                %td= form.file_field :image
+    =form.submit
+=link_to 'Go Back', rental_properties_path

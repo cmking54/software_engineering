@@ -1,0 +1,35 @@
+#main.container
+  %h3.header Add a New Event
+
+  %br
+  =form_for @meeting, :method => :post, :multipart=> true do |f|
+    .form-group
+      =f.label :title, 'Title'
+      =f.text_field :title, class: "form-control"
+
+    .form-group
+      =f.label :location, 'Location'
+      =f.text_field :location, class: "form-control"
+
+    .field
+      =f.label :date, 'Date'
+      =f.date_field :date
+
+    .field
+      =f.label :points, 'Points'
+      =f.number_field :points, class: "form-control"
+
+    .field
+      =f.label :description, 'Description'
+      =f.text_field :description, class: "form-control"
+
+    .field
+      =f.label :image, 'Image'
+      =f.file_field :image, accept: "image/png,image/gif,image/jpeg"
+
+    .field
+      =f.submit 'Add this New Event',class: "btn-success"
+
+  %br
+  %p= link_to "Cancel", meetings_path
+  %br

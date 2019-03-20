@@ -1,0 +1,15 @@
+#main
+  %h3 COSC480 Homework 0
+  %p What a lousy way to play Ghost!
+  %p= "Here is the current word: #{@word.upcase}"
+ 
+- if @lost
+  %p= "Game Over! The ending word is: #{@word.upcase}"
+  %a(href=ghost_play_url) Play Again
+- else
+  = form_tag ghost_play_url, method: :get do
+    =label_tag :letter, "Next letter? "
+    =text_field_tag :letter, '', size: 2
+    =hidden_field_tag :current_word, @word
+    =submit_tag "Go"
+

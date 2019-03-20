@@ -1,0 +1,2211 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (24.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (23.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRentalProperties (20180222141301)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "rental_properties" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "bedrooms" integer, "beds" integer, "maxpersons" integer, "bathrooms" integer, "pets_allowed" boolean, "address" text, "price" decimal(10,2), "lat" decimal(15,10) NOT NULL, "lng" decimal(15,10) NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180222141301"]]
+  [1m[35m (16.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-02-22 15:32:32.647993"], ["updated_at", "2018-02-22 15:32:32.647993"]]
+  [1m[35m (12.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mSQL (18.8ms)[0m  [1m[31mDELETE FROM "rental_properties"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRentalProperties (20180222153925)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "rental_properties" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "bedrooms" integer, "beds" integer, "maxpersons" integer, "bathrooms" integer, "pets_allowed" boolean, "address" text, "price" decimal(10,2), "latitude" decimal(15,10), "longitude" decimal(15,10), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (117.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (14.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRentalProperties (20180222153925)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "rental_properties" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "bedrooms" integer, "beds" integer, "maxpersons" integer, "bathrooms" integer, "pets_allowed" boolean, "address" text, "price" decimal(10,2), "latitude" decimal(15,10), "longitude" decimal(15,10), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180222153925"]]
+  [1m[35m (14.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-02-22 15:41:24.410156"], ["updated_at", "2018-02-22 15:41:24.410156"]]
+  [1m[35m (17.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mSQL (44.7ms)[0m  [1m[31mDELETE FROM "rental_properties"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "address", "price", "latitude", "longitude", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Lovely cottage by the sea"], ["description", "Waterfront view.  'Cozy', which basically means small, but you're here for the view anyway, right?  Sleeps four.  No pets allowed."], ["bedrooms", 2], ["beds", 2], ["maxpersons", 4], ["bathrooms", 1], ["pets_allowed", "f"], ["address", "Rockport, ME"], ["price", 120.5], ["latitude", 44.1845], ["longitude", -69.0761], ["created_at", "2018-02-22 15:42:34.822460"], ["updated_at", "2018-02-22 15:42:34.822460"]]
+  [1m[35m (12.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "address", "price", "latitude", "longitude", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Remote cabin for escaping everything"], ["description", "Adirondack cabin with one double bedroom and a sofa, for when you want that third wheel along for the ride.  Beware the bears."], ["bedrooms", 1], ["beds", 2], ["maxpersons", 3], ["bathrooms", 1], ["pets_allowed", "f"], ["address", "Keene, NY"], ["price", 203.87], ["latitude", 44.2562], ["longitude", -73.7921], ["created_at", "2018-02-22 15:42:34.898801"], ["updated_at", "2018-02-22 15:42:34.898801"]]
+  [1m[35m (12.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "address", "price", "latitude", "longitude", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Loft apartment"], ["description", "Apartment in a converted warehouse above two restaurants and a bar.  Amazingly quite for all that activity downstairs."], ["bedrooms", 1], ["beds", 1], ["maxpersons", 2], ["bathrooms", 1], ["pets_allowed", "t"], ["address", "Albany, NY"], ["price", 99.99], ["latitude", 42.6526], ["longitude", -75.7562], ["created_at", "2018-02-22 15:42:34.916486"], ["updated_at", "2018-02-22 15:42:34.916486"]]
+  [1m[35m (14.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "address", "price", "latitude", "longitude", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Single family home, quiet neighborhood"], ["description", "Two story house with 3 bedrooms (one queen and two twins), kids toys, a big backyard, and quiet neighborhood.  Walking distance to everything and nothing, all at once.  One full bath and one quarter bath."], ["bedrooms", 3], ["beds", 3], ["maxpersons", 4], ["bathrooms", 2], ["pets_allowed", "f"], ["address", "Hamilton, NY"], ["price", 175.13], ["latitude", 42.827], ["longitude", -75.5446], ["created_at", "2018-02-22 15:42:34.936789"], ["updated_at", "2018-02-22 15:42:34.936789"]]
+  [1m[35m (14.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "address", "price", "latitude", "longitude", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Sofa at former coffee shop"], ["description", "Comfy sofa available for rent in a studio setting: the former Barge Canal coffee shop.  Just need to figure out how to pick the lock, but it's quiet and comfy.  Some crumbs left over from former tenants.  No coffee left, but you're better off going elsewhere anyway."], ["bedrooms", 0], ["beds", 1], ["maxpersons", 1], ["bathrooms", 0], ["pets_allowed", "t"], ["address", "Hamilton, NY"], ["price", 13.99], ["latitude", 42.827], ["longitude", -75.5446], ["created_at", "2018-02-22 15:42:34.954675"], ["updated_at", "2018-02-22 15:42:34.954675"]]
+  [1m[35m (13.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "rental_properties" ("maxpersons", "bathrooms", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["maxpersons", 4], ["bathrooms", 3], ["price", 150.0], ["created_at", "2018-02-22 16:38:09.166854"], ["updated_at", "2018-02-22 16:38:09.166854"]]
+  [1m[35m (91.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.1ms)[0m  [1m[32mINSERT INTO "rental_properties" ("maxpersons", "bathrooms", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["maxpersons", 4], ["bathrooms", 3], ["price", 150.0], ["created_at", "2018-02-22 16:42:45.654890"], ["updated_at", "2018-02-22 16:42:45.654890"]]
+  [1m[35m (15.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.3ms)[0m  [1m[33mUPDATE "rental_properties" SET "price" = ?, "updated_at" = ? WHERE "rental_properties"."id" = ?[0m  [["price", 160.0], ["updated_at", "2018-02-22 16:43:52.675052"], ["id", 7]]
+  [1m[35m (15.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("maxpersons", "bathrooms", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["maxpersons", 4], ["bathrooms", 3], ["price", 160.0], ["created_at", "2018-02-22 16:44:58.554672"], ["updated_at", "2018-02-22 16:44:58.554672"]]
+  [1m[35m (1753.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE (maxpersons >= 3 AND bathrooms >= 2 AND price <= 200) LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (143.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (16.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRentalProperties (20180222182254)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "rental_properties" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "bedrooms" integer, "beds" integer, "maxpersons" integer, "bathrooms" integer, "pets_allowed" boolean, "address" text, "price" decimal(10,2), "lat" decimal(15,10), "lng" decimal(15,10), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180222182254"]]
+  [1m[35m (14.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (44.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-02-22 18:24:19.653053"], ["updated_at", "2018-02-22 18:24:19.653053"]]
+  [1m[35m (11.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mSQL (16.5ms)[0m  [1m[31mDELETE FROM "rental_properties"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (99.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (18.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRentalProperties (20180225131852)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "rental_properties" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "bedrooms" integer, "beds" integer, "maxpersons" integer, "bathrooms" integer, "pets_allowed" boolean, "address" text, "price" decimal(10,2), "lat" decimal(15,10) NOT NULL, "lng" decimal(15,10) NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180225131852"]]
+  [1m[35m (16.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-02-25 13:20:37.022078"], ["updated_at", "2018-02-25 13:20:37.022078"]]
+  [1m[35m (92.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mSQL (17.4ms)[0m  [1m[31mDELETE FROM "rental_properties"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mSQL (17.3ms)[0m  [1m[31mDELETE FROM "rental_properties"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "address", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Lovely cottage by the sea"], ["description", "Waterfront view.  'Cozy', which basically means small, but you're here for the view anyway, right?  Sleeps four.  No pets allowed."], ["bedrooms", 2], ["beds", 2], ["maxpersons", 4], ["bathrooms", 1], ["pets_allowed", "f"], ["address", "Rockport, ME"], ["price", 120.5], ["lat", 44.1845], ["lng", -69.0761], ["created_at", "2018-02-25 13:24:00.472517"], ["updated_at", "2018-02-25 13:24:00.472517"]]
+  [1m[35m (12.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "address", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Remote cabin for escaping everything"], ["description", "Adirondack cabin with one double bedroom and a sofa, for when you want that third wheel along for the ride.  Beware the bears."], ["bedrooms", 1], ["beds", 2], ["maxpersons", 3], ["bathrooms", 1], ["pets_allowed", "f"], ["address", "Keene, NY"], ["price", 203.87], ["lat", 44.2562], ["lng", -73.7921], ["created_at", "2018-02-25 13:24:00.576923"], ["updated_at", "2018-02-25 13:24:00.576923"]]
+  [1m[35m (14.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "address", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Loft apartment"], ["description", "Apartment in a converted warehouse above two restaurants and a bar.  Amazingly quite for all that activity downstairs."], ["bedrooms", 1], ["beds", 1], ["maxpersons", 2], ["bathrooms", 1], ["pets_allowed", "t"], ["address", "Albany, NY"], ["price", 99.99], ["lat", 42.6526], ["lng", -75.7562], ["created_at", "2018-02-25 13:24:00.597173"], ["updated_at", "2018-02-25 13:24:00.597173"]]
+  [1m[35m (13.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "address", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Single family home, quiet neighborhood"], ["description", "Two story house with 3 bedrooms (one queen and two twins), kids toys, a big backyard, and quiet neighborhood.  Walking distance to everything and nothing, all at once.  One full bath and one quarter bath."], ["bedrooms", 3], ["beds", 3], ["maxpersons", 4], ["bathrooms", 2], ["pets_allowed", "f"], ["address", "Hamilton, NY"], ["price", 175.13], ["lat", 42.827], ["lng", -75.5446], ["created_at", "2018-02-25 13:24:00.616628"], ["updated_at", "2018-02-25 13:24:00.616628"]]
+  [1m[35m (13.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "address", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Sofa at former coffee shop"], ["description", "Comfy sofa available for rent in a studio setting: the former Barge Canal coffee shop.  Just need to figure out how to pick the lock, but it's quiet and comfy.  Some crumbs left over from former tenants.  No coffee left, but you're better off going elsewhere anyway."], ["bedrooms", 0], ["beds", 1], ["maxpersons", 1], ["bathrooms", 0], ["pets_allowed", "t"], ["address", "Hamilton, NY"], ["price", 13.99], ["lat", 42.827], ["lng", -75.5446], ["created_at", "2018-02-25 13:24:00.636545"], ["updated_at", "2018-02-25 13:24:00.636545"]]
+  [1m[35m (11.6ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for 127.0.0.1 at 2018-02-26 20:25:11 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (345.6ms)
+Completed 500 Internal Server Error in 368ms (ActiveRecord: 1.4ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `rental_property' for #<#<Class:0x00007fa668754390>:0x00007fa668762710>
+Did you mean?  rental_property_url):
+    11:                 %th Price per night
+    12:         - @properties. each do |p|
+    13:             %tr
+    14:                 %th.title= link_to p.title, rental_property
+    15:                 %th= truncate(p.description, length: 0)
+    16:                 - details = %Q{Sleeps #{pluralize(p.maxpersons)}, 
+    17:                                 with #{pluralize(p.bedrooms)}, 
+  
+app/views/rental_properties/index.html.haml:14:in `block in _app_views_rental_properties_index_html_haml__4035736462635576982_70176346908860'
+app/views/rental_properties/index.html.haml:12:in `_app_views_rental_properties_index_html_haml__4035736462635576982_70176346908860'
+Started GET "/" for 127.0.0.1 at 2018-02-26 20:25:44 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (10.1ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"rental_properties"}, missing required keys: [:id]):
+    11:                 %th Price per night
+    12:         - @properties. each do |p|
+    13:             %tr
+    14:                 %th.title= link_to p.title, rental_property_path
+    15:                 %th= truncate(p.description, length: 0)
+    16:                 - details = %Q{Sleeps #{pluralize(p.maxpersons)}, 
+    17:                                 with #{pluralize(p.bedrooms)}, 
+  
+app/views/rental_properties/index.html.haml:14:in `block in _app_views_rental_properties_index_html_haml__4035736462635576982_70176355188240'
+app/views/rental_properties/index.html.haml:12:in `_app_views_rental_properties_index_html_haml__4035736462635576982_70176355188240'
+Started GET "/" for 127.0.0.1 at 2018-02-26 20:27:06 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  Rendered rental_properties/index.html.haml within layouts/application (4.7ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:15: syntax error, unexpected ')'
+)).to_s);).to_s);; _hamlout.buf
+ ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:28: syntax error, unexpected keyword_end, expecting ')'
+er << ("</tr>\n".freeze);; end;; _hamlout.buffer << ("</tabl
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:28: syntax error, unexpected keyword_ensure, expecting ')'
+Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer.u
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:28: syntax error, unexpected keyword_end, expecting ')'
+ffer.upper if @haml_buffer;end;
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:31: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/rental_properties/index.html.haml:15: syntax error, unexpected ')'
+app/views/rental_properties/index.html.haml:28: syntax error, unexpected keyword_end, expecting ')'
+app/views/rental_properties/index.html.haml:28: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/rental_properties/index.html.haml:28: syntax error, unexpected keyword_end, expecting ')'
+app/views/rental_properties/index.html.haml:31: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/" for 127.0.0.1 at 2018-02-26 20:29:23 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  Rendered rental_properties/index.html.haml within layouts/application (3.1ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:15: syntax error, unexpected ')'
+)).to_s);).to_s);; _hamlout.buf
+ ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:28: syntax error, unexpected keyword_end, expecting ')'
+er << ("</tr>\n".freeze);; end;; _hamlout.buffer << ("</tabl
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:28: syntax error, unexpected keyword_ensure, expecting ')'
+Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer.u
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:28: syntax error, unexpected keyword_end, expecting ')'
+ffer.upper if @haml_buffer;end;
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:31: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/rental_properties/index.html.haml:15: syntax error, unexpected ')'
+app/views/rental_properties/index.html.haml:28: syntax error, unexpected keyword_end, expecting ')'
+app/views/rental_properties/index.html.haml:28: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/rental_properties/index.html.haml:28: syntax error, unexpected keyword_end, expecting ')'
+app/views/rental_properties/index.html.haml:31: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/" for 127.0.0.1 at 2018-02-26 20:29:30 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  Rendered rental_properties/index.html.haml within layouts/application (4.6ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:15: syntax error, unexpected ')'
+)).to_s);).to_s);; _hamlout.buf
+ ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:28: syntax error, unexpected keyword_end, expecting ')'
+er << ("</tr>\n".freeze);; end;; _hamlout.buffer << ("</tabl
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:28: syntax error, unexpected keyword_ensure, expecting ')'
+Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer.u
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:28: syntax error, unexpected keyword_end, expecting ')'
+ffer.upper if @haml_buffer;end;
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:31: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/rental_properties/index.html.haml:15: syntax error, unexpected ')'
+app/views/rental_properties/index.html.haml:28: syntax error, unexpected keyword_end, expecting ')'
+app/views/rental_properties/index.html.haml:28: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/rental_properties/index.html.haml:28: syntax error, unexpected keyword_end, expecting ')'
+app/views/rental_properties/index.html.haml:31: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/" for 127.0.0.1 at 2018-02-26 20:29:58 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (8.9ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (comparison of Integer with Hash failed):
+    12:         - @properties. each do |p|
+    13:             %tr
+    14:                 %th.title= p.title 
+    15:                 %th= p.description.truncate(length: 0)
+    16:                 - details = %Q{Sleeps #{pluralize(p.maxpersons)}, 
+    17:                                 with #{pluralize(p.bedrooms)}, 
+    18:                                 #{pluralize(p.beds)}, 
+  
+app/views/rental_properties/index.html.haml:15:in `block in _app_views_rental_properties_index_html_haml__4035736462635576982_35173420'
+app/views/rental_properties/index.html.haml:12:in `_app_views_rental_properties_index_html_haml__4035736462635576982_35173420'
+Started GET "/" for 127.0.0.1 at 2018-02-26 20:31:02 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (5.9ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 0, expected 1..2)):
+    12:         - @properties. each do |p|
+    13:             %tr
+    14:                 %th.title= p.title 
+    15:                 %th= p.description.truncate()
+    16:                 - details = %Q{Sleeps #{pluralize(p.maxpersons)}, 
+    17:                                 with #{pluralize(p.bedrooms)}, 
+    18:                                 #{pluralize(p.beds)}, 
+  
+app/views/rental_properties/index.html.haml:15:in `block in _app_views_rental_properties_index_html_haml__4035736462635576982_70176348083600'
+app/views/rental_properties/index.html.haml:12:in `_app_views_rental_properties_index_html_haml__4035736462635576982_70176348083600'
+Started GET "/" for 127.0.0.1 at 2018-02-26 20:31:50 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (5.7ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 1, expected 2..3)):
+    13:             %tr
+    14:                 %th.title= p.title 
+    15:                 %th= truncate(p.description)
+    16:                 - details = %Q{Sleeps #{pluralize(p.maxpersons)}, 
+    17:                                 with #{pluralize(p.bedrooms)}, 
+    18:                                 #{pluralize(p.beds)}, 
+    19:                                 and #{pluralize(bathrooms)}.}
+  
+app/views/rental_properties/index.html.haml:16:in `block in _app_views_rental_properties_index_html_haml__4035736462635576982_70176352483320'
+app/views/rental_properties/index.html.haml:12:in `_app_views_rental_properties_index_html_haml__4035736462635576982_70176352483320'
+Started GET "/" for 127.0.0.1 at 2018-02-26 20:35:53 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (7.5ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `fetch' for 0:Integer):
+    12:         - @properties. each do |p|
+    13:             %tr
+    14:                 %th.title= p.title 
+    15:                 %th= truncate(p.description, 0)
+    16:                 - details = %Q{Sleeps #{p.maxpersons}, 
+    17:                                 with #{pluralize(p.bedrooms, 'bedroom')}, 
+    18:                                 #{pluralize(p.beds, 'bed')}, 
+  
+app/views/rental_properties/index.html.haml:15:in `block in _app_views_rental_properties_index_html_haml__4035736462635576982_70176309925280'
+app/views/rental_properties/index.html.haml:12:in `_app_views_rental_properties_index_html_haml__4035736462635576982_70176309925280'
+Started GET "/" for 127.0.0.1 at 2018-02-26 20:36:11 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (349.2ms)
+Completed 500 Internal Server Error in 358ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `distance_from' for #<#<Class:0x00007fa668754390>:0x00007fa6642db178>):
+    20:                 - details += "Pets are #{if p.pets_allowed then '' else 'not' end} allowed."
+    21:                 %th= details
+    22:                 %th= number_to_currency p.price
+    23:                 - dist = distance_from @location
+    24:                 - if dist nil?
+    25:                     %th= 'Unknown'
+    26:                 - else
+  
+app/views/rental_properties/index.html.haml:23:in `block in _app_views_rental_properties_index_html_haml__4035736462635576982_70176311008700'
+app/views/rental_properties/index.html.haml:12:in `_app_views_rental_properties_index_html_haml__4035736462635576982_70176311008700'
+Started GET "/" for 127.0.0.1 at 2018-02-26 20:36:41 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (104.8ms)
+Completed 500 Internal Server Error in 114ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `dist' for #<#<Class:0x00007fa668754390>:0x00007fa669e0ca60>
+Did you mean?  Digest):
+    21:                 %th= details
+    22:                 %th= number_to_currency p.price
+    23:                 - dist = p.distance_from @location
+    24:                 - if dist nil?
+    25:                     %th= 'Unknown'
+    26:                 - else
+    27:                     %th= number_to_human dist
+  
+app/views/rental_properties/index.html.haml:24:in `block in _app_views_rental_properties_index_html_haml__4035736462635576982_70176358820380'
+app/views/rental_properties/index.html.haml:12:in `_app_views_rental_properties_index_html_haml__4035736462635576982_70176358820380'
+Started GET "/" for 127.0.0.1 at 2018-02-26 20:40:39 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (4.9ms)
+Completed 200 OK in 2284ms (Views: 2277.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-26 20:54:54 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (6.7ms)
+Completed 200 OK in 49ms (Views: 45.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-26 21:04:34 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (52.6ms)
+Completed 500 Internal Server Error in 76ms (ActiveRecord: 1.2ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 1, expected 0)):
+    11:                 %th Price per night
+    12:         - @properties. each do |p|
+    13:             %tr
+    14:                 %th.title= link_to p.title rental_property_path(p.id)
+    15:                 %th= truncate(p.description, :delimiter => ' ')
+    16:                 - details = %Q{Sleeps #{p.maxpersons}, 
+    17:                                 with #{pluralize(p.bedrooms, 'bedroom')}, 
+  
+app/views/rental_properties/index.html.haml:14:in `block in _app_views_rental_properties_index_html_haml__4611225803453822950_70299857358120'
+app/views/rental_properties/index.html.haml:12:in `_app_views_rental_properties_index_html_haml__4611225803453822950_70299857358120'
+Started GET "/" for 127.0.0.1 at 2018-02-26 21:05:14 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (8.4ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"rental_properties"}, missing required keys: [:id]):
+    11:                 %th Price per night
+    12:         - @properties. each do |p|
+    13:             %tr
+    14:                 %th.title= link_to p.title rental_property_path
+    15:                 %th= truncate(p.description, :delimiter => ' ')
+    16:                 - details = %Q{Sleeps #{p.maxpersons}, 
+    17:                                 with #{pluralize(p.bedrooms, 'bedroom')}, 
+  
+app/views/rental_properties/index.html.haml:14:in `block in _app_views_rental_properties_index_html_haml__4611225803453822950_36151240'
+app/views/rental_properties/index.html.haml:12:in `_app_views_rental_properties_index_html_haml__4611225803453822950_36151240'
+Started GET "/" for 127.0.0.1 at 2018-02-26 21:58:06 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (49.5ms)
+Completed 500 Internal Server Error in 73ms (ActiveRecord: 1.2ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"rental_properties"}, missing required keys: [:id]):
+    11:                 %th Price per night
+    12:         - @properties. each do |p|
+    13:             %tr
+    14:                 %th.title= link_to p.title, rental_property_path
+    15:                 %th= truncate(p.description, :delimiter => ' ')
+    16:                 - details = %Q{Sleeps #{p.maxpersons}, 
+    17:                                 with #{pluralize(p.bedrooms, 'bedroom')}, 
+  
+app/views/rental_properties/index.html.haml:14:in `block in _app_views_rental_properties_index_html_haml__901969619218729021_69990656768960'
+app/views/rental_properties/index.html.haml:12:in `_app_views_rental_properties_index_html_haml__901969619218729021_69990656768960'
+Started GET "/" for 127.0.0.1 at 2018-02-26 23:20:09 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (13.9ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"rental_properties"}, missing required keys: [:id]):
+    11:                 %th Price per night
+    12:         - @properties. each do |p|
+    13:             %tr
+    14:                 %th.title= link_to p.title, rental_property_path
+    15:                 %th= truncate(p.description, :delimiter => ' ')
+    16:                 - details = %Q{Sleeps #{p.maxpersons}, 
+    17:                                 with #{pluralize(p.bedrooms, 'bedroom')}, 
+  
+app/views/rental_properties/index.html.haml:14:in `block in _app_views_rental_properties_index_html_haml__901969619218729021_69990654504680'
+app/views/rental_properties/index.html.haml:12:in `_app_views_rental_properties_index_html_haml__901969619218729021_69990654504680'
+Started GET "/" for 127.0.0.1 at 2018-02-27 09:07:29 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  Rendered rental_properties/index.html.haml within layouts/application (71.1ms)
+Completed 500 Internal Server Error in 168ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:14: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+'TEST', rental_property_path p
+                              ^):
+  
+app/views/rental_properties/index.html.haml:14: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+Started GET "/" for 127.0.0.1 at 2018-02-27 09:08:18 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (55.9ms)
+Completed 500 Internal Server Error in 63ms (ActiveRecord: 1.8ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"rental_properties"}, missing required keys: [:id]):
+    11:                 %th Price per night
+    12:         - @properties. each do |p|
+    13:             %tr
+    14:                 %th.title= link_to 'TEST', rental_property_path
+    15:                 %th= truncate(p.description, :delimiter => ' ')
+    16:                 - details = %Q{Sleeps #{p.maxpersons}, 
+    17:                                 with #{pluralize(p.bedrooms, 'bedroom')}, 
+  
+app/views/rental_properties/index.html.haml:14:in `block in _app_views_rental_properties_index_html_haml___1352356177514072702_69826339068960'
+app/views/rental_properties/index.html.haml:12:in `_app_views_rental_properties_index_html_haml___1352356177514072702_69826339068960'
+  [1m[36mRentalProperty Load (9.4ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+Started GET "/" for 127.0.0.1 at 2018-02-27 09:20:44 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (259.1ms)
+Completed 200 OK in 971ms (Views: 958.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 09:20:51 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (10.8ms)
+Completed 200 OK in 54ms (Views: 48.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 09:20:53 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (6.7ms)
+Completed 200 OK in 45ms (Views: 41.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 09:20:56 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (6.3ms)
+Completed 200 OK in 46ms (Views: 40.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 09:21:13 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (8.5ms)
+Completed 200 OK in 64ms (Views: 60.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 09:21:16 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (6.6ms)
+Completed 200 OK in 47ms (Views: 43.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 09:21:47 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (11.8ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `stringify_keys' for 1:Integer):
+    11:                 %th Price per night
+    12:         - @properties. each do |p|
+    13:             %tr
+    14:                 %th.title= link_to(p.title, rental_properties_path, p.id)
+    15:                 %th= truncate(p.description, :delimiter => ' ')
+    16:                 - details = %Q{Sleeps #{p.maxpersons}, 
+    17:                                 with #{pluralize(p.bedrooms, 'bedroom')}, 
+  
+app/views/rental_properties/index.html.haml:14:in `block in _app_views_rental_properties_index_html_haml__3900424411625916527_70097401800680'
+app/views/rental_properties/index.html.haml:12:in `_app_views_rental_properties_index_html_haml__3900424411625916527_70097401800680'
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 09:22:07 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  Rendered rental_properties/index.html.haml within layouts/application (2.5ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:14: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+itle, rental_properties_path p.id)
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:15: syntax error, unexpected ')', expecting keyword_end
+)).to_s);).to_s);; _hamlout.buffer << ("</th>\
+                ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:29: syntax error, unexpected keyword_ensure, expecting end-of-input
+          ensure
+                ^):
+  
+app/views/rental_properties/index.html.haml:14: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+app/views/rental_properties/index.html.haml:15: syntax error, unexpected ')', expecting keyword_end
+app/views/rental_properties/index.html.haml:29: syntax error, unexpected keyword_ensure, expecting end-of-input
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 09:22:20 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  Rendered rental_properties/index.html.haml within layouts/application (6.5ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:14: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+.title, rental_property_path p.id)
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:15: syntax error, unexpected ')', expecting keyword_end
+)).to_s);).to_s);; _hamlout.buffer << ("</th>\
+                ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:29: syntax error, unexpected keyword_ensure, expecting end-of-input
+          ensure
+                ^):
+  
+app/views/rental_properties/index.html.haml:14: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+app/views/rental_properties/index.html.haml:15: syntax error, unexpected ')', expecting keyword_end
+app/views/rental_properties/index.html.haml:29: syntax error, unexpected keyword_ensure, expecting end-of-input
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 09:22:48 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (6.4ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"rental_properties"}, missing required keys: [:id]):
+    11:                 %th Price per night
+    12:         - @properties. each do |p|
+    13:             %tr
+    14:                 %th.title= link_to(p.title, rental_property_path)
+    15:                 %th= truncate(p.description, :delimiter => ' ')
+    16:                 - details = %Q{Sleeps #{p.maxpersons}, 
+    17:                                 with #{pluralize(p.bedrooms, 'bedroom')}, 
+  
+app/views/rental_properties/index.html.haml:14:in `block in _app_views_rental_properties_index_html_haml__3900424411625916527_70097400829520'
+app/views/rental_properties/index.html.haml:12:in `_app_views_rental_properties_index_html_haml__3900424411625916527_70097400829520'
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 09:31:20 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (20.7ms)
+Completed 200 OK in 66ms (Views: 56.5ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/rental_properties/1" for 127.0.0.1 at 2018-02-27 09:31:24 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"1"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (1.9ms)
+Completed 200 OK in 32584ms (Views: 33.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rental_properties/1" for 127.0.0.1 at 2018-02-27 09:32:48 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"1"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (1.4ms)
+Completed 200 OK in 59ms (Views: 30.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 09:32:51 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (6.1ms)
+Completed 200 OK in 42ms (Views: 36.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties/2" for 127.0.0.1 at 2018-02-27 09:32:53 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"2"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (2.9ms)
+Completed 200 OK in 34ms (Views: 30.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rental_properties/2" for 127.0.0.1 at 2018-02-27 09:44:41 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"2"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (1.5ms)
+Completed 200 OK in 211ms (Views: 205.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 11:33:17 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (6.5ms)
+Completed 200 OK in 372ms (Views: 301.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 11:35:12 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (5.7ms)
+Completed 200 OK in 40ms (Views: 36.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 11:35:42 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (5.9ms)
+Completed 200 OK in 48ms (Views: 43.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 11:36:10 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (7.1ms)
+Completed 200 OK in 39ms (Views: 35.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 11:36:42 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (5.7ms)
+Completed 200 OK in 40ms (Views: 36.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 11:36:54 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (7.3ms)
+Completed 200 OK in 44ms (Views: 40.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 11:37:30 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (7.1ms)
+Completed 200 OK in 38ms (Views: 34.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 11:41:04 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (19.7ms)
+Completed 200 OK in 247ms (Views: 49.8ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 11:41:11 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (10.5ms)
+Completed 200 OK in 50ms (Views: 45.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties/1" for 127.0.0.1 at 2018-02-27 11:41:17 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"1"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (2.4ms)
+Completed 200 OK in 36ms (Views: 29.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 11:41:19 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (7.7ms)
+Completed 200 OK in 39ms (Views: 35.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 11:43:20 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (19.8ms)
+Completed 200 OK in 63ms (Views: 56.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 11:44:13 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (278.9ms)
+Completed 200 OK in 911ms (Views: 894.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/rental_properties/1" for 127.0.0.1 at 2018-02-27 11:44:25 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"1"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (1.9ms)
+Completed 200 OK in 49508ms (Views: 31.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 11:45:17 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (10.2ms)
+Completed 200 OK in 50ms (Views: 46.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties/1" for 127.0.0.1 at 2018-02-27 11:46:48 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"1"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.7ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (1.7ms)
+Completed 200 OK in 74ms (Views: 43.3ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 11:46:51 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (8.2ms)
+Completed 200 OK in 46ms (Views: 42.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 11:46:56 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (6.0ms)
+Completed 200 OK in 41ms (Views: 36.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 11:47:55 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (52.1ms)
+Completed 500 Internal Server Error in 63ms (ActiveRecord: 2.5ms)
+
+
+  
+ActionView::Template::Error ( (NilClass) cannot be normalized to a LatLng. We tried interpreting it as an array, string, etc., but no dice.):
+    19:                                 and #{pluralize(p.bathrooms, 'bathroom')}. }
+    20:                 - details += "Pets are #{if p.pets_allowed then '' else 'not' end} allowed."
+    21:                 %th= details
+    22:                 - dist = p.distance_from @location
+    23:                 - if dist.nil?
+    24:                     %th.right_align= 'Unknown'
+    25:                 - else
+  
+app/views/rental_properties/index.html.haml:22:in `block in _app_views_rental_properties_index_html_haml___3191043786689409643_69871045097440'
+app/views/rental_properties/index.html.haml:12:in `_app_views_rental_properties_index_html_haml___3191043786689409643_69871045097440'
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 11:54:23 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (6.0ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error ( (NilClass) cannot be normalized to a LatLng. We tried interpreting it as an array, string, etc., but no dice.):
+    19:                                 and #{pluralize(p.bathrooms, 'bathroom')}. }
+    20:                 - details += "Pets are #{if p.pets_allowed then '' else 'not' end} allowed."
+    21:                 %th= details
+    22:                 - dist = p.distance_from @location
+    23:                 - byebug
+    24:                 - if dist.nil?
+    25:                     %th.right_align= 'Unknown'
+  
+app/views/rental_properties/index.html.haml:22:in `block in _app_views_rental_properties_index_html_haml___3191043786689409643_69871043710040'
+app/views/rental_properties/index.html.haml:12:in `_app_views_rental_properties_index_html_haml___3191043786689409643_69871043710040'
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 11:54:43 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (261159.1ms)
+Completed 500 Internal Server Error in 261168ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error ( (NilClass) cannot be normalized to a LatLng. We tried interpreting it as an array, string, etc., but no dice.):
+    20:                 - details += "Pets are #{if p.pets_allowed then '' else 'not' end} allowed."
+    21:                 %th= details
+    22:                 - byebug
+    23:                 - dist = p.distance_from @location
+    24:                 - if dist.nil?
+    25:                     %th.right_align= 'Unknown'
+    26:                 - else
+  
+app/views/rental_properties/index.html.haml:23:in `block in _app_views_rental_properties_index_html_haml___3191043786689409643_69871044735620'
+app/views/rental_properties/index.html.haml:12:in `_app_views_rental_properties_index_html_haml___3191043786689409643_69871044735620'
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 11:59:12 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (14086.1ms)
+Completed 500 Internal Server Error in 14099ms (ActiveRecord: 2.8ms)
+
+
+  
+ActionView::Template::Error ( (NilClass) cannot be normalized to a LatLng. We tried interpreting it as an array, string, etc., but no dice.):
+    20:                 - details += "Pets are #{if p.pets_allowed then '' else 'not' end} allowed."
+    21:                 %th= details
+    22:                 - byebug
+    23:                 - dist = p.distance_from @location
+    24:                 - if dist.nil?
+    25:                     %th.right_align= 'Unknown'
+    26:                 - else
+  
+app/views/rental_properties/index.html.haml:23:in `block in _app_views_rental_properties_index_html_haml___3191043786689409643_69871045224540'
+app/views/rental_properties/index.html.haml:12:in `_app_views_rental_properties_index_html_haml___3191043786689409643_69871045224540'
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 12:00:57 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (17104.4ms)
+Completed 200 OK in 17156ms (Views: 17144.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 12:02:15 -0500
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (32389.0ms)
+Completed 200 OK in 32658ms (Views: 32641.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 12:02:55 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (9.2ms)
+Completed 200 OK in 48ms (Views: 44.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 12:03:53 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (136.1ms)
+Completed 200 OK in 393ms (Views: 378.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 12:05:40 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" LIMIT ?[0m  [["LIMIT", 11]]
+Completed 500 Internal Server Error in 98ms
+
+
+  
+  [1m[36mCACHE RentalProperty Load (0.0ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" LIMIT ?[0m  [["LIMIT", 11]]
+NoMethodError (private method `location' called for #<RentalPropertiesController:0x00007f0c5c0a83d0>
+Did you mean?  location=):
+  
+app/controllers/rental_properties_controller.rb:6:in `index'
+Started GET "/" for 127.0.0.1 at 2018-02-27 12:08:42 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (28.2ms)
+Completed 200 OK in 75ms (Views: 64.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 14:19:30 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (11.8ms)
+Completed 200 OK in 224ms (Views: 207.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 14:20:19 -0500
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (308.6ms)
+Completed 200 OK in 936ms (Views: 899.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 14:24:57 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (25.8ms)
+Completed 200 OK in 83ms (Views: 73.6ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 14:27:03 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (38.3ms)
+Completed 200 OK in 92ms (Views: 81.3ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 14:27:12 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (13.9ms)
+Completed 200 OK in 68ms (Views: 64.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 14:27:53 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" LIMIT ?[0m  [["LIMIT", 11]]
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties"[0m
+  Rendered rental_properties/index.html.haml within layouts/application (7.6ms)
+Completed 200 OK in 195130ms (Views: 42.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 14:31:15 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+Completed 500 Internal Server Error in 8ms
+
+
+  
+NoMethodError (undefined method `lat' for nil:NilClass):
+  
+app/controllers/rental_properties_controller.rb:5:in `index'
+Started GET "/" for 127.0.0.1 at 2018-02-27 14:31:43 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (107.3ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC LIMIT ?[0m  [["LIMIT", 11]]
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (11.8ms)
+Completed 200 OK in 24206ms (Views: 42.4ms | ActiveRecord: 109.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 14:33:03 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (32.8ms)
+Completed 200 OK in 70ms (Views: 59.3ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 14:40:38 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.7ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (29.2ms)
+Completed 200 OK in 72ms (Views: 60.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 14:41:50 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.8ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (11.3ms)
+Completed 200 OK in 43ms (Views: 38.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 14:42:11 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (14.0ms)
+Completed 200 OK in 52ms (Views: 48.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-27 18:14:13 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.6ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (15.1ms)
+Completed 200 OK in 351ms (Views: 150.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/rental_properties/5" for 127.0.0.1 at 2018-02-27 18:14:23 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"5"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (2.7ms)
+Completed 200 OK in 97ms (Views: 35.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 18:15:09 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (14.8ms)
+Completed 200 OK in 55ms (Views: 50.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rental_properties/4" for 127.0.0.1 at 2018-02-27 18:15:15 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (2.0ms)
+Completed 200 OK in 37ms (Views: 32.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rental_properties/4" for 127.0.0.1 at 2018-02-27 18:47:32 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (15.2ms)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.3ms)
+
+
+  
+SyntaxError (/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/show.html.haml:3: syntax error, unexpected '<'
+:Haml::Helpers.html_escape(((<u>p.title</u>
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/show.html.haml:4: unknown regexp option - h
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/show.html.haml:4: unmatched close parenthesis: /u>
+)).to_s);).to_s);; _hamlout.buffer << ("</
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/show.html.haml:4: syntax error, unexpected tINTEGER, expecting ')'
+s);; _hamlout.buffer << ("</h2>\n<h3>".freeze);; _hamlout.bu
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/show.html.haml:13: unknown regexp options - dv
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/show.html.haml:13: syntax error, unexpected $undefined
+; _hamlout.buffer << ("</div>\n".freeze);::Haml::Util.html_s
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/show.html.haml:13: unterminated string meets end of file
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/show.html.haml:13: syntax error, unexpected end-of-input, expecting ')'):
+  
+app/views/rental_properties/show.html.haml:3: syntax error, unexpected '<'
+app/views/rental_properties/show.html.haml:4: unknown regexp option - h
+app/views/rental_properties/show.html.haml:4: unmatched close parenthesis: /u>
+app/views/rental_properties/show.html.haml:4: syntax error, unexpected tINTEGER, expecting ')'
+app/views/rental_properties/show.html.haml:13: unknown regexp options - dv
+app/views/rental_properties/show.html.haml:13: syntax error, unexpected $undefined
+app/views/rental_properties/show.html.haml:13: unterminated string meets end of file
+app/views/rental_properties/show.html.haml:13: syntax error, unexpected end-of-input, expecting ')'
+Started GET "/rental_properties/4" for 127.0.0.1 at 2018-02-27 18:47:49 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (1.9ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.5ms)
+
+
+  
+SyntaxError (/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/show.html.haml:3: syntax error, unexpected '<'
+:Haml::Helpers.html_escape(((<u>p.title<\u>
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/show.html.haml:3: syntax error, unexpected $undefined
+ers.html_escape(((<u>p.title<\u>
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/show.html.haml:13: syntax error, unexpected keyword_ensure, expecting ')'
+Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer.u
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/show.html.haml:13: syntax error, unexpected keyword_end, expecting ')'
+ffer.upper if @haml_buffer;end;
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/show.html.haml:16: syntax error, unexpected keyword_end, expecting ')'
+          end
+             ^):
+  
+app/views/rental_properties/show.html.haml:3: syntax error, unexpected '<'
+app/views/rental_properties/show.html.haml:3: syntax error, unexpected $undefined
+app/views/rental_properties/show.html.haml:13: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/rental_properties/show.html.haml:13: syntax error, unexpected keyword_end, expecting ')'
+app/views/rental_properties/show.html.haml:16: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/rental_properties/4" for 127.0.0.1 at 2018-02-27 18:48:22 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (2.1ms)
+Completed 200 OK in 38ms (Views: 32.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rental_properties/4" for 127.0.0.1 at 2018-02-27 19:01:02 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (4.0ms)
+Completed 500 Internal Server Error in 296ms (ActiveRecord: 1.5ms)
+
+
+  
+ActionView::Template::Error (Invalid CSS after "...ion: underline;": expected "}", was ""):
+    4:     %meta{ charset: 'utf-8' }
+    5:     %title bedbug bnb
+    6:     = csrf_meta_tags
+    7:     = stylesheet_link_tag 'application', media: 'all'
+    8:     = javascript_include_tag 'application'
+    9: 
+   10:   %body
+  
+app/assets/stylesheets/rental_properties.scss:15
+app/views/layouts/application.html.haml:7:in `_app_views_layouts_application_html_haml___2467603710458607532_70047193858300'
+Started GET "/rental_properties/4" for 127.0.0.1 at 2018-02-27 19:01:30 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (2.6ms)
+Completed 200 OK in 466ms (Views: 461.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties/4" for 127.0.0.1 at 2018-02-27 19:02:16 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (2.3ms)
+Completed 200 OK in 38ms (Views: 32.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 19:02:24 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (15.2ms)
+Completed 200 OK in 51ms (Views: 45.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rental_properties/3" for 127.0.0.1 at 2018-02-27 19:02:27 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"3"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (7.7ms)
+Completed 200 OK in 42ms (Views: 39.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/rental_properties/3" for 127.0.0.1 at 2018-02-27 19:03:28 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"3"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (2.4ms)
+Completed 200 OK in 36ms (Views: 31.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties/3" for 127.0.0.1 at 2018-02-27 19:03:46 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"3"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (2.2ms)
+Completed 200 OK in 42ms (Views: 35.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties/3" for 127.0.0.1 at 2018-02-27 19:04:09 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"3"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (2.4ms)
+Completed 200 OK in 43ms (Views: 38.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rental_properties/3" for 127.0.0.1 at 2018-02-27 19:04:39 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"3"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (2.2ms)
+Completed 200 OK in 38ms (Views: 33.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties/3" for 127.0.0.1 at 2018-02-27 19:05:03 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"3"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (2.3ms)
+Completed 200 OK in 39ms (Views: 34.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 19:05:08 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (17.0ms)
+Completed 200 OK in 50ms (Views: 46.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rental_properties/5" for 127.0.0.1 at 2018-02-27 19:20:30 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"5"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (4.8ms)
+Completed 200 OK in 34ms (Views: 30.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties/1" for 127.0.0.1 at 2018-02-27 19:23:03 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"1"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (2.4ms)
+Completed 200 OK in 37ms (Views: 31.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 19:23:23 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (12.8ms)
+Completed 200 OK in 46ms (Views: 43.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-27 20:55:58 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (1.1ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (15.7ms)
+Completed 200 OK in 53ms (Views: 47.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-28 07:23:05 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (14.9ms)
+Completed 200 OK in 50ms (Views: 45.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rental_properties/4" for 127.0.0.1 at 2018-02-28 07:23:12 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (3.4ms)
+Completed 200 OK in 44ms (Views: 38.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties/4" for 127.0.0.1 at 2018-02-28 07:24:17 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (3.7ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (3.2ms)
+Completed 200 OK in 44ms (Views: 36.3ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-28 07:25:17 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (1.2ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (15.0ms)
+Completed 200 OK in 50ms (Views: 45.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/rental_properties/3" for 127.0.0.1 at 2018-02-28 07:25:36 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"3"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (3.3ms)
+Completed 200 OK in 36ms (Views: 32.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties/3" for 127.0.0.1 at 2018-02-28 07:25:43 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"3"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (4.7ms)
+Completed 200 OK in 41ms (Views: 37.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties/3" for 127.0.0.1 at 2018-02-28 07:27:01 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"3"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (3.1ms)
+Completed 200 OK in 38ms (Views: 33.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-28 07:27:04 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.6ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (16.4ms)
+Completed 200 OK in 54ms (Views: 50.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-28 07:38:23 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.9ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (21.7ms)
+Completed 200 OK in 87ms (Views: 80.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-28 07:38:27 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.6ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (16.6ms)
+Completed 200 OK in 77ms (Views: 71.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-28 07:42:31 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (25.6ms)
+Completed 200 OK in 130ms (Views: 104.1ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-28 07:42:38 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (11.6ms)
+Completed 200 OK in 954ms (Views: 950.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-28 07:45:34 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (19.1ms)
+Completed 200 OK in 51ms (Views: 47.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rental_properties?sort=title" for 127.0.0.1 at 2018-02-28 07:45:37 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `as_sym' for "title":String):
+  
+app/controllers/rental_properties_controller.rb:8:in `index'
+Started GET "/rental_properties?sort=title" for 127.0.0.1 at 2018-02-28 07:46:00 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" ORDER BY "rental_properties"."title" ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (26.6ms)
+Completed 200 OK in 78ms (Views: 70.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/rental_properties?sort=maxpersons" for 127.0.0.1 at 2018-02-28 07:46:06 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"sort"=>"maxpersons"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" ORDER BY "rental_properties"."maxpersons" ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (16.9ms)
+Completed 200 OK in 76ms (Views: 69.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties?sort=maxpersons" for 127.0.0.1 at 2018-02-28 07:48:45 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"sort"=>"maxpersons"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  Rendered rental_properties/index.html.haml within layouts/application (2.9ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:13: syntax error, unexpected tIDENTIFIER, expecting ')'
+er << ("<tr>\n<th class='title'>".freeze);; 
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:16: syntax error, unexpected tIDENTIFIER, expecting ')'
+pluralize(p.bedrooms, 'bedroom')}, #{pluralize(p.beds, 'bed'
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:16: syntax error, unexpected tIDENTIFIER, expecting ')'
+m')}, #{pluralize(p.beds, 'bed')}, and #{pluralize(p.bathroo
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:16: syntax error, unexpected tIDENTIFIER, expecting ')'
+uralize(p.bathrooms, 'bathroom')}. }
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:20: syntax error, unexpected keyword_not, expecting ')'
+pets_allowed then '' else 'not' end} allowed."
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:24: syntax error, unexpected tIDENTIFIER, expecting ')'
+er << ("<th class='right_align'>".freeze);; _hamlout.buffer 
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:24: syntax error, unexpected tCONSTANT, expecting ')'
+Helpers.html_escape((('Unknown'
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:26: syntax error, unexpected tIDENTIFIER, expecting ')'
+er << ("<th class='right_align'>".freeze);; _hamlout.buffer 
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:27: syntax error, unexpected tIDENTIFIER, expecting ')'
+er << ("<th class='right_align'>".freeze);; _hamlout.buffer 
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:27: unterminated string meets end of file
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/3/cosc480-hw3-cmking54/app/views/rental_properties/index.html.haml:27: syntax error, unexpected end-of-input, expecting ')'):
+  
+app/views/rental_properties/index.html.haml:13: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/rental_properties/index.html.haml:16: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/rental_properties/index.html.haml:16: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/rental_properties/index.html.haml:16: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/rental_properties/index.html.haml:20: syntax error, unexpected keyword_not, expecting ')'
+app/views/rental_properties/index.html.haml:24: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/rental_properties/index.html.haml:24: syntax error, unexpected tCONSTANT, expecting ')'
+app/views/rental_properties/index.html.haml:26: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/rental_properties/index.html.haml:27: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/rental_properties/index.html.haml:27: unterminated string meets end of file
+app/views/rental_properties/index.html.haml:27: syntax error, unexpected end-of-input, expecting ')'
+Started GET "/rental_properties?sort=maxpersons" for 127.0.0.1 at 2018-02-28 07:49:41 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"sort"=>"maxpersons"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" ORDER BY "rental_properties"."maxpersons" ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (9.2ms)
+Completed 200 OK in 42ms (Views: 38.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties?sort=price" for 127.0.0.1 at 2018-02-28 07:49:46 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"sort"=>"price"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" ORDER BY "rental_properties"."price" ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (15.0ms)
+Completed 200 OK in 51ms (Views: 46.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-28 07:49:50 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (1.2ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (13.2ms)
+Completed 200 OK in 50ms (Views: 45.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/rental_properties?sort=price" for 127.0.0.1 at 2018-02-28 07:49:55 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"sort"=>"price"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" ORDER BY "rental_properties"."price" ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (9.7ms)
+Completed 200 OK in 48ms (Views: 44.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rental_properties?sort=maxpersons" for 127.0.0.1 at 2018-02-28 07:50:08 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"sort"=>"maxpersons"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" ORDER BY "rental_properties"."maxpersons" ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (10.8ms)
+Completed 200 OK in 52ms (Views: 48.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rental_properties?sort=title" for 127.0.0.1 at 2018-02-28 07:50:11 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" ORDER BY "rental_properties"."title" ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (8.5ms)
+Completed 200 OK in 45ms (Views: 39.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties?sort=title" for 127.0.0.1 at 2018-02-28 07:57:14 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" ORDER BY "rental_properties"."title" ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (28.5ms)
+Completed 200 OK in 78ms (Views: 69.4ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/rental_properties?sort=title" for 127.0.0.1 at 2018-02-28 07:58:06 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" ORDER BY "rental_properties"."title" ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (140.9ms)
+Completed 200 OK in 713ms (Views: 696.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/rental_properties?sort=title" for 127.0.0.1 at 2018-02-28 07:58:13 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" ORDER BY "rental_properties"."title" ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (27.8ms)
+Completed 200 OK in 72ms (Views: 68.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties" for 127.0.0.1 at 2018-02-28 07:58:23 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.8ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (18.3ms)
+Completed 200 OK in 63ms (Views: 52.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/rental_properties?sort=price" for 127.0.0.1 at 2018-02-28 07:58:43 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"sort"=>"price"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" ORDER BY "rental_properties"."price" ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (22.5ms)
+Completed 200 OK in 69ms (Views: 66.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties?sort=maxpersons" for 127.0.0.1 at 2018-02-28 07:58:45 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"sort"=>"maxpersons"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" ORDER BY "rental_properties"."maxpersons" ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (18.4ms)
+Completed 200 OK in 67ms (Views: 64.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rental_properties?sort=title" for 127.0.0.1 at 2018-02-28 07:58:47 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" ORDER BY "rental_properties"."title" ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (9.7ms)
+Completed 200 OK in 41ms (Views: 37.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/rental_properties?sort=title" for 127.0.0.1 at 2018-02-28 07:58:50 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" ORDER BY "rental_properties"."title" ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (10.5ms)
+Completed 200 OK in 47ms (Views: 42.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties?sort=title" for 127.0.0.1 at 2018-02-28 07:58:51 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" ORDER BY "rental_properties"."title" ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (8.3ms)
+Completed 200 OK in 48ms (Views: 43.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties?sort=title" for 127.0.0.1 at 2018-02-28 07:58:51 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" ORDER BY "rental_properties"."title" ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (10.3ms)
+Completed 200 OK in 49ms (Views: 46.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rental_properties?sort=title" for 127.0.0.1 at 2018-02-28 08:09:27 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.7ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" ORDER BY "rental_properties"."title" ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (26.2ms)
+Completed 200 OK in 73ms (Views: 62.4ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/rental_properties?sort=title" for 127.0.0.1 at 2018-02-28 08:13:21 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"sort"=>"title"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" ORDER BY "rental_properties"."title" ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (146.8ms)
+Completed 200 OK in 468ms (Views: 453.0ms | ActiveRecord: 1.5ms)
+
+

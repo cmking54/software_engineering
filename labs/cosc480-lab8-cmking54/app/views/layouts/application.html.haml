@@ -1,0 +1,34 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Lab8
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+  %body
+    .container-fluid
+      .row
+        .col-md-4
+          %h1= t "sitename"
+        .offset-md-6
+        .col-md-2
+          -if user_signed_in?
+            %p
+              %span= "#{t('hello')}, #{current_user.username}"
+              =link_to t("logout"), destroy_user_session_path, method: :delete, :class => "btn btn-primary btn-sm"
+          -else
+            =link_to t('signin'), new_user_session_path, :class => "btn btn-success btn-sm"
+            =link_to t('signup'), new_user_registration_path, :class => "btn btn-warning btn-sm"
+      .row
+        .offset-md-1.col-md-8
+          %p.lead= t "abouttext"
+
+      .row
+        .col-md-12
+          -{:notice => "alert-primary", :alert => "alert-warning"}.each do |fkey, xclass|
+            -if flash[fkey]
+              %div.col-md.flash.alert{:role => 'alert', :class => xclass}
+                %p= "#{flash[fkey]}"
+
+      = yield

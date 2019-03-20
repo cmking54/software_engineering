@@ -1,0 +1,22 @@
+!!! 5
+%html{ lang: 'en' }
+  %head
+    %meta{ charset: 'utf-8' }
+    %title bedbug bnb
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+
+  %body
+    #header
+      %h1 bedbug bnb
+      %a.logo{ :href => rental_properties_path }= image_tag("bedbug.png", :width => 100)
+
+      -if flash[:notice] || flash[:error]
+        .flash
+          -if flash[:notice]
+            .alert.alert-info= flash[:notice]
+          -if flash[:error]
+            .alert.alert-danger= flash[:error]
+
+    = yield

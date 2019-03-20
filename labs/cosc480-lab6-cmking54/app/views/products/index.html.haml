@@ -1,0 +1,18 @@
+#main
+  %h3 All products
+
+  %table.products_table
+    %tr.products_header
+      %th= link_to('Name', products_path(:order => 'name'))
+      %th Description
+      %th= link_to('Appropriate ages', products_path(:order => 'age'))
+      %th= link_to('Price', products_path(:order => 'price'))
+      %th= link_to('Rating', products_path(:order => 'stars'))
+
+    - @products.each do |p|
+      %tr.product
+        %td.productname= link_to "#{p.name}", product_path(p)
+        %td.productdesc= p.description
+        %td.productages= p.age_range
+        %td.productprice= number_to_currency(p.price)
+        %td.productrating= p.average_rating.nil? ? "Not Reviewed" : p.average_rating.round(1) 

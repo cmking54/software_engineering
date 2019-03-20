@@ -1,0 +1,604 @@
+Started GET "/" for 127.0.0.1 at 2018-01-28 20:11:46 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/cking5496/.rvm/gems/ruby-2.4.2/gems/railties-5.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/cking5496/.rvm/gems/ruby-2.4.2/gems/railties-5.1.3/lib/rails/templates/rails/welcome/index.html.erb (8.2ms)
+Completed 200 OK in 2410ms (Views: 56.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-28 20:12:09 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/cking5496/.rvm/gems/ruby-2.4.2/gems/railties-5.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/cking5496/.rvm/gems/ruby-2.4.2/gems/railties-5.1.3/lib/rails/templates/rails/welcome/index.html.erb (2.3ms)
+Completed 200 OK in 7ms (Views: 5.4ms)
+
+
+Started GET "/ghost" for 127.0.0.1 at 2018-01-28 20:12:18 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/ghost"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/ghost/play" for 127.0.0.1 at 2018-01-28 20:12:29 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (21.6ms)
+Completed 200 OK in 2735ms (Views: 2726.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-28 20:14:24 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/cking5496/.rvm/gems/ruby-2.4.2/gems/railties-5.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/cking5496/.rvm/gems/ruby-2.4.2/gems/railties-5.1.3/lib/rails/templates/rails/welcome/index.html.erb (2.4ms)
+Completed 200 OK in 6ms (Views: 4.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-28 20:37:44 -0500
+  
+ArgumentError (Missing :controller key on routes definition, please check your routes.):
+  
+config/routes.rb:3:in `block in <top (required)>'
+config/routes.rb:1:in `<top (required)>'
+Started GET "/" for 127.0.0.1 at 2018-01-28 20:38:57 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (2.3ms)
+Completed 200 OK in 53ms (Views: 50.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-28 22:18:48 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (9.3ms)
+Completed 500 Internal Server Error in 19ms
+
+
+  
+ActionView::Template::Error (undefined method `upcase' for nil:NilClass):
+    1: #main
+    2:   %h3 COSC480 Homework 0
+    3:   %p What a lousy way to play Ghost!
+    4:   %p= "Here is the current word: #{@word.upcase}"
+    5:  
+    6:   = form_tag ghost_play_url, method: :get do
+    7:     =label_tag :letter, "Next letter? "
+  
+app/views/ghost/play.html.haml:4:in `_app_views_ghost_play_html_haml___10315298800086807_69935696571500'
+Started GET "/" for 127.0.0.1 at 2018-01-28 22:22:07 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (5.3ms)
+Completed 500 Internal Server Error in 14ms
+
+
+  
+ActionView::Template::Error (undefined method `upcase' for nil:NilClass):
+    1: #main
+    2:   %h3 COSC480 Homework 0
+    3:   %p What a lousy way to play Ghost!
+    4:   %p= "Here is the current word: #{@word.upcase}"
+    5:  
+    6:   = form_tag ghost_play_url, method: :get do
+    7:     =label_tag :letter, "Next letter? "
+  
+app/views/ghost/play.html.haml:4:in `_app_views_ghost_play_html_haml___10315298800086807_69935527025020'
+Started GET "/" for 127.0.0.1 at 2018-01-28 22:24:15 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.9ms)
+Completed 200 OK in 44ms (Views: 41.2ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=a&current_word=&commit=Go" for 127.0.0.1 at 2018-01-28 22:24:50 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"a", "current_word"=>"", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.5ms)
+Completed 200 OK in 52ms (Views: 49.0ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=t&current_word=a&commit=Go" for 127.0.0.1 at 2018-01-28 22:25:02 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"t", "current_word"=>"a", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.6ms)
+Completed 200 OK in 34ms (Views: 31.8ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=t&current_word=at&commit=Go" for 127.0.0.1 at 2018-01-28 22:25:12 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"t", "current_word"=>"at", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (2.4ms)
+Completed 200 OK in 33ms (Views: 31.2ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=1&current_word=att&commit=Go" for 127.0.0.1 at 2018-01-28 22:31:39 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"1", "current_word"=>"att", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (2.6ms)
+Completed 200 OK in 31ms (Views: 29.5ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=%21&current_word=att&commit=Go" for 127.0.0.1 at 2018-01-28 22:31:43 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"!", "current_word"=>"att", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (2.8ms)
+Completed 200 OK in 32ms (Views: 30.3ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=%21&current_word=att&commit=Go" for 127.0.0.1 at 2018-01-28 22:39:32 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"!", "current_word"=>"att", "commit"=>"Go"}
+Completed 500 Internal Server Error in 95ms
+
+
+  
+NoMethodError (undefined method `starts_word' for #<GhostController:0x00007f365a0d2540>
+Did you mean?  starts_word?):
+  
+app/controllers/ghost_controller.rb:12:in `play'
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=%21&current_word=att&commit=Go" for 127.0.0.1 at 2018-01-28 22:40:22 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"!", "current_word"=>"att", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.5ms)
+Completed 200 OK in 38ms (Views: 35.4ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=!&current_word=%22%22&commit=Go" for 127.0.0.1 at 2018-01-28 22:40:36 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"!", "current_word"=>"\"\"", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.3ms)
+Completed 200 OK in 34ms (Views: 32.6ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=j&current_word=%22%22&commit=Go" for 127.0.0.1 at 2018-01-28 22:40:40 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"j", "current_word"=>"\"\"", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.2ms)
+Completed 200 OK in 37ms (Views: 34.5ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=j&current_word=%22%22&commit=Go" for 127.0.0.1 at 2018-01-28 22:40:45 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"j", "current_word"=>"\"\"", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.4ms)
+Completed 200 OK in 35ms (Views: 33.0ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=j&current_word=%27%27&commit=Go" for 127.0.0.1 at 2018-01-28 22:41:00 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"j", "current_word"=>"''", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (2.4ms)
+Completed 200 OK in 40ms (Views: 38.5ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=j&current_word=a&commit=Go" for 127.0.0.1 at 2018-01-28 22:41:11 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"j", "current_word"=>"a", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (2.4ms)
+Completed 200 OK in 35ms (Views: 33.0ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=a&current_word=aj&commit=Go" for 127.0.0.1 at 2018-01-28 22:41:39 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"a", "current_word"=>"aj", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.2ms)
+Completed 200 OK in 36ms (Views: 35.0ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=x&current_word=aja&commit=Go" for 127.0.0.1 at 2018-01-28 22:41:43 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"x", "current_word"=>"aja", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.1ms)
+Completed 200 OK in 42ms (Views: 40.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-28 22:59:44 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (2.9ms)
+Completed 200 OK in 35ms (Views: 32.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-28 23:06:33 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.6ms)
+Completed 200 OK in 58ms (Views: 55.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-28 23:06:43 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (2.4ms)
+Completed 500 Internal Server Error in 9ms
+
+
+  
+ActionView::Template::Error (Inconsistent indentation: 1 space used for indentation, but the rest of the document was indented using 2 spaces.):
+    4:   %p= "Here is the current word: #{@word.upcase}"
+    5:  
+    6: - if @lost
+    7:  %p Test1
+    8: - else
+    9:  %p Test2
+   10: - end
+  
+app/views/ghost/play.html.haml:7
+Started GET "/" for 127.0.0.1 at 2018-01-28 23:07:56 -0500
+  
+SyntaxError (/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/HW0/cosc480-hw0-cmking54/app/controllers/ghost_controller.rb:12: syntax error, unexpected tIVAR, expecting keyword_do or '{' or '('
+.length >= 3 && is_word? @word
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/HW0/cosc480-hw0-cmking54/app/controllers/ghost_controller.rb:17: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/ghost_controller.rb:12: syntax error, unexpected tIVAR, expecting keyword_do or '{' or '('
+app/controllers/ghost_controller.rb:17: syntax error, unexpected keyword_end, expecting end-of-input
+Started GET "/" for 127.0.0.1 at 2018-01-28 23:08:02 -0500
+  
+SyntaxError (/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/HW0/cosc480-hw0-cmking54/app/controllers/ghost_controller.rb:12: syntax error, unexpected tIVAR, expecting keyword_do or '{' or '('
+.length >= 3 && is_word? @word
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/HW0/cosc480-hw0-cmking54/app/controllers/ghost_controller.rb:17: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/ghost_controller.rb:12: syntax error, unexpected tIVAR, expecting keyword_do or '{' or '('
+app/controllers/ghost_controller.rb:17: syntax error, unexpected keyword_end, expecting end-of-input
+Started GET "/" for 127.0.0.1 at 2018-01-28 23:08:15 -0500
+  
+SyntaxError (/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/HW0/cosc480-hw0-cmking54/app/controllers/ghost_controller.rb:12: syntax error, unexpected tIVAR, expecting keyword_do or '{' or '('
+.length >= 3 && is_word? @word
+                              ^
+/mnt/c/Users/Chris`/Desktop/Spring_2018_Colgate/Soft_Engi/HW0/cosc480-hw0-cmking54/app/controllers/ghost_controller.rb:17: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/ghost_controller.rb:12: syntax error, unexpected tIVAR, expecting keyword_do or '{' or '('
+app/controllers/ghost_controller.rb:17: syntax error, unexpected keyword_end, expecting end-of-input
+Started GET "/" for 127.0.0.1 at 2018-01-28 23:08:45 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (2.2ms)
+Completed 500 Internal Server Error in 12ms
+
+
+  
+ActionView::Template::Error (Inconsistent indentation: 1 space used for indentation, but the rest of the document was indented using 2 spaces.):
+    4:   %p= "Here is the current word: #{@word.upcase}"
+    5:  
+    6: - if @lost
+    7:  %p Test1
+    8: - else
+    9:  %p Test2
+   10: - end
+  
+app/views/ghost/play.html.haml:7
+Started GET "/" for 127.0.0.1 at 2018-01-28 23:09:21 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (1.6ms)
+Completed 500 Internal Server Error in 9ms
+
+
+  
+ActionView::Template::Error (Inconsistent indentation: 1 space used for indentation, but the rest of the document was indented using 2 spaces.):
+     6: - if @lost
+     7:   %p Test1
+     8: - else
+     9:  %p Test2
+    10: - end
+    11:    
+    12:   = form_tag ghost_play_url, method: :get do
+  
+app/views/ghost/play.html.haml:9
+Started GET "/" for 127.0.0.1 at 2018-01-28 23:09:34 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (1.5ms)
+Completed 500 Internal Server Error in 10ms
+
+
+  
+ActionView::Template::Error (You don't need to use "- end" in Haml. Un-indent to close a block:
+- if foo?
+  %strong Foo!
+- else
+  Not foo.
+%p This line is un-indented, so it isn't part of the "if" block):
+     7:   %p Test1
+     8: - else
+     9:   %p Test2
+    10: - end
+    11:    
+    12:   = form_tag ghost_play_url, method: :get do
+    13:     =label_tag :letter, "Next letter? "
+  
+app/views/ghost/play.html.haml:10
+Started GET "/" for 127.0.0.1 at 2018-01-28 23:10:01 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (2.4ms)
+Completed 200 OK in 36ms (Views: 34.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-28 23:11:14 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (2.2ms)
+Completed 200 OK in 34ms (Views: 32.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-28 23:14:26 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (2.6ms)
+Completed 200 OK in 37ms (Views: 34.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-28 23:14:58 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.0ms)
+Completed 200 OK in 46ms (Views: 43.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-28 23:15:59 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (2.4ms)
+Completed 200 OK in 32ms (Views: 29.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-28 23:17:16 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.2ms)
+Completed 200 OK in 64ms (Views: 61.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-28 23:18:24 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.4ms)
+Completed 200 OK in 40ms (Views: 37.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-28 23:24:25 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (4.2ms)
+Completed 200 OK in 41ms (Views: 38.5ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=a&current_word=&commit=Go" for 127.0.0.1 at 2018-01-28 23:24:30 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"a", "current_word"=>"", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.9ms)
+Completed 200 OK in 36ms (Views: 34.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-28 23:24:52 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (4.1ms)
+Completed 200 OK in 35ms (Views: 32.9ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=a&current_word=&commit=Go" for 127.0.0.1 at 2018-01-28 23:24:56 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"a", "current_word"=>"", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.8ms)
+Completed 200 OK in 37ms (Views: 35.4ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=b&current_word=a&commit=Go" for 127.0.0.1 at 2018-01-28 23:24:59 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"b", "current_word"=>"a", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (4.1ms)
+Completed 200 OK in 37ms (Views: 35.8ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=c&current_word=ab&commit=Go" for 127.0.0.1 at 2018-01-28 23:25:03 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"c", "current_word"=>"ab", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.5ms)
+Completed 200 OK in 36ms (Views: 34.1ms)
+
+
+Started GET "/ghost/play" for 127.0.0.1 at 2018-01-28 23:25:11 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.9ms)
+Completed 200 OK in 33ms (Views: 31.9ms)
+
+
+Started GET "/ghost/play" for 127.0.0.1 at 2018-01-28 23:25:34 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.5ms)
+Completed 200 OK in 35ms (Views: 33.3ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=a&current_word=&commit=Go" for 127.0.0.1 at 2018-01-28 23:25:37 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"a", "current_word"=>"", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (2.5ms)
+Completed 200 OK in 39ms (Views: 37.1ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=b&current_word=a&commit=Go" for 127.0.0.1 at 2018-01-28 23:25:39 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"b", "current_word"=>"a", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.4ms)
+Completed 200 OK in 33ms (Views: 31.1ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=c&current_word=ab&commit=Go" for 127.0.0.1 at 2018-01-28 23:25:42 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"c", "current_word"=>"ab", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (2.1ms)
+Completed 200 OK in 36ms (Views: 34.7ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=c&current_word=ab&commit=Go" for 127.0.0.1 at 2018-01-28 23:26:01 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"c", "current_word"=>"ab", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (27.3ms)
+Completed 200 OK in 64ms (Views: 61.7ms)
+
+
+Started GET "/ghost/play" for 127.0.0.1 at 2018-01-28 23:26:05 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.8ms)
+Completed 200 OK in 31ms (Views: 29.7ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=a&current_word=&commit=Go" for 127.0.0.1 at 2018-01-28 23:26:26 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"a", "current_word"=>"", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (4.4ms)
+Completed 200 OK in 38ms (Views: 36.1ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=b&current_word=a&commit=Go" for 127.0.0.1 at 2018-01-28 23:26:28 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"b", "current_word"=>"a", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (4.5ms)
+Completed 200 OK in 34ms (Views: 32.1ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=c&current_word=ab&commit=Go" for 127.0.0.1 at 2018-01-28 23:26:31 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"c", "current_word"=>"ab", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.3ms)
+Completed 200 OK in 38ms (Views: 36.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-30 07:45:59 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (18.8ms)
+Completed 200 OK in 1597ms (Views: 708.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-30 07:51:58 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (10.9ms)
+Completed 500 Internal Server Error in 157ms
+
+
+  
+ActionView::Template::Error (Undefined variable: "$universal_font".):
+    4:     <title>Cosc480Hw0</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:   </head>
+   10: 
+  
+app/assets/stylesheets/ghost.scss:8
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___3087972727990087922_70171621797940'
+Started GET "/" for 127.0.0.1 at 2018-01-30 07:53:46 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (4.8ms)
+Completed 200 OK in 170ms (Views: 168.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-30 07:59:04 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (5.3ms)
+Completed 200 OK in 630ms (Views: 628.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-30 11:21:54 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (4.0ms)
+Completed 200 OK in 233ms (Views: 226.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-30 11:22:57 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (4.0ms)
+Completed 200 OK in 142ms (Views: 139.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-30 22:36:10 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (31.0ms)
+Completed 200 OK in 219ms (Views: 201.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-02 01:30:47 -0500
+Processing by GhostController#play as HTML
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (125.2ms)
+Completed 200 OK in 838ms (Views: 782.4ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=a&current_word=&commit=Go" for 127.0.0.1 at 2018-02-02 01:30:53 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"a", "current_word"=>"", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.3ms)
+Completed 200 OK in 35ms (Views: 33.4ms)
+
+
+Started GET "/ghost/play?utf8=%E2%9C%93&letter=b&current_word=a&commit=Go" for 127.0.0.1 at 2018-02-02 01:30:57 -0500
+Processing by GhostController#play as HTML
+  Parameters: {"utf8"=>"✓", "letter"=>"b", "current_word"=>"a", "commit"=>"Go"}
+  Rendering ghost/play.html.haml within layouts/application
+  Rendered ghost/play.html.haml within layouts/application (3.6ms)
+Completed 200 OK in 33ms (Views: 32.0ms)
+
+

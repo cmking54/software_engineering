@@ -1,0 +1,23 @@
+#main.container
+  %br
+  %h3.strong #{@person.first_name} #{@person.last_name}
+
+  %p.image= image_tag @person.image.url
+
+  .row
+    -if @person.admin
+      %span.col-sm-3
+        %strong Admin: true
+    %strong.col-sm-3 Role: #{@person.role}
+    %strong.col-sm-3 Points Earned: #{@person.points}
+
+  %strong Bio:
+  %p= @person.bio
+
+  %p= link_to "My Events", my_meetings_path({:person_id => @person.id})
+  %br
+  -if current_person && current_person.id == @person.id
+    %p= link_to "Edit my Profile", edit_person_path(@person)
+    %p= link_to( "Delete my Profile", person_path(@person), :method => :delete)
+
+  %br

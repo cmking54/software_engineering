@@ -1,0 +1,910 @@
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#index as HTML
+  [1m[36mMeeting Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-22 12:30:00"], ["location", "\n            \n            \n          "], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Earth Day Afternoon of Service — 13 Days of Green\n        "], ["location", "\n            \n            \n          "], ["description", "The Office of Sustainability is hosting an afternoon of service in celebration of Earth Day by organizing several exciting volunteer projects oriented around sustainability and ecological awareness. Students will get to know the greater Hamilton area through hands-on engagement with the community. A snack and transportation will be provided.\r\n\r\nSign up here: https://goo.gl/forms/SMlfPVL4H0XsLNol1\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-22 12:30:00"], ["created_at", "2018-05-03 22:45:03.025753"], ["updated_at", "2018-05-03 22:45:03.025753"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-21 15:30:00"], ["location", "\n             70 Broad Street – The Loj\n            \n            70 NY-12B, Hamilton, NY 13346, USA\n          "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Locavore Dinner — 13 Days of Green\n        "], ["location", "\n             70 Broad Street – The Loj\n            \n            70 NY-12B, Hamilton, NY 13346, USA\n          "], ["description", "Join Green Thumbs in supporting and celebrating our local farms! We are hosting a Locavore dinner where we buy local food from the farmer's market and other farm stands, cook various recipes together, then enjoy our feast! Feel free to help us cook at 3:30 p.m. or just to enjoy the food at 6:30 p.m.\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-21 15:30:00"], ["created_at", "2018-05-03 22:45:03.235550"], ["updated_at", "2018-05-03 22:45:03.235550"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-20 12:00:00"], ["location", "\n             James C. Colgate Hall, Hall of Presidents\n            \n            \n          "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Pop-up Thrift Shop - 13 Days of Green\n        "], ["location", "\n             James C. Colgate Hall, Hall of Presidents\n            \n            \n          "], ["description", "The pop-up thrift shop is a free event where you can donate your old clothes and come find new treasures. Available items will include jewelry, shoes, professional attire, costumes, and more!\r\n\r\nDrop off your old clothes in the Environmental Studies Resource Room (Ho 245) or in the marked bins in your residence hall between April 4 -18, then stop by the Hall of Presidents 12–4 p.m. on April 20th to shop! All clothes and accessories are free to everyone. All remaining items will be donated to the LGBT Initiatives Closet or local charities.\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-20 12:00:00"], ["created_at", "2018-05-03 22:45:03.541295"], ["updated_at", "2018-05-03 22:45:03.541295"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-19 20:00:00"], ["location", "\n             Donovan's Pub\n            \n            \n          "], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Trivia Night hosted by Beekeeping Club\n        "], ["location", "\n             Donovan's Pub\n            \n            \n          "], ["description", "Donovan's Thursday night trivia takes on a beekeeping theme! It is the normal Thursday night trivia you love but with one additional question on bees and beekeeping each round. Co-sponsored by Beekeeping Club.\r\n\r\n \r\n\r\nAs part of the 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-19 20:00:00"], ["created_at", "2018-05-03 22:45:03.713468"], ["updated_at", "2018-05-03 22:45:03.713468"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-18 16:30:00"], ["location", "\n             The Coop – O'Connor Campus Center, TV Room\n            \n            13 Oak Dr, Hamilton, NY 13346, USA\n          "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Carbon Neutrality Open House\n        "], ["location", "\n             The Coop – O'Connor Campus Center, TV Room\n            \n            13 Oak Dr, Hamilton, NY 13346, USA\n          "], ["description", "Meet with representatives from the Office of Sustainability and the Sustainability Council to learn more about Colgate's Carbon Neutrality commitment, provide feedback and ask questions. Food from the Eatery will be provided.\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-18 16:30:00"], ["created_at", "2018-05-03 22:45:03.886770"], ["updated_at", "2018-05-03 22:45:03.886770"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering meetings/index.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/index.html.haml within layouts/application (2.0ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 1997ms (Views: 88.9ms | ActiveRecord: 7.5ms)
+  [1m[35m (8.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering meetings/show.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/show.html.haml within layouts/application (0.8ms)
+Completed 200 OK in 6ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#new as HTML
+  Rendering meetings/new.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/new.html.haml within layouts/application (0.7ms)
+Completed 200 OK in 5ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#create as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering meetings/edit.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/edit.html.haml within layouts/application (1.6ms)
+Completed 200 OK in 7ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/meetings
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#about as HTML
+  Rendering meetings/about.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/about.html.haml within layouts/application (0.7ms)
+Completed 200 OK in 5ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#index as HTML
+  Rendering people/index.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/index.html.haml within layouts/application (0.7ms)
+Completed 200 OK in 10ms (Views: 5.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering people/show.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/show.html.haml within layouts/application (0.7ms)
+Completed 200 OK in 5ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#new as HTML
+  Rendering people/new.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/new.html.haml within layouts/application (1.0ms)
+Completed 200 OK in 7ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "people" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-05-03 22:45:04.451374"], ["updated_at", "2018-05-03 22:45:04.451374"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PeopleController#create as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (1.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering people/edit.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/edit.html.haml within layouts/application (0.8ms)
+Completed 200 OK in 6ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/people
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2018-05-03 18:45:04 -0400
+Processing by MainController#general as HTML
+  Rendering main/general.html.haml within layouts/application
+  Rendered main/general.html.haml within layouts/application (71.1ms)
+Completed 200 OK in 24449ms (Views: 24441.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#index as HTML
+  [1m[36mMeeting Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-22 12:30:00"], ["location", "\n            \n            \n          "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Earth Day Afternoon of Service — 13 Days of Green\n        "], ["location", "\n            \n            \n          "], ["description", "The Office of Sustainability is hosting an afternoon of service in celebration of Earth Day by organizing several exciting volunteer projects oriented around sustainability and ecological awareness. Students will get to know the greater Hamilton area through hands-on engagement with the community. A snack and transportation will be provided.\r\n\r\nSign up here: https://goo.gl/forms/SMlfPVL4H0XsLNol1\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-22 12:30:00"], ["created_at", "2018-05-04 00:31:29.451031"], ["updated_at", "2018-05-04 00:31:29.451031"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-21 15:30:00"], ["location", "\n             70 Broad Street – The Loj\n            \n            70 NY-12B, Hamilton, NY 13346, USA\n          "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.6ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Locavore Dinner — 13 Days of Green\n        "], ["location", "\n             70 Broad Street – The Loj\n            \n            70 NY-12B, Hamilton, NY 13346, USA\n          "], ["description", "Join Green Thumbs in supporting and celebrating our local farms! We are hosting a Locavore dinner where we buy local food from the farmer's market and other farm stands, cook various recipes together, then enjoy our feast! Feel free to help us cook at 3:30 p.m. or just to enjoy the food at 6:30 p.m.\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-21 15:30:00"], ["created_at", "2018-05-04 00:31:29.725448"], ["updated_at", "2018-05-04 00:31:29.725448"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-20 12:00:00"], ["location", "\n             James C. Colgate Hall, Hall of Presidents\n            \n            \n          "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Pop-up Thrift Shop - 13 Days of Green\n        "], ["location", "\n             James C. Colgate Hall, Hall of Presidents\n            \n            \n          "], ["description", "The pop-up thrift shop is a free event where you can donate your old clothes and come find new treasures. Available items will include jewelry, shoes, professional attire, costumes, and more!\r\n\r\nDrop off your old clothes in the Environmental Studies Resource Room (Ho 245) or in the marked bins in your residence hall between April 4 -18, then stop by the Hall of Presidents 12–4 p.m. on April 20th to shop! All clothes and accessories are free to everyone. All remaining items will be donated to the LGBT Initiatives Closet or local charities.\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-20 12:00:00"], ["created_at", "2018-05-04 00:31:29.923584"], ["updated_at", "2018-05-04 00:31:29.923584"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-19 20:00:00"], ["location", "\n             Donovan's Pub\n            \n            \n          "], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Trivia Night hosted by Beekeeping Club\n        "], ["location", "\n             Donovan's Pub\n            \n            \n          "], ["description", "Donovan's Thursday night trivia takes on a beekeeping theme! It is the normal Thursday night trivia you love but with one additional question on bees and beekeeping each round. Co-sponsored by Beekeeping Club.\r\n\r\n \r\n\r\nAs part of the 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-19 20:00:00"], ["created_at", "2018-05-04 00:31:30.182783"], ["updated_at", "2018-05-04 00:31:30.182783"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-18 16:30:00"], ["location", "\n             The Coop – O'Connor Campus Center, TV Room\n            \n            13 Oak Dr, Hamilton, NY 13346, USA\n          "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Carbon Neutrality Open House\n        "], ["location", "\n             The Coop – O'Connor Campus Center, TV Room\n            \n            13 Oak Dr, Hamilton, NY 13346, USA\n          "], ["description", "Meet with representatives from the Office of Sustainability and the Sustainability Council to learn more about Colgate's Carbon Neutrality commitment, provide feedback and ask questions. Food from the Eatery will be provided.\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-18 16:30:00"], ["created_at", "2018-05-04 00:31:30.363367"], ["updated_at", "2018-05-04 00:31:30.363367"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering meetings/index.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/index.html.haml within layouts/application (0.6ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 1587ms (Views: 34.4ms | ActiveRecord: 7.9ms)
+  [1m[35m (9.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering meetings/show.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/show.html.haml within layouts/application (0.5ms)
+Completed 200 OK in 10ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#new as HTML
+  Rendering meetings/new.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/new.html.haml within layouts/application (0.6ms)
+Completed 200 OK in 8ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#create as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering meetings/edit.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/edit.html.haml within layouts/application (0.5ms)
+Completed 200 OK in 9ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/meetings
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#about as HTML
+  Rendering meetings/about.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/about.html.haml within layouts/application (0.6ms)
+Completed 200 OK in 4ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#index as HTML
+  Rendering people/index.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/index.html.haml within layouts/application (0.6ms)
+Completed 200 OK in 13ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering people/show.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/show.html.haml within layouts/application (0.8ms)
+Completed 200 OK in 10ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#new as HTML
+  Rendering people/new.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/new.html.haml within layouts/application (0.6ms)
+Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "people" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-05-04 00:31:30.702177"], ["updated_at", "2018-05-04 00:31:30.702177"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PeopleController#create as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering people/edit.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/edit.html.haml within layouts/application (0.6ms)
+Completed 200 OK in 8ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/people
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2018-05-03 20:31:30 -0400
+Processing by MainController#general as HTML
+  Rendering main/general.html.haml within layouts/application
+  Rendered main/general.html.haml within layouts/application (21.2ms)
+Completed 200 OK in 1207ms (Views: 1194.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#index as HTML
+  [1m[36mMeeting Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-22 12:30:00"], ["location", "\n            \n            \n          "], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Earth Day Afternoon of Service — 13 Days of Green\n        "], ["location", "\n            \n            \n          "], ["description", "The Office of Sustainability is hosting an afternoon of service in celebration of Earth Day by organizing several exciting volunteer projects oriented around sustainability and ecological awareness. Students will get to know the greater Hamilton area through hands-on engagement with the community. A snack and transportation will be provided.\r\n\r\nSign up here: https://goo.gl/forms/SMlfPVL4H0XsLNol1\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-22 12:30:00"], ["created_at", "2018-05-04 01:21:11.543497"], ["updated_at", "2018-05-04 01:21:11.543497"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-21 15:30:00"], ["location", "\n             70 Broad Street – The Loj\n            \n            70 NY-12B, Hamilton, NY 13346, USA\n          "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Locavore Dinner — 13 Days of Green\n        "], ["location", "\n             70 Broad Street – The Loj\n            \n            70 NY-12B, Hamilton, NY 13346, USA\n          "], ["description", "Join Green Thumbs in supporting and celebrating our local farms! We are hosting a Locavore dinner where we buy local food from the farmer's market and other farm stands, cook various recipes together, then enjoy our feast! Feel free to help us cook at 3:30 p.m. or just to enjoy the food at 6:30 p.m.\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-21 15:30:00"], ["created_at", "2018-05-04 01:21:11.870274"], ["updated_at", "2018-05-04 01:21:11.870274"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-20 12:00:00"], ["location", "\n             James C. Colgate Hall, Hall of Presidents\n            \n            \n          "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Pop-up Thrift Shop - 13 Days of Green\n        "], ["location", "\n             James C. Colgate Hall, Hall of Presidents\n            \n            \n          "], ["description", "The pop-up thrift shop is a free event where you can donate your old clothes and come find new treasures. Available items will include jewelry, shoes, professional attire, costumes, and more!\r\n\r\nDrop off your old clothes in the Environmental Studies Resource Room (Ho 245) or in the marked bins in your residence hall between April 4 -18, then stop by the Hall of Presidents 12–4 p.m. on April 20th to shop! All clothes and accessories are free to everyone. All remaining items will be donated to the LGBT Initiatives Closet or local charities.\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-20 12:00:00"], ["created_at", "2018-05-04 01:21:12.338203"], ["updated_at", "2018-05-04 01:21:12.338203"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-19 20:00:00"], ["location", "\n             Donovan's Pub\n            \n            \n          "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Trivia Night hosted by Beekeeping Club\n        "], ["location", "\n             Donovan's Pub\n            \n            \n          "], ["description", "Donovan's Thursday night trivia takes on a beekeeping theme! It is the normal Thursday night trivia you love but with one additional question on bees and beekeeping each round. Co-sponsored by Beekeeping Club.\r\n\r\n \r\n\r\nAs part of the 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-19 20:00:00"], ["created_at", "2018-05-04 01:21:12.672273"], ["updated_at", "2018-05-04 01:21:12.672273"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-18 16:30:00"], ["location", "\n             The Coop – O'Connor Campus Center, TV Room\n            \n            13 Oak Dr, Hamilton, NY 13346, USA\n          "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Carbon Neutrality Open House\n        "], ["location", "\n             The Coop – O'Connor Campus Center, TV Room\n            \n            13 Oak Dr, Hamilton, NY 13346, USA\n          "], ["description", "Meet with representatives from the Office of Sustainability and the Sustainability Council to learn more about Colgate's Carbon Neutrality commitment, provide feedback and ask questions. Food from the Eatery will be provided.\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-18 16:30:00"], ["created_at", "2018-05-04 01:21:12.971442"], ["updated_at", "2018-05-04 01:21:12.971442"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering meetings/index.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/index.html.haml within layouts/application (1.1ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 2278ms (Views: 10.7ms | ActiveRecord: 5.9ms)
+  [1m[35m (9.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering meetings/show.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/show.html.haml within layouts/application (0.5ms)
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#new as HTML
+  Rendering meetings/new.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/new.html.haml within layouts/application (0.6ms)
+Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#create as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering meetings/edit.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/edit.html.haml within layouts/application (1.6ms)
+Completed 200 OK in 6ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/meetings
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#about as HTML
+  Rendering meetings/about.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/about.html.haml within layouts/application (0.5ms)
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#index as HTML
+  Rendering people/index.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/index.html.haml within layouts/application (0.8ms)
+Completed 200 OK in 8ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering people/show.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/show.html.haml within layouts/application (9.3ms)
+Completed 200 OK in 13ms (Views: 10.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#new as HTML
+  Rendering people/new.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/new.html.haml within layouts/application (0.6ms)
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "people" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-05-04 01:21:13.143980"], ["updated_at", "2018-05-04 01:21:13.143980"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PeopleController#create as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering people/edit.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/edit.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 6ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/people
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2018-05-03 21:21:13 -0400
+Processing by MainController#general as HTML
+  Rendering main/general.html.haml within layouts/application
+  Rendered main/general.html.haml within layouts/application (12.7ms)
+Completed 200 OK in 370ms (Views: 360.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#index as HTML
+  [1m[36mMeeting Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-22 12:30:00"], ["location", "\n            \n            \n          "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Earth Day Afternoon of Service — 13 Days of Green\n        "], ["location", "\n            \n            \n          "], ["description", "The Office of Sustainability is hosting an afternoon of service in celebration of Earth Day by organizing several exciting volunteer projects oriented around sustainability and ecological awareness. Students will get to know the greater Hamilton area through hands-on engagement with the community. A snack and transportation will be provided.\r\n\r\nSign up here: https://goo.gl/forms/SMlfPVL4H0XsLNol1\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-22 12:30:00"], ["created_at", "2018-05-04 01:22:18.744964"], ["updated_at", "2018-05-04 01:22:18.744964"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-21 15:30:00"], ["location", "\n             70 Broad Street – The Loj\n            \n            70 NY-12B, Hamilton, NY 13346, USA\n          "], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Locavore Dinner — 13 Days of Green\n        "], ["location", "\n             70 Broad Street – The Loj\n            \n            70 NY-12B, Hamilton, NY 13346, USA\n          "], ["description", "Join Green Thumbs in supporting and celebrating our local farms! We are hosting a Locavore dinner where we buy local food from the farmer's market and other farm stands, cook various recipes together, then enjoy our feast! Feel free to help us cook at 3:30 p.m. or just to enjoy the food at 6:30 p.m.\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-21 15:30:00"], ["created_at", "2018-05-04 01:22:18.821040"], ["updated_at", "2018-05-04 01:22:18.821040"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-20 12:00:00"], ["location", "\n             James C. Colgate Hall, Hall of Presidents\n            \n            \n          "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Pop-up Thrift Shop - 13 Days of Green\n        "], ["location", "\n             James C. Colgate Hall, Hall of Presidents\n            \n            \n          "], ["description", "The pop-up thrift shop is a free event where you can donate your old clothes and come find new treasures. Available items will include jewelry, shoes, professional attire, costumes, and more!\r\n\r\nDrop off your old clothes in the Environmental Studies Resource Room (Ho 245) or in the marked bins in your residence hall between April 4 -18, then stop by the Hall of Presidents 12–4 p.m. on April 20th to shop! All clothes and accessories are free to everyone. All remaining items will be donated to the LGBT Initiatives Closet or local charities.\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-20 12:00:00"], ["created_at", "2018-05-04 01:22:18.900503"], ["updated_at", "2018-05-04 01:22:18.900503"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-19 20:00:00"], ["location", "\n             Donovan's Pub\n            \n            \n          "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Trivia Night hosted by Beekeeping Club\n        "], ["location", "\n             Donovan's Pub\n            \n            \n          "], ["description", "Donovan's Thursday night trivia takes on a beekeeping theme! It is the normal Thursday night trivia you love but with one additional question on bees and beekeeping each round. Co-sponsored by Beekeeping Club.\r\n\r\n \r\n\r\nAs part of the 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-19 20:00:00"], ["created_at", "2018-05-04 01:22:18.991555"], ["updated_at", "2018-05-04 01:22:18.991555"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-18 16:30:00"], ["location", "\n             The Coop – O'Connor Campus Center, TV Room\n            \n            13 Oak Dr, Hamilton, NY 13346, USA\n          "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Carbon Neutrality Open House\n        "], ["location", "\n             The Coop – O'Connor Campus Center, TV Room\n            \n            13 Oak Dr, Hamilton, NY 13346, USA\n          "], ["description", "Meet with representatives from the Office of Sustainability and the Sustainability Council to learn more about Colgate's Carbon Neutrality commitment, provide feedback and ask questions. Food from the Eatery will be provided.\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-18 16:30:00"], ["created_at", "2018-05-04 01:22:19.064061"], ["updated_at", "2018-05-04 01:22:19.064061"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering meetings/index.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/index.html.haml within layouts/application (0.6ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 710ms (Views: 11.2ms | ActiveRecord: 7.2ms)
+  [1m[35m (5.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering meetings/show.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/show.html.haml within layouts/application (0.6ms)
+Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#new as HTML
+  Rendering meetings/new.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/new.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 6ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#create as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering meetings/edit.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/edit.html.haml within layouts/application (0.7ms)
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/meetings
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#about as HTML
+  Rendering meetings/about.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/about.html.haml within layouts/application (0.6ms)
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#index as HTML
+  Rendering people/index.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/index.html.haml within layouts/application (1.1ms)
+Completed 200 OK in 10ms (Views: 6.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering people/show.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/show.html.haml within layouts/application (0.6ms)
+Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#new as HTML
+  Rendering people/new.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/new.html.haml within layouts/application (0.6ms)
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "people" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-05-04 01:22:19.239513"], ["updated_at", "2018-05-04 01:22:19.239513"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PeopleController#create as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering people/edit.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/edit.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 7ms (Views: 3.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/people
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2018-05-03 21:22:19 -0400
+Processing by MainController#general as HTML
+  Rendering main/general.html.haml within layouts/application
+  Rendered main/general.html.haml within layouts/application (17.2ms)
+Completed 200 OK in 336ms (Views: 326.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#index as HTML
+  [1m[36mMeeting Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-22 12:30:00"], ["location", "\n            \n            \n          "], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Earth Day Afternoon of Service — 13 Days of Green\n        "], ["location", "\n            \n            \n          "], ["description", "The Office of Sustainability is hosting an afternoon of service in celebration of Earth Day by organizing several exciting volunteer projects oriented around sustainability and ecological awareness. Students will get to know the greater Hamilton area through hands-on engagement with the community. A snack and transportation will be provided.\r\n\r\nSign up here: https://goo.gl/forms/SMlfPVL4H0XsLNol1\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-22 12:30:00"], ["created_at", "2018-05-04 01:31:40.354058"], ["updated_at", "2018-05-04 01:31:40.354058"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-21 15:30:00"], ["location", "\n             70 Broad Street – The Loj\n            \n            70 NY-12B, Hamilton, NY 13346, USA\n          "], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Locavore Dinner — 13 Days of Green\n        "], ["location", "\n             70 Broad Street – The Loj\n            \n            70 NY-12B, Hamilton, NY 13346, USA\n          "], ["description", "Join Green Thumbs in supporting and celebrating our local farms! We are hosting a Locavore dinner where we buy local food from the farmer's market and other farm stands, cook various recipes together, then enjoy our feast! Feel free to help us cook at 3:30 p.m. or just to enjoy the food at 6:30 p.m.\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-21 15:30:00"], ["created_at", "2018-05-04 01:31:40.742446"], ["updated_at", "2018-05-04 01:31:40.742446"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-20 12:00:00"], ["location", "\n             James C. Colgate Hall, Hall of Presidents\n            \n            \n          "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Pop-up Thrift Shop - 13 Days of Green\n        "], ["location", "\n             James C. Colgate Hall, Hall of Presidents\n            \n            \n          "], ["description", "The pop-up thrift shop is a free event where you can donate your old clothes and come find new treasures. Available items will include jewelry, shoes, professional attire, costumes, and more!\r\n\r\nDrop off your old clothes in the Environmental Studies Resource Room (Ho 245) or in the marked bins in your residence hall between April 4 -18, then stop by the Hall of Presidents 12–4 p.m. on April 20th to shop! All clothes and accessories are free to everyone. All remaining items will be donated to the LGBT Initiatives Closet or local charities.\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-20 12:00:00"], ["created_at", "2018-05-04 01:31:41.029192"], ["updated_at", "2018-05-04 01:31:41.029192"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-19 20:00:00"], ["location", "\n             Donovan's Pub\n            \n            \n          "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Trivia Night hosted by Beekeeping Club\n        "], ["location", "\n             Donovan's Pub\n            \n            \n          "], ["description", "Donovan's Thursday night trivia takes on a beekeeping theme! It is the normal Thursday night trivia you love but with one additional question on bees and beekeeping each round. Co-sponsored by Beekeeping Club.\r\n\r\n \r\n\r\nAs part of the 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-19 20:00:00"], ["created_at", "2018-05-04 01:31:41.440284"], ["updated_at", "2018-05-04 01:31:41.440284"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-18 16:30:00"], ["location", "\n             The Coop – O'Connor Campus Center, TV Room\n            \n            13 Oak Dr, Hamilton, NY 13346, USA\n          "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Carbon Neutrality Open House\n        "], ["location", "\n             The Coop – O'Connor Campus Center, TV Room\n            \n            13 Oak Dr, Hamilton, NY 13346, USA\n          "], ["description", "Meet with representatives from the Office of Sustainability and the Sustainability Council to learn more about Colgate's Carbon Neutrality commitment, provide feedback and ask questions. Food from the Eatery will be provided.\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-18 16:30:00"], ["created_at", "2018-05-04 01:31:41.672666"], ["updated_at", "2018-05-04 01:31:41.672666"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering meetings/index.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/index.html.haml within layouts/application (0.7ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 1959ms (Views: 11.3ms | ActiveRecord: 6.9ms)
+  [1m[35m (5.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering meetings/show.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/show.html.haml within layouts/application (0.6ms)
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#new as HTML
+  Rendering meetings/new.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/new.html.haml within layouts/application (0.6ms)
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#create as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering meetings/edit.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/edit.html.haml within layouts/application (0.6ms)
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/meetings
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#about as HTML
+  Rendering meetings/about.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/about.html.haml within layouts/application (0.5ms)
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#index as HTML
+  Rendering people/index.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/index.html.haml within layouts/application (2.3ms)
+Completed 200 OK in 9ms (Views: 6.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering people/show.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/show.html.haml within layouts/application (2.2ms)
+Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#new as HTML
+  Rendering people/new.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/new.html.haml within layouts/application (0.7ms)
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "people" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-05-04 01:31:41.842868"], ["updated_at", "2018-05-04 01:31:41.842868"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PeopleController#create as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering people/edit.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/edit.html.haml within layouts/application (0.5ms)
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/people
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2018-05-03 21:31:41 -0400
+Processing by MainController#general as HTML
+  Rendering main/general.html.haml within layouts/application
+  Rendered main/general.html.haml within layouts/application (14.6ms)
+Completed 200 OK in 378ms (Views: 369.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#index as HTML
+  [1m[36mMeeting Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-22 12:30:00"], ["location", "\n            \n            \n          "], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Earth Day Afternoon of Service — 13 Days of Green\n        "], ["location", "\n            \n            \n          "], ["description", "The Office of Sustainability is hosting an afternoon of service in celebration of Earth Day by organizing several exciting volunteer projects oriented around sustainability and ecological awareness. Students will get to know the greater Hamilton area through hands-on engagement with the community. A snack and transportation will be provided.\r\n\r\nSign up here: https://goo.gl/forms/SMlfPVL4H0XsLNol1\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-22 12:30:00"], ["created_at", "2018-05-04 03:44:02.133169"], ["updated_at", "2018-05-04 03:44:02.133169"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-21 15:30:00"], ["location", "\n             70 Broad Street – The Loj\n            \n            70 NY-12B, Hamilton, NY 13346, USA\n          "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Locavore Dinner — 13 Days of Green\n        "], ["location", "\n             70 Broad Street – The Loj\n            \n            70 NY-12B, Hamilton, NY 13346, USA\n          "], ["description", "Join Green Thumbs in supporting and celebrating our local farms! We are hosting a Locavore dinner where we buy local food from the farmer's market and other farm stands, cook various recipes together, then enjoy our feast! Feel free to help us cook at 3:30 p.m. or just to enjoy the food at 6:30 p.m.\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-21 15:30:00"], ["created_at", "2018-05-04 03:44:02.300324"], ["updated_at", "2018-05-04 03:44:02.300324"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-20 12:00:00"], ["location", "\n             James C. Colgate Hall, Hall of Presidents\n            \n            \n          "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Pop-up Thrift Shop - 13 Days of Green\n        "], ["location", "\n             James C. Colgate Hall, Hall of Presidents\n            \n            \n          "], ["description", "The pop-up thrift shop is a free event where you can donate your old clothes and come find new treasures. Available items will include jewelry, shoes, professional attire, costumes, and more!\r\n\r\nDrop off your old clothes in the Environmental Studies Resource Room (Ho 245) or in the marked bins in your residence hall between April 4 -18, then stop by the Hall of Presidents 12–4 p.m. on April 20th to shop! All clothes and accessories are free to everyone. All remaining items will be donated to the LGBT Initiatives Closet or local charities.\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-20 12:00:00"], ["created_at", "2018-05-04 03:44:02.451070"], ["updated_at", "2018-05-04 03:44:02.451070"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-19 20:00:00"], ["location", "\n             Donovan's Pub\n            \n            \n          "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Trivia Night hosted by Beekeeping Club\n        "], ["location", "\n             Donovan's Pub\n            \n            \n          "], ["description", "Donovan's Thursday night trivia takes on a beekeeping theme! It is the normal Thursday night trivia you love but with one additional question on bees and beekeeping each round. Co-sponsored by Beekeeping Club.\r\n\r\n \r\n\r\nAs part of the 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-19 20:00:00"], ["created_at", "2018-05-04 03:44:02.631930"], ["updated_at", "2018-05-04 03:44:02.631930"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mMeeting Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "meetings" WHERE "meetings"."date" = ? AND "meetings"."location" = ? LIMIT ?[0m  [["date", "2018-04-18 16:30:00"], ["location", "\n             The Coop – O'Connor Campus Center, TV Room\n            \n            13 Oak Dr, Hamilton, NY 13346, USA\n          "], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "meetings" ("title", "location", "description", "points", "date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "\n            Carbon Neutrality Open House\n        "], ["location", "\n             The Coop – O'Connor Campus Center, TV Room\n            \n            13 Oak Dr, Hamilton, NY 13346, USA\n          "], ["description", "Meet with representatives from the Office of Sustainability and the Sustainability Council to learn more about Colgate's Carbon Neutrality commitment, provide feedback and ask questions. Food from the Eatery will be provided.\r\n\r\nThis event is a part of Colgate's 13 Days of Green.\r\n"], ["points", 1], ["date", "2018-04-18 16:30:00"], ["created_at", "2018-05-04 03:44:03.060289"], ["updated_at", "2018-05-04 03:44:03.060289"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  Rendering meetings/index.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/index.html.haml within layouts/application (1.8ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 1659ms (Views: 12.3ms | ActiveRecord: 6.8ms)
+  [1m[35m (9.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering meetings/show.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/show.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#new as HTML
+  Rendering meetings/new.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/new.html.haml within layouts/application (0.7ms)
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#create as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering meetings/edit.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/edit.html.haml within layouts/application (1.5ms)
+Completed 200 OK in 6ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/meetings
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by MeetingsController#about as HTML
+  Rendering meetings/about.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered meetings/about.html.haml within layouts/application (0.6ms)
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#index as HTML
+  Rendering people/index.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/index.html.haml within layouts/application (1.4ms)
+Completed 200 OK in 9ms (Views: 6.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering people/show.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/show.html.haml within layouts/application (0.8ms)
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#new as HTML
+  Rendering people/new.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/new.html.haml within layouts/application (0.7ms)
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "people" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-05-04 03:44:03.231965"], ["updated_at", "2018-05-04 03:44:03.231965"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by PeopleController#create as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering people/edit.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered people/edit.html.haml within layouts/application (0.7ms)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#update as HTML
+  Parameters: {"id"=>"1"}
+Completed 400 Bad Request in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by PeopleController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/people
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/" for 127.0.0.1 at 2018-05-03 23:44:03 -0400
+Processing by MainController#general as HTML
+  Rendering main/general.html.haml within layouts/application
+  Rendered main/general.html.haml within layouts/application (16.0ms)
+Completed 200 OK in 676ms (Views: 669.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m

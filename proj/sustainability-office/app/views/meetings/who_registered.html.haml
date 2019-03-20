@@ -1,0 +1,31 @@
+#main.container
+  %br
+  %h4.centered People Registered for
+  %h4.centered #{@meeting.title}
+  %br
+
+  -unless @people.length > 0
+    %p.centered= "Noone has registred for #{@meeting.title} yet."
+    %p.centered= link_to "Be the first!", new_registration_path({:meeting_id => @meeting.id})
+  -else
+    %br
+    %table.table.table-responsive.table-bordered
+      %thead.thead-light
+        %tr
+          %th Image
+          %th Name
+          %th Role
+          %th Total Points
+          %th Bio
+
+      %tbody
+        -@people.each do |p|
+          %tr.eventbody
+            %td= image_tag(p.image.url, size: "75x75")
+            %td= link_to "#{p.first_name} #{p.last_name}", person_path(p.id)
+            %td.centered= "#{p.role}"
+            %td.centered= "#{p.points}"
+            %td.content= p.bio
+  %br
+  %p= link_to "Back to Event", meeting_path(@meeting)
+  %br

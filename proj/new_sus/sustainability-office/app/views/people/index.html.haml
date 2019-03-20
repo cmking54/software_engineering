@@ -1,0 +1,23 @@
+#main.container
+  %br
+  %h3.centered All Users
+
+  %br
+  %table.table.table-responsive.table-bordered
+    %thead.thead-light
+      %tr
+        %th Image
+        %th Name
+        %th Role
+        %th Total Points
+        %th Bio
+
+    %tbody
+      -@people.each do |p|
+        %tr.eventbody
+          %td= image_tag(p.image.url, size: "100x100")
+          %td= link_to "#{p.first_name} #{p.last_name}", person_path(p.id)
+          %td.centered= "#{p.role}"
+          %td.centered= "#{p.points}"
+          %td.content= truncate(p.bio, length: 150)
+  %br

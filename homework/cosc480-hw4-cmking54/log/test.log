@@ -1,0 +1,1764 @@
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (15.0ms)[0m  [1m[31mDELETE FROM "rental_properties";[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'rental_properties';[0m
+  [1m[35m (14.5ms)[0m  [1m[31mDELETE FROM "ar_internal_metadata";[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'ar_internal_metadata';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:26:51.573994"], ["updated_at", "2018-03-10 03:26:51.573994"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (3.3ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:26:51.578595"], ["updated_at", "2018-03-10 03:26:51.578595"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:26:51 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (1708.7ms)
+Completed 200 OK in 1737ms (Views: 1722.0ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:26:53.584263"], ["updated_at", "2018-03-10 03:26:53.584263"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:26:53.587452"], ["updated_at", "2018-03-10 03:26:53.587452"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:26:53 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (3.7ms)
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (5.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:26:53.608477"], ["updated_at", "2018-03-10 03:26:53.608477"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (3.5ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:26:53.611531"], ["updated_at", "2018-03-10 03:26:53.611531"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:26:53 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (4.0ms)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (5.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.1ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:26:53.632359"], ["updated_at", "2018-03-10 03:26:53.632359"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:26:53.635916"], ["updated_at", "2018-03-10 03:26:53.635916"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:26:53 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (3.9ms)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.3ms)
+Started GET "/rental_properties/1" for 127.0.0.1 at 2018-03-09 22:26:53 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"1"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (5.2ms)
+Completed 200 OK in 21ms (Views: 6.8ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "abhorrent"], ["maxpersons", 10], ["bathrooms", 3], ["price", 1.5], ["lat", 7.698744], ["lng", -0.593262], ["created_at", "2018-03-10 03:26:53.680194"], ["updated_at", "2018-03-10 03:26:53.680194"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "gorgeous"], ["maxpersons", 8], ["bathrooms", 3], ["price", 3.5], ["lat", 6.434036], ["lng", 16.501465], ["created_at", "2018-03-10 03:26:53.683920"], ["updated_at", "2018-03-10 03:26:53.683920"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["maxpersons", 6], ["bathrooms", 4], ["price", 0.5], ["lat", 42.827], ["lng", -75.5446], ["created_at", "2018-03-10 03:26:53.688157"], ["updated_at", "2018-03-10 03:26:53.688157"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["maxpersons", 4], ["bathrooms", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:26:53.689784"], ["updated_at", "2018-03-10 03:26:53.689784"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:26:53 -0500
+Processing by RentalPropertiesController#index as HTML
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (5.7ms)
+Completed 200 OK in 9ms (Views: 6.6ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (5.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "abhorrent"], ["maxpersons", 10], ["bathrooms", 3], ["price", 1.5], ["lat", 7.698744], ["lng", -0.593262], ["created_at", "2018-03-10 03:26:53.826280"], ["updated_at", "2018-03-10 03:26:53.826280"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "gorgeous"], ["maxpersons", 8], ["bathrooms", 3], ["price", 3.5], ["lat", 6.434036], ["lng", 16.501465], ["created_at", "2018-03-10 03:26:53.829502"], ["updated_at", "2018-03-10 03:26:53.829502"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["maxpersons", 6], ["bathrooms", 4], ["price", 0.5], ["lat", 42.827], ["lng", -75.5446], ["created_at", "2018-03-10 03:26:53.833962"], ["updated_at", "2018-03-10 03:26:53.833962"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["maxpersons", 4], ["bathrooms", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:26:53.835624"], ["updated_at", "2018-03-10 03:26:53.835624"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:26:53 -0500
+Processing by RentalPropertiesController#index as HTML
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (8.6ms)
+Completed 200 OK in 12ms (Views: 10.1ms | ActiveRecord: 0.5ms)
+Started GET "/rental_properties?order=price" for 127.0.0.1 at 2018-03-09 22:26:53 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"order"=>"price"}
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" ORDER BY price[0m
+  Rendered rental_properties/index.html.haml within layouts/application (6.5ms)
+Completed 200 OK in 10ms (Views: 8.0ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "abhorrent"], ["maxpersons", 10], ["bathrooms", 3], ["price", 1.5], ["lat", 7.698744], ["lng", -0.593262], ["created_at", "2018-03-10 03:26:53.874534"], ["updated_at", "2018-03-10 03:26:53.874534"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "gorgeous"], ["maxpersons", 8], ["bathrooms", 3], ["price", 3.5], ["lat", 6.434036], ["lng", 16.501465], ["created_at", "2018-03-10 03:26:53.877642"], ["updated_at", "2018-03-10 03:26:53.877642"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["maxpersons", 6], ["bathrooms", 4], ["price", 0.5], ["lat", 42.827], ["lng", -75.5446], ["created_at", "2018-03-10 03:26:53.882212"], ["updated_at", "2018-03-10 03:26:53.882212"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["maxpersons", 4], ["bathrooms", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:26:53.884394"], ["updated_at", "2018-03-10 03:26:53.884394"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:26:53 -0500
+Processing by RentalPropertiesController#index as HTML
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (5.6ms)
+Completed 200 OK in 9ms (Views: 6.8ms | ActiveRecord: 0.4ms)
+Started GET "/rental_properties?order=maxpersons" for 127.0.0.1 at 2018-03-09 22:26:53 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"order"=>"maxpersons"}
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" ORDER BY maxpersons[0m
+  Rendered rental_properties/index.html.haml within layouts/application (5.8ms)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.1ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "abhorrent"], ["maxpersons", 10], ["bathrooms", 3], ["price", 1.5], ["lat", 7.698744], ["lng", -0.593262], ["created_at", "2018-03-10 03:26:53.919348"], ["updated_at", "2018-03-10 03:26:53.919348"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "gorgeous"], ["maxpersons", 8], ["bathrooms", 3], ["price", 3.5], ["lat", 6.434036], ["lng", 16.501465], ["created_at", "2018-03-10 03:26:53.923280"], ["updated_at", "2018-03-10 03:26:53.923280"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["maxpersons", 6], ["bathrooms", 4], ["price", 0.5], ["lat", 42.827], ["lng", -75.5446], ["created_at", "2018-03-10 03:26:53.927643"], ["updated_at", "2018-03-10 03:26:53.927643"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["maxpersons", 4], ["bathrooms", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:26:53.929084"], ["updated_at", "2018-03-10 03:26:53.929084"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:26:53 -0500
+Processing by RentalPropertiesController#index as HTML
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (5.7ms)
+Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 0.3ms)
+Started GET "/rental_properties?order=distance" for 127.0.0.1 at 2018-03-09 22:26:53 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"order"=>"distance"}
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (6.0ms)
+Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "abhorrent"], ["maxpersons", 10], ["bathrooms", 3], ["price", 1.5], ["lat", 7.698744], ["lng", -0.593262], ["created_at", "2018-03-10 03:26:53.963817"], ["updated_at", "2018-03-10 03:26:53.963817"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "gorgeous"], ["maxpersons", 8], ["bathrooms", 3], ["price", 3.5], ["lat", 6.434036], ["lng", 16.501465], ["created_at", "2018-03-10 03:26:53.967007"], ["updated_at", "2018-03-10 03:26:53.967007"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["maxpersons", 6], ["bathrooms", 4], ["price", 0.5], ["lat", 42.827], ["lng", -75.5446], ["created_at", "2018-03-10 03:26:53.971663"], ["updated_at", "2018-03-10 03:26:53.971663"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["maxpersons", 4], ["bathrooms", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:26:53.973294"], ["updated_at", "2018-03-10 03:26:53.973294"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:26:53 -0500
+Processing by RentalPropertiesController#index as HTML
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (5.8ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (5.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "abhorrent"], ["maxpersons", 10], ["bathrooms", 3], ["price", 1.5], ["lat", 7.698744], ["lng", -0.593262], ["created_at", "2018-03-10 03:26:53.995732"], ["updated_at", "2018-03-10 03:26:53.995732"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "gorgeous"], ["maxpersons", 8], ["bathrooms", 3], ["price", 3.5], ["lat", 6.434036], ["lng", 16.501465], ["created_at", "2018-03-10 03:26:53.999112"], ["updated_at", "2018-03-10 03:26:53.999112"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["maxpersons", 6], ["bathrooms", 4], ["price", 0.5], ["lat", 42.827], ["lng", -75.5446], ["created_at", "2018-03-10 03:26:54.003533"], ["updated_at", "2018-03-10 03:26:54.003533"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["maxpersons", 4], ["bathrooms", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:26:54.005469"], ["updated_at", "2018-03-10 03:26:54.005469"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:26:54 -0500
+Processing by RentalPropertiesController#index as HTML
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (6.7ms)
+Completed 200 OK in 10ms (Views: 7.6ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "abhorrent"], ["maxpersons", 10], ["bathrooms", 3], ["price", 1.5], ["lat", 7.698744], ["lng", -0.593262], ["created_at", "2018-03-10 03:26:54.027932"], ["updated_at", "2018-03-10 03:26:54.027932"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (3.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "gorgeous"], ["maxpersons", 8], ["bathrooms", 3], ["price", 3.5], ["lat", 6.434036], ["lng", 16.501465], ["created_at", "2018-03-10 03:26:54.031720"], ["updated_at", "2018-03-10 03:26:54.031720"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["maxpersons", 6], ["bathrooms", 4], ["price", 0.5], ["lat", 42.827], ["lng", -75.5446], ["created_at", "2018-03-10 03:26:54.037189"], ["updated_at", "2018-03-10 03:26:54.037189"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["maxpersons", 4], ["bathrooms", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:26:54.038714"], ["updated_at", "2018-03-10 03:26:54.038714"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:26:54 -0500
+Processing by RentalPropertiesController#index as HTML
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (6.8ms)
+Completed 200 OK in 10ms (Views: 7.9ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "abhorrent"], ["maxpersons", 10], ["bathrooms", 3], ["price", 1.5], ["lat", 7.698744], ["lng", -0.593262], ["created_at", "2018-03-10 03:26:54.062270"], ["updated_at", "2018-03-10 03:26:54.062270"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "gorgeous"], ["maxpersons", 8], ["bathrooms", 3], ["price", 3.5], ["lat", 6.434036], ["lng", 16.501465], ["created_at", "2018-03-10 03:26:54.065519"], ["updated_at", "2018-03-10 03:26:54.065519"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["maxpersons", 6], ["bathrooms", 4], ["price", 0.5], ["lat", 42.827], ["lng", -75.5446], ["created_at", "2018-03-10 03:26:54.069885"], ["updated_at", "2018-03-10 03:26:54.069885"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["maxpersons", 4], ["bathrooms", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:26:54.071533"], ["updated_at", "2018-03-10 03:26:54.071533"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:26:54 -0500
+Processing by RentalPropertiesController#index as HTML
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (7.0ms)
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (6.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (67.4ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "abhorrent"], ["maxpersons", 10], ["bathrooms", 3], ["price", 1.5], ["lat", 7.698744], ["lng", -0.593262], ["created_at", "2018-03-10 03:26:54.105459"], ["updated_at", "2018-03-10 03:26:54.105459"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "gorgeous"], ["maxpersons", 8], ["bathrooms", 3], ["price", 3.5], ["lat", 6.434036], ["lng", 16.501465], ["created_at", "2018-03-10 03:26:54.174396"], ["updated_at", "2018-03-10 03:26:54.174396"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["maxpersons", 6], ["bathrooms", 4], ["price", 0.5], ["lat", 42.827], ["lng", -75.5446], ["created_at", "2018-03-10 03:26:54.178888"], ["updated_at", "2018-03-10 03:26:54.178888"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["maxpersons", 4], ["bathrooms", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:26:54.181137"], ["updated_at", "2018-03-10 03:26:54.181137"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:26:54 -0500
+Processing by RentalPropertiesController#index as HTML
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.6ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (6.7ms)
+Completed 200 OK in 10ms (Views: 7.6ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (5.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:26:54.206151"], ["updated_at", "2018-03-10 03:26:54.206151"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:26:54.210195"], ["updated_at", "2018-03-10 03:26:54.210195"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:26:54 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (3.5ms)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:26:54.229803"], ["updated_at", "2018-03-10 03:26:54.229803"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:26:54.233648"], ["updated_at", "2018-03-10 03:26:54.233648"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:26:54 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (3.8ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.3ms)
+Started GET "/rental_properties/1" for 127.0.0.1 at 2018-03-09 22:26:54 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"1"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.1ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.1ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:26:54.259386"], ["updated_at", "2018-03-10 03:26:54.259386"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:26:54.263122"], ["updated_at", "2018-03-10 03:26:54.263122"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:26:54 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (14.3ms)
+Completed 200 OK in 16ms (Views: 15.1ms | ActiveRecord: 0.4ms)
+Started GET "/rental_properties/2" for 127.0.0.1 at 2018-03-09 22:26:54 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"2"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.1ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (95.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:26:54.390760"], ["updated_at", "2018-03-10 03:26:54.390760"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:26:54.394194"], ["updated_at", "2018-03-10 03:26:54.394194"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:26:54 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (3.9ms)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.3ms)
+Started GET "/rental_properties/2" for 127.0.0.1 at 2018-03-09 22:26:54 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"2"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.1ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (1.6ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:26:54.420884"], ["updated_at", "2018-03-10 03:26:54.420884"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:26:54.424032"], ["updated_at", "2018-03-10 03:26:54.424032"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:26:54 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (4.0ms)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.3ms)
+Started GET "/rental_properties/2" for 127.0.0.1 at 2018-03-09 22:26:54 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"2"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.1ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:26:54.449551"], ["updated_at", "2018-03-10 03:26:54.449551"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:26:54.452848"], ["updated_at", "2018-03-10 03:26:54.452848"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:26:54 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (4.0ms)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.3ms)
+Started GET "/rental_properties/2" for 127.0.0.1 at 2018-03-09 22:26:54 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"2"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.1ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:26:54.478851"], ["updated_at", "2018-03-10 03:26:54.478851"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:26:54.482153"], ["updated_at", "2018-03-10 03:26:54.482153"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:26:54 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (4.6ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.3ms)
+Started GET "/rental_properties/1" for 127.0.0.1 at 2018-03-09 22:26:54 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"1"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:26:54.508717"], ["updated_at", "2018-03-10 03:26:54.508717"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:26:54.512075"], ["updated_at", "2018-03-10 03:26:54.512075"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:26:54 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (3.9ms)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.3ms)
+Started GET "/rental_properties/1" for 127.0.0.1 at 2018-03-09 22:26:54 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"1"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.1ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (1.5ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "address", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le"], ["description", ""], ["bedrooms", 2], ["beds", 2], ["maxpersons", 4], ["bathrooms", 1], ["pets_allowed", "f"], ["address", "Rockport, ME"], ["price", 120.5], ["created_at", "2018-03-10 03:26:54.566465"], ["updated_at", "2018-03-10 03:26:54.566465"]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.3ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "address", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le"], ["description", ""], ["bedrooms", 2], ["beds", 2], ["maxpersons", 4], ["bathrooms", 1], ["pets_allowed", "f"], ["address", "Rockport, ME"], ["price", 120.5], ["lat", 44.1845], ["lng", 69.0761], ["created_at", "2018-03-10 03:26:54.569804"], ["updated_at", "2018-03-10 03:26:54.569804"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "address", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le"], ["description", ""], ["bedrooms", 2], ["beds", 2], ["maxpersons", 4], ["bathrooms", 1], ["pets_allowed", "f"], ["address", "Rockport, ME"], ["price", 120.5], ["lat", 44.1845], ["lng", 69.0761], ["created_at", "2018-03-10 03:26:54.590093"], ["updated_at", "2018-03-10 03:26:54.590093"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mRentalProperty Load (0.1ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" ORDER BY "rental_properties"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (3.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "address", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le"], ["description", ""], ["bedrooms", 2], ["beds", 2], ["maxpersons", 4], ["bathrooms", 1], ["pets_allowed", "f"], ["address", "Rockport, ME"], ["price", 120.5], ["lat", 44.1845], ["lng", 69.0761], ["created_at", "2018-03-10 03:26:54.598917"], ["updated_at", "2018-03-10 03:26:54.598917"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mRentalProperty Load (0.0ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" ORDER BY "rental_properties"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 1"], ["bedrooms", 1], ["beds", 2], ["maxpersons", 4], ["bathrooms", 1], ["pets_allowed", "f"], ["price", 10.25], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:26:54.618233"], ["updated_at", "2018-03-10 03:26:54.618233"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 2"], ["bedrooms", 2], ["beds", 4], ["maxpersons", 8], ["bathrooms", 2], ["pets_allowed", "t"], ["price", 20.5], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:26:54.622115"], ["updated_at", "2018-03-10 03:26:54.622115"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 3"], ["bedrooms", 3], ["beds", 6], ["maxpersons", 12], ["bathrooms", 3], ["pets_allowed", "f"], ["price", 30.75], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:26:54.626044"], ["updated_at", "2018-03-10 03:26:54.626044"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (33.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 1"], ["bedrooms", 1], ["beds", 2], ["maxpersons", 4], ["bathrooms", 1], ["pets_allowed", "f"], ["price", 10.25], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:26:54.662956"], ["updated_at", "2018-03-10 03:26:54.662956"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 2"], ["bedrooms", 2], ["beds", 4], ["maxpersons", 8], ["bathrooms", 2], ["pets_allowed", "t"], ["price", 20.5], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:26:54.666550"], ["updated_at", "2018-03-10 03:26:54.666550"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 3"], ["bedrooms", 3], ["beds", 6], ["maxpersons", 12], ["bathrooms", 3], ["pets_allowed", "f"], ["price", 30.75], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:26:54.671315"], ["updated_at", "2018-03-10 03:26:54.671315"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 1"], ["bedrooms", 1], ["beds", 2], ["maxpersons", 4], ["bathrooms", 1], ["pets_allowed", "f"], ["price", 10.25], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:26:54.679412"], ["updated_at", "2018-03-10 03:26:54.679412"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 2"], ["bedrooms", 2], ["beds", 4], ["maxpersons", 8], ["bathrooms", 2], ["pets_allowed", "t"], ["price", 20.5], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:26:54.683258"], ["updated_at", "2018-03-10 03:26:54.683258"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 3"], ["bedrooms", 3], ["beds", 6], ["maxpersons", 12], ["bathrooms", 3], ["pets_allowed", "f"], ["price", 30.75], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:26:54.687603"], ["updated_at", "2018-03-10 03:26:54.687603"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (5.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 1"], ["bedrooms", 1], ["beds", 2], ["maxpersons", 4], ["bathrooms", 1], ["pets_allowed", "f"], ["price", 10.25], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:26:54.695994"], ["updated_at", "2018-03-10 03:26:54.695994"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (3.4ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 2"], ["bedrooms", 2], ["beds", 4], ["maxpersons", 8], ["bathrooms", 2], ["pets_allowed", "t"], ["price", 20.5], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:26:54.699573"], ["updated_at", "2018-03-10 03:26:54.699573"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 3"], ["bedrooms", 3], ["beds", 6], ["maxpersons", 12], ["bathrooms", 3], ["pets_allowed", "f"], ["price", 30.75], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:26:54.704680"], ["updated_at", "2018-03-10 03:26:54.704680"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 1"], ["bedrooms", 1], ["beds", 2], ["maxpersons", 4], ["bathrooms", 1], ["pets_allowed", "f"], ["price", 10.25], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:26:54.712570"], ["updated_at", "2018-03-10 03:26:54.712570"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 2"], ["bedrooms", 2], ["beds", 4], ["maxpersons", 8], ["bathrooms", 2], ["pets_allowed", "t"], ["price", 20.5], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:26:54.716004"], ["updated_at", "2018-03-10 03:26:54.716004"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 3"], ["bedrooms", 3], ["beds", 6], ["maxpersons", 12], ["bathrooms", 3], ["pets_allowed", "f"], ["price", 30.75], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:26:54.720425"], ["updated_at", "2018-03-10 03:26:54.720425"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 1"], ["bedrooms", 1], ["beds", 2], ["maxpersons", 4], ["bathrooms", 1], ["pets_allowed", "f"], ["price", 10.25], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:26:54.728288"], ["updated_at", "2018-03-10 03:26:54.728288"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 2"], ["bedrooms", 2], ["beds", 4], ["maxpersons", 8], ["bathrooms", 2], ["pets_allowed", "t"], ["price", 20.5], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:26:54.732008"], ["updated_at", "2018-03-10 03:26:54.732008"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 3"], ["bedrooms", 3], ["beds", 6], ["maxpersons", 12], ["bathrooms", 3], ["pets_allowed", "f"], ["price", 30.75], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:26:54.736352"], ["updated_at", "2018-03-10 03:26:54.736352"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (16.9ms)[0m  [1m[31mDELETE FROM "rental_properties";[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'rental_properties';[0m
+  [1m[35m (89.3ms)[0m  [1m[31mDELETE FROM "ar_internal_metadata";[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.2ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'ar_internal_metadata';[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:37:03.330497"], ["updated_at", "2018-03-10 03:37:03.330497"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (3.1ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:37:03.335221"], ["updated_at", "2018-03-10 03:37:03.335221"]]
+  [1m[35m (0.5ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:03 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (274.1ms)
+Completed 200 OK in 302ms (Views: 287.6ms | ActiveRecord: 0.4ms)
+Started GET "/rental_properties/new" for 127.0.0.1 at 2018-03-09 22:37:03 -0500
+Processing by RentalPropertiesController#new as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/new.html.haml within layouts/application
+  Rendered rental_properties/new.html.haml within layouts/application (14.2ms)
+Completed 200 OK in 17ms (Views: 15.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:37:03.708439"], ["updated_at", "2018-03-10 03:37:03.708439"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:37:03.711751"], ["updated_at", "2018-03-10 03:37:03.711751"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:03 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (4.7ms)
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.4ms)
+Started GET "/rental_properties/new" for 127.0.0.1 at 2018-03-09 22:37:03 -0500
+Processing by RentalPropertiesController#new as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/new.html.haml within layouts/application
+  Rendered rental_properties/new.html.haml within layouts/application (2.8ms)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:37:03.745421"], ["updated_at", "2018-03-10 03:37:03.745421"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:37:03.748619"], ["updated_at", "2018-03-10 03:37:03.748619"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:03 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (4.2ms)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.3ms)
+Started GET "/rental_properties/new" for 127.0.0.1 at 2018-03-09 22:37:03 -0500
+Processing by RentalPropertiesController#new as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/new.html.haml within layouts/application
+  Rendered rental_properties/new.html.haml within layouts/application (3.0ms)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:37:03.782459"], ["updated_at", "2018-03-10 03:37:03.782459"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:37:03.785558"], ["updated_at", "2018-03-10 03:37:03.785558"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:03 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (3.7ms)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.3ms)
+Started GET "/rental_properties/1" for 127.0.0.1 at 2018-03-09 22:37:03 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"1"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.1ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (5.4ms)
+Completed 200 OK in 20ms (Views: 6.8ms | ActiveRecord: 0.1ms)
+Started DELETE "/rental_properties/1" for 127.0.0.1 at 2018-03-09 22:37:03 -0500
+Processing by RentalPropertiesController#destroy as HTML
+  Parameters: {"id"=>"1"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.1ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "rental_properties" WHERE "rental_properties"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/rental_properties
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:03 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (2.7ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.2ms)
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:03 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (2.9ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "abhorrent"], ["maxpersons", 10], ["bathrooms", 3], ["price", 1.5], ["lat", 7.698744], ["lng", -0.593262], ["created_at", "2018-03-10 03:37:03.889490"], ["updated_at", "2018-03-10 03:37:03.889490"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "gorgeous"], ["maxpersons", 8], ["bathrooms", 3], ["price", 3.5], ["lat", 6.434036], ["lng", 16.501465], ["created_at", "2018-03-10 03:37:03.893152"], ["updated_at", "2018-03-10 03:37:03.893152"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["maxpersons", 6], ["bathrooms", 4], ["price", 0.5], ["lat", 42.827], ["lng", -75.5446], ["created_at", "2018-03-10 03:37:03.897708"], ["updated_at", "2018-03-10 03:37:03.897708"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["maxpersons", 4], ["bathrooms", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:37:03.899447"], ["updated_at", "2018-03-10 03:37:03.899447"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:03 -0500
+Processing by RentalPropertiesController#index as HTML
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (6.4ms)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "abhorrent"], ["maxpersons", 10], ["bathrooms", 3], ["price", 1.5], ["lat", 7.698744], ["lng", -0.593262], ["created_at", "2018-03-10 03:37:03.938537"], ["updated_at", "2018-03-10 03:37:03.938537"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "gorgeous"], ["maxpersons", 8], ["bathrooms", 3], ["price", 3.5], ["lat", 6.434036], ["lng", 16.501465], ["created_at", "2018-03-10 03:37:03.941921"], ["updated_at", "2018-03-10 03:37:03.941921"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["maxpersons", 6], ["bathrooms", 4], ["price", 0.5], ["lat", 42.827], ["lng", -75.5446], ["created_at", "2018-03-10 03:37:03.945994"], ["updated_at", "2018-03-10 03:37:03.945994"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["maxpersons", 4], ["bathrooms", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:37:03.947621"], ["updated_at", "2018-03-10 03:37:03.947621"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:03 -0500
+Processing by RentalPropertiesController#index as HTML
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (6.1ms)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 0.3ms)
+Started GET "/rental_properties?order=price" for 127.0.0.1 at 2018-03-09 22:37:03 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"order"=>"price"}
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" ORDER BY price[0m
+  Rendered rental_properties/index.html.haml within layouts/application (6.3ms)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "abhorrent"], ["maxpersons", 10], ["bathrooms", 3], ["price", 1.5], ["lat", 7.698744], ["lng", -0.593262], ["created_at", "2018-03-10 03:37:03.982312"], ["updated_at", "2018-03-10 03:37:03.982312"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (3.1ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "gorgeous"], ["maxpersons", 8], ["bathrooms", 3], ["price", 3.5], ["lat", 6.434036], ["lng", 16.501465], ["created_at", "2018-03-10 03:37:03.985386"], ["updated_at", "2018-03-10 03:37:03.985386"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["maxpersons", 6], ["bathrooms", 4], ["price", 0.5], ["lat", 42.827], ["lng", -75.5446], ["created_at", "2018-03-10 03:37:03.990290"], ["updated_at", "2018-03-10 03:37:03.990290"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["maxpersons", 4], ["bathrooms", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:37:03.992320"], ["updated_at", "2018-03-10 03:37:03.992320"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:03 -0500
+Processing by RentalPropertiesController#index as HTML
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (7.1ms)
+Completed 200 OK in 23ms (Views: 20.9ms | ActiveRecord: 0.4ms)
+Started GET "/rental_properties?order=maxpersons" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"order"=>"maxpersons"}
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.1ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" ORDER BY maxpersons[0m
+  Rendered rental_properties/index.html.haml within layouts/application (5.1ms)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (5.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "abhorrent"], ["maxpersons", 10], ["bathrooms", 3], ["price", 1.5], ["lat", 7.698744], ["lng", -0.593262], ["created_at", "2018-03-10 03:37:04.040804"], ["updated_at", "2018-03-10 03:37:04.040804"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "gorgeous"], ["maxpersons", 8], ["bathrooms", 3], ["price", 3.5], ["lat", 6.434036], ["lng", 16.501465], ["created_at", "2018-03-10 03:37:04.044415"], ["updated_at", "2018-03-10 03:37:04.044415"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["maxpersons", 6], ["bathrooms", 4], ["price", 0.5], ["lat", 42.827], ["lng", -75.5446], ["created_at", "2018-03-10 03:37:04.048852"], ["updated_at", "2018-03-10 03:37:04.048852"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["maxpersons", 4], ["bathrooms", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:37:04.050637"], ["updated_at", "2018-03-10 03:37:04.050637"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#index as HTML
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (6.0ms)
+Completed 200 OK in 9ms (Views: 7.0ms | ActiveRecord: 0.3ms)
+Started GET "/rental_properties?order=distance" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#index as HTML
+  Parameters: {"order"=>"distance"}
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.6ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (6.9ms)
+Completed 200 OK in 10ms (Views: 7.6ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.9ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "abhorrent"], ["maxpersons", 10], ["bathrooms", 3], ["price", 1.5], ["lat", 7.698744], ["lng", -0.593262], ["created_at", "2018-03-10 03:37:04.086439"], ["updated_at", "2018-03-10 03:37:04.086439"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "gorgeous"], ["maxpersons", 8], ["bathrooms", 3], ["price", 3.5], ["lat", 6.434036], ["lng", 16.501465], ["created_at", "2018-03-10 03:37:04.088935"], ["updated_at", "2018-03-10 03:37:04.088935"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["maxpersons", 6], ["bathrooms", 4], ["price", 0.5], ["lat", 42.827], ["lng", -75.5446], ["created_at", "2018-03-10 03:37:04.093106"], ["updated_at", "2018-03-10 03:37:04.093106"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["maxpersons", 4], ["bathrooms", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:37:04.094864"], ["updated_at", "2018-03-10 03:37:04.094864"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#index as HTML
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (6.4ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (7.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "abhorrent"], ["maxpersons", 10], ["bathrooms", 3], ["price", 1.5], ["lat", 7.698744], ["lng", -0.593262], ["created_at", "2018-03-10 03:37:04.120982"], ["updated_at", "2018-03-10 03:37:04.120982"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "gorgeous"], ["maxpersons", 8], ["bathrooms", 3], ["price", 3.5], ["lat", 6.434036], ["lng", 16.501465], ["created_at", "2018-03-10 03:37:04.124105"], ["updated_at", "2018-03-10 03:37:04.124105"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["maxpersons", 6], ["bathrooms", 4], ["price", 0.5], ["lat", 42.827], ["lng", -75.5446], ["created_at", "2018-03-10 03:37:04.128166"], ["updated_at", "2018-03-10 03:37:04.128166"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["maxpersons", 4], ["bathrooms", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:37:04.129521"], ["updated_at", "2018-03-10 03:37:04.129521"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#index as HTML
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (8.1ms)
+Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (8.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "abhorrent"], ["maxpersons", 10], ["bathrooms", 3], ["price", 1.5], ["lat", 7.698744], ["lng", -0.593262], ["created_at", "2018-03-10 03:37:04.158589"], ["updated_at", "2018-03-10 03:37:04.158589"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "gorgeous"], ["maxpersons", 8], ["bathrooms", 3], ["price", 3.5], ["lat", 6.434036], ["lng", 16.501465], ["created_at", "2018-03-10 03:37:04.161835"], ["updated_at", "2018-03-10 03:37:04.161835"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["maxpersons", 6], ["bathrooms", 4], ["price", 0.5], ["lat", 42.827], ["lng", -75.5446], ["created_at", "2018-03-10 03:37:04.165677"], ["updated_at", "2018-03-10 03:37:04.165677"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["maxpersons", 4], ["bathrooms", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:37:04.167179"], ["updated_at", "2018-03-10 03:37:04.167179"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#index as HTML
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.4ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (7.9ms)
+Completed 200 OK in 11ms (Views: 9.2ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (7.9ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "abhorrent"], ["maxpersons", 10], ["bathrooms", 3], ["price", 1.5], ["lat", 7.698744], ["lng", -0.593262], ["created_at", "2018-03-10 03:37:04.195531"], ["updated_at", "2018-03-10 03:37:04.195531"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "gorgeous"], ["maxpersons", 8], ["bathrooms", 3], ["price", 3.5], ["lat", 6.434036], ["lng", 16.501465], ["created_at", "2018-03-10 03:37:04.198642"], ["updated_at", "2018-03-10 03:37:04.198642"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["maxpersons", 6], ["bathrooms", 4], ["price", 0.5], ["lat", 42.827], ["lng", -75.5446], ["created_at", "2018-03-10 03:37:04.203223"], ["updated_at", "2018-03-10 03:37:04.203223"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["maxpersons", 4], ["bathrooms", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:37:04.204751"], ["updated_at", "2018-03-10 03:37:04.204751"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#index as HTML
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.9ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (10.9ms)
+Completed 200 OK in 15ms (Views: 12.1ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (8.9ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "abhorrent"], ["maxpersons", 10], ["bathrooms", 3], ["price", 1.5], ["lat", 7.698744], ["lng", -0.593262], ["created_at", "2018-03-10 03:37:04.244174"], ["updated_at", "2018-03-10 03:37:04.244174"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "gorgeous"], ["maxpersons", 8], ["bathrooms", 3], ["price", 3.5], ["lat", 6.434036], ["lng", 16.501465], ["created_at", "2018-03-10 03:37:04.247710"], ["updated_at", "2018-03-10 03:37:04.247710"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["maxpersons", 6], ["bathrooms", 4], ["price", 0.5], ["lat", 42.827], ["lng", -75.5446], ["created_at", "2018-03-10 03:37:04.252431"], ["updated_at", "2018-03-10 03:37:04.252431"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "maxpersons", "bathrooms", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["maxpersons", 4], ["bathrooms", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:37:04.254256"], ["updated_at", "2018-03-10 03:37:04.254256"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#index as HTML
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (11.2ms)
+Completed 200 OK in 16ms (Views: 12.8ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (7.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:37:04.287188"], ["updated_at", "2018-03-10 03:37:04.287188"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (3.3ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:37:04.290498"], ["updated_at", "2018-03-10 03:37:04.290498"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (5.5ms)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (8.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:37:04.317569"], ["updated_at", "2018-03-10 03:37:04.317569"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:37:04.320610"], ["updated_at", "2018-03-10 03:37:04.320610"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.5ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (4.9ms)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.5ms)
+Started GET "/rental_properties/1" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"1"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.1ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (1.7ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (8.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:37:04.408950"], ["updated_at", "2018-03-10 03:37:04.408950"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:37:04.412488"], ["updated_at", "2018-03-10 03:37:04.412488"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (5.4ms)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.2ms)
+Started GET "/rental_properties/2" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"2"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.1ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (2.3ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (8.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:37:04.445689"], ["updated_at", "2018-03-10 03:37:04.445689"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (3.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:37:04.448742"], ["updated_at", "2018-03-10 03:37:04.448742"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (4.6ms)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.2ms)
+Started GET "/rental_properties/2" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"2"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.1ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (1.5ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (7.9ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:37:04.482772"], ["updated_at", "2018-03-10 03:37:04.482772"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:37:04.486208"], ["updated_at", "2018-03-10 03:37:04.486208"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (5.0ms)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 0.3ms)
+Started GET "/rental_properties/2" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"2"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (8.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:37:04.527624"], ["updated_at", "2018-03-10 03:37:04.527624"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:37:04.530586"], ["updated_at", "2018-03-10 03:37:04.530586"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (3.7ms)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.3ms)
+Started GET "/rental_properties/2" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"2"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.1ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (1.5ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (8.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:37:04.560982"], ["updated_at", "2018-03-10 03:37:04.560982"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (24.5ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:37:04.563979"], ["updated_at", "2018-03-10 03:37:04.563979"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (4.2ms)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.3ms)
+Started GET "/rental_properties/1" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"1"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.3ms)
+Started GET "/rental_properties/1/edit" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#edit as HTML
+  Parameters: {"id"=>"1"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.2ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering rental_properties/edit.html.haml within layouts/application
+  Rendered rental_properties/edit.html.haml within layouts/application (5.8ms)
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (8.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "lovely"], ["description", "all you need to know"], ["maxpersons", 6], ["price", 0.5], ["lat", 51.692139], ["lng", -3.317871], ["created_at", "2018-03-10 03:37:04.630111"], ["updated_at", "2018-03-10 03:37:04.630111"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "maxpersons", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "stinky"], ["description", "yup, it smells"], ["maxpersons", 4], ["price", 2.3], ["lat", 35.80779], ["lng", -5.559082], ["created_at", "2018-03-10 03:37:04.633218"], ["updated_at", "2018-03-10 03:37:04.633218"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/rental_properties" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#index as HTML
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  Rendering rental_properties/index.html.haml within layouts/application
+  [1m[36mRentalProperty Load (0.3ms)[0m  [1m[34mSELECT "rental_properties".* FROM "rental_properties" WHERE (rental_properties.lat IS NOT NULL AND rental_properties.lng IS NOT NULL) ORDER BY 
+          (CASE WHEN rental_properties.lat IS NULL OR rental_properties.lng IS NULL THEN NULL ELSE
+          (ACOS(least(1,COS(0.7474721587516114)*COS(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*COS(RADIANS(rental_properties.lng))+
+          COS(0.7474721587516114)*SIN(-1.3185020021021083)*COS(RADIANS(rental_properties.lat))*SIN(RADIANS(rental_properties.lng))+
+          SIN(0.7474721587516114)*SIN(RADIANS(rental_properties.lat))))*3963.1899999999996)
+          END)
+          ASC[0m
+  Rendered rental_properties/index.html.haml within layouts/application (4.6ms)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.3ms)
+Started GET "/rental_properties/1" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#show as HTML
+  Parameters: {"id"=>"1"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.1ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering rental_properties/show.html.haml within layouts/application
+  Rendered rental_properties/show.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms)
+Started GET "/rental_properties/1/edit" for 127.0.0.1 at 2018-03-09 22:37:04 -0500
+Processing by RentalPropertiesController#edit as HTML
+  Parameters: {"id"=>"1"}
+Multi geocoding. address: 127.0.0.1, args []
+GeoPlugin geocoding. address: 127.0.0.1, args []
+Ip geocoding. address: 127.0.0.1, args []
+  [1m[36mRentalProperty Load (0.1ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" WHERE "rental_properties"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering rental_properties/edit.html.haml within layouts/application
+  Rendered rental_properties/edit.html.haml within layouts/application (2.7ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (7.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "address", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le"], ["description", ""], ["bedrooms", 2], ["beds", 2], ["maxpersons", 4], ["bathrooms", 1], ["pets_allowed", "f"], ["address", "Rockport, ME"], ["price", 120.5], ["created_at", "2018-03-10 03:37:04.677811"], ["updated_at", "2018-03-10 03:37:04.677811"]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (3.3ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "address", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le"], ["description", ""], ["bedrooms", 2], ["beds", 2], ["maxpersons", 4], ["bathrooms", 1], ["pets_allowed", "f"], ["address", "Rockport, ME"], ["price", 120.5], ["lat", 44.1845], ["lng", 69.0761], ["created_at", "2018-03-10 03:37:04.681306"], ["updated_at", "2018-03-10 03:37:04.681306"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "address", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le"], ["description", ""], ["bedrooms", 2], ["beds", 2], ["maxpersons", 4], ["bathrooms", 1], ["pets_allowed", "f"], ["address", "Rockport, ME"], ["price", 120.5], ["lat", 44.1845], ["lng", 69.0761], ["created_at", "2018-03-10 03:37:04.696851"], ["updated_at", "2018-03-10 03:37:04.696851"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mRentalProperty Load (0.1ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" ORDER BY "rental_properties"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (4.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "description", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "address", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le"], ["description", ""], ["bedrooms", 2], ["beds", 2], ["maxpersons", 4], ["bathrooms", 1], ["pets_allowed", "f"], ["address", "Rockport, ME"], ["price", 120.5], ["lat", 44.1845], ["lng", 69.0761], ["created_at", "2018-03-10 03:37:04.706737"], ["updated_at", "2018-03-10 03:37:04.706737"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mRentalProperty Load (0.1ms)[0m  [1m[34mSELECT  "rental_properties".* FROM "rental_properties" ORDER BY "rental_properties"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (3.9ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 1"], ["bedrooms", 1], ["beds", 2], ["maxpersons", 4], ["bathrooms", 1], ["pets_allowed", "f"], ["price", 10.25], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:37:04.721865"], ["updated_at", "2018-03-10 03:37:04.721865"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (3.5ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 2"], ["bedrooms", 2], ["beds", 4], ["maxpersons", 8], ["bathrooms", 2], ["pets_allowed", "t"], ["price", 20.5], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:37:04.724829"], ["updated_at", "2018-03-10 03:37:04.724829"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 3"], ["bedrooms", 3], ["beds", 6], ["maxpersons", 12], ["bathrooms", 3], ["pets_allowed", "f"], ["price", 30.75], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:37:04.729898"], ["updated_at", "2018-03-10 03:37:04.729898"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (8.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 1"], ["bedrooms", 1], ["beds", 2], ["maxpersons", 4], ["bathrooms", 1], ["pets_allowed", "f"], ["price", 10.25], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:37:04.742023"], ["updated_at", "2018-03-10 03:37:04.742023"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 2"], ["bedrooms", 2], ["beds", 4], ["maxpersons", 8], ["bathrooms", 2], ["pets_allowed", "t"], ["price", 20.5], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:37:04.745509"], ["updated_at", "2018-03-10 03:37:04.745509"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 3"], ["bedrooms", 3], ["beds", 6], ["maxpersons", 12], ["bathrooms", 3], ["pets_allowed", "f"], ["price", 30.75], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:37:04.749596"], ["updated_at", "2018-03-10 03:37:04.749596"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (8.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 1"], ["bedrooms", 1], ["beds", 2], ["maxpersons", 4], ["bathrooms", 1], ["pets_allowed", "f"], ["price", 10.25], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:37:04.761708"], ["updated_at", "2018-03-10 03:37:04.761708"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 2"], ["bedrooms", 2], ["beds", 4], ["maxpersons", 8], ["bathrooms", 2], ["pets_allowed", "t"], ["price", 20.5], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:37:04.764832"], ["updated_at", "2018-03-10 03:37:04.764832"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 3"], ["bedrooms", 3], ["beds", 6], ["maxpersons", 12], ["bathrooms", 3], ["pets_allowed", "f"], ["price", 30.75], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:37:04.768605"], ["updated_at", "2018-03-10 03:37:04.768605"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (8.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 1"], ["bedrooms", 1], ["beds", 2], ["maxpersons", 4], ["bathrooms", 1], ["pets_allowed", "f"], ["price", 10.25], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:37:04.780282"], ["updated_at", "2018-03-10 03:37:04.780282"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 2"], ["bedrooms", 2], ["beds", 4], ["maxpersons", 8], ["bathrooms", 2], ["pets_allowed", "t"], ["price", 20.5], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:37:04.783667"], ["updated_at", "2018-03-10 03:37:04.783667"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 3"], ["bedrooms", 3], ["beds", 6], ["maxpersons", 12], ["bathrooms", 3], ["pets_allowed", "f"], ["price", 30.75], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:37:04.787953"], ["updated_at", "2018-03-10 03:37:04.787953"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (8.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 1"], ["bedrooms", 1], ["beds", 2], ["maxpersons", 4], ["bathrooms", 1], ["pets_allowed", "f"], ["price", 10.25], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:37:04.800077"], ["updated_at", "2018-03-10 03:37:04.800077"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 2"], ["bedrooms", 2], ["beds", 4], ["maxpersons", 8], ["bathrooms", 2], ["pets_allowed", "t"], ["price", 20.5], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:37:04.803201"], ["updated_at", "2018-03-10 03:37:04.803201"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 3"], ["bedrooms", 3], ["beds", 6], ["maxpersons", 12], ["bathrooms", 3], ["pets_allowed", "f"], ["price", 30.75], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:37:04.807173"], ["updated_at", "2018-03-10 03:37:04.807173"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (8.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 1"], ["bedrooms", 1], ["beds", 2], ["maxpersons", 4], ["bathrooms", 1], ["pets_allowed", "f"], ["price", 10.25], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:37:04.819197"], ["updated_at", "2018-03-10 03:37:04.819197"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 2"], ["bedrooms", 2], ["beds", 4], ["maxpersons", 8], ["bathrooms", 2], ["pets_allowed", "t"], ["price", 20.5], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:37:04.822594"], ["updated_at", "2018-03-10 03:37:04.822594"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "rental_properties" ("title", "bedrooms", "beds", "maxpersons", "bathrooms", "pets_allowed", "price", "lat", "lng", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Pwll o le 3"], ["bedrooms", 3], ["beds", 6], ["maxpersons", 12], ["bathrooms", 3], ["pets_allowed", "f"], ["price", 30.75], ["lat", 0.0], ["lng", 0.0], ["created_at", "2018-03-10 03:37:04.826582"], ["updated_at", "2018-03-10 03:37:04.826582"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (7.7ms)[0m  [1m[31mrollback transaction[0m

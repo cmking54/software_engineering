@@ -1,0 +1,317 @@
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "photos"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (84.9ms)[0m  [1m[35mCREATE TABLE "photos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "caption" varchar, "image_file_name" varchar, "image_content_type" varchar, "image_file_size" integer, "image_updated_at" datetime, "sight_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (19.2ms)[0m  [1m[35mCREATE  INDEX "index_photos_on_sight_id" ON "photos" ("sight_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "sights"[0m
+  [1m[35m (24.2ms)[0m  [1m[35mCREATE TABLE "sights" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "up_down_votes"[0m
+  [1m[35m (18.6ms)[0m  [1m[35mCREATE TABLE "up_down_votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "upvote" boolean NOT NULL, "user_id" integer, "sight_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (16.6ms)[0m  [1m[35mCREATE  INDEX "index_up_down_votes_on_sight_id" ON "up_down_votes" ("sight_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_up_down_votes_on_sight_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_up_down_votes_on_sight_id' AND type='index'
+[0m
+  [1m[35m (15.8ms)[0m  [1m[35mCREATE  INDEX "index_up_down_votes_on_user_id" ON "up_down_votes" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (15.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "username" varchar NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (102.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (21.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (15.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_username" ON "users" ("username")[0m
+  [1m[35m (14.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (111.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20180306012459)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (46.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20180305004701),
+(20180305004842),
+(20180306012159);
+
+[0m
+  [1m[35m (16.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2018-04-06 20:35:49.186442"], ["updated_at", "2018-04-06 20:35:49.186442"]]
+  [1m[35m (14.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "photos"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (26.3ms)[0m  [1m[35mCREATE TABLE "photos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "caption" varchar, "image_file_name" varchar, "image_content_type" varchar, "image_file_size" integer, "image_updated_at" datetime, "sight_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (14.8ms)[0m  [1m[35mCREATE  INDEX "index_photos_on_sight_id" ON "photos" ("sight_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "sights"[0m
+  [1m[35m (13.4ms)[0m  [1m[35mCREATE TABLE "sights" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "up_down_votes"[0m
+  [1m[35m (13.1ms)[0m  [1m[35mCREATE TABLE "up_down_votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "upvote" boolean NOT NULL, "user_id" integer, "sight_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (15.3ms)[0m  [1m[35mCREATE  INDEX "index_up_down_votes_on_sight_id" ON "up_down_votes" ("sight_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_up_down_votes_on_sight_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_up_down_votes_on_sight_id' AND type='index'
+[0m
+  [1m[35m (16.0ms)[0m  [1m[35mCREATE  INDEX "index_up_down_votes_on_user_id" ON "up_down_votes" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (22.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "username" varchar NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (15.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (18.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (15.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_username" ON "users" ("username")[0m
+  [1m[35m (61.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (39.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20180306012459)[0m
+  [1m[35m (18.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20180305004701),
+(20180305004842),
+(20180306012159);
+
+[0m
+  [1m[35m (19.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2018-04-06 20:36:07.626157"], ["updated_at", "2018-04-06 20:36:07.626157"]]
+  [1m[35m (14.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.1ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered sights/index.html.haml within layouts/application (0.3ms)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 113ms (Views: 12.7ms | ActiveRecord: 1.3ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "sights" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "a"], ["created_at", "2018-04-06 20:36:07.936198"], ["updated_at", "2018-04-06 20:36:07.936198"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "x@x.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "x"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "x"], ["LIMIT", 1]]
+  [1m[35mSQL (4.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "x@x.com"], ["encrypted_password", "$2a$04$lce4MccSbpW6zPkD60UQuOdqGmVmd4IPw7sTuo0IXKz/CbvO0WMFO"], ["username", "x"], ["created_at", "2018-04-06 20:36:08.143182"], ["updated_at", "2018-04-06 20:36:08.143182"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "up_down_votes" ("upvote", "user_id", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["upvote", "t"], ["user_id", 1], ["sight_id", 1], ["created_at", "2018-04-06 20:36:08.231775"], ["updated_at", "2018-04-06 20:36:08.231775"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "up_down_votes" ("upvote", "user_id", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["upvote", "f"], ["user_id", 1], ["sight_id", 1], ["created_at", "2018-04-06 20:36:08.234979"], ["updated_at", "2018-04-06 20:36:08.234979"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "up_down_votes" ("upvote", "user_id", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["upvote", "f"], ["user_id", 1], ["sight_id", 1], ["created_at", "2018-04-06 20:36:08.237414"], ["updated_at", "2018-04-06 20:36:08.237414"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "sights" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "b"], ["created_at", "2018-04-06 20:36:08.239536"], ["updated_at", "2018-04-06 20:36:08.239536"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "y@y.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "y"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "y"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "y@y.com"], ["encrypted_password", "$2a$04$vwH0a7zDCN2QwMgS/R87reVcoi4zHLo/Iy8nrD1EIv6jBCjdLVCH."], ["username", "y"], ["created_at", "2018-04-06 20:36:08.249048"], ["updated_at", "2018-04-06 20:36:08.249048"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "up_down_votes" ("upvote", "user_id", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["upvote", "t"], ["user_id", 2], ["sight_id", 2], ["created_at", "2018-04-06 20:36:08.251414"], ["updated_at", "2018-04-06 20:36:08.251414"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "up_down_votes" ("upvote", "user_id", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["upvote", "t"], ["user_id", 2], ["sight_id", 2], ["created_at", "2018-04-06 20:36:08.253363"], ["updated_at", "2018-04-06 20:36:08.253363"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "up_down_votes" ("upvote", "user_id", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["upvote", "f"], ["user_id", 2], ["sight_id", 2], ["created_at", "2018-04-06 20:36:08.255096"], ["updated_at", "2018-04-06 20:36:08.255096"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.1ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  Rendered sights/index.html.haml within layouts/application (0.0ms)
+Completed 200 OK in 13ms (Views: 0.6ms | ActiveRecord: 0.3ms)
+  [1m[35m (9.9ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by SightsController#show as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://test.host/sights?lang=la
+Completed 302 Found in 10ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by SightsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering sights/show.html.haml within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered sights/show.html.haml within layouts/application (0.3ms)
+Completed 200 OK in 19ms (Views: 0.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "sights" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "x"], ["created_at", "2018-04-06 20:36:08.571133"], ["updated_at", "2018-04-06 20:36:08.571133"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+Processing by UpDownVotesController#upvote as HTML
+  Parameters: {"id"=>"1"}
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "x@x.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "x"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "x"], ["LIMIT", 1]]
+  [1m[35mSQL (2.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "x@x.com"], ["encrypted_password", "$2a$04$Fr6hkDm5aNaKL3tZ7UgneONyXF.oEKG9AfXtfHzvbZMwyIQMNCH1i"], ["username", "x"], ["created_at", "2018-04-06 20:36:09.024917"], ["updated_at", "2018-04-06 20:36:09.024917"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "sights" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "x"], ["created_at", "2018-04-06 20:36:09.029852"], ["updated_at", "2018-04-06 20:36:09.029852"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+Processing by UpDownVotesController#upvote as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "up_down_votes" ("upvote", "user_id", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["upvote", "t"], ["user_id", 1], ["sight_id", 1], ["created_at", "2018-04-06 20:36:09.073308"], ["updated_at", "2018-04-06 20:36:09.073308"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/sights/1?lang=la
+Completed 302 Found in 38ms (ActiveRecord: 0.7ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (8.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "x@x.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "x"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "x"], ["LIMIT", 1]]
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "x@x.com"], ["encrypted_password", "$2a$04$yQpiufCLISGVCyvTTQLpBe3nhUXHMAGCLz8HwpHeCv8RN84TXAC6S"], ["username", "x"], ["created_at", "2018-04-06 20:36:09.093575"], ["updated_at", "2018-04-06 20:36:09.093575"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "sights" ("title", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["title", "x"], ["created_at", "2018-04-06 20:36:09.097635"], ["updated_at", "2018-04-06 20:36:09.097635"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+Processing by UpDownVotesController#downvote as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSight Load (0.0ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "up_down_votes" ("upvote", "user_id", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["upvote", "f"], ["user_id", 1], ["sight_id", 1], ["created_at", "2018-04-06 20:36:09.109252"], ["updated_at", "2018-04-06 20:36:09.109252"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/sights/1?lang=la
+Completed 302 Found in 5ms (ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (6.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "x@x.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "x"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "x"], ["LIMIT", 1]]
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "x@x.com"], ["encrypted_password", "$2a$04$SMmD.c7WTCVm.MtZZ1.RO.MtkLlxOO5B7E0h7AT.3jYSa5sJpPBNq"], ["username", "x"], ["created_at", "2018-04-06 20:36:09.129670"], ["updated_at", "2018-04-06 20:36:09.129670"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by UpDownVotesController#upvote as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSight Load (0.1ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://test.host/sights?lang=la
+Completed 302 Found in 3ms (ActiveRecord: 1.0ms)
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "sights" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-04-06 20:36:09.143801"], ["updated_at", "2018-04-06 20:36:09.143801"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "x@example.tld"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "X"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "X"], ["LIMIT", 1]]
+  [1m[35mSQL (22.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "x@example.tld"], ["encrypted_password", "$2a$04$3wyQxYDWgWH9HdwLODoK2uxPaSbyySS6gcBookwOhp4Q8n1dyAJRe"], ["username", "X"], ["created_at", "2018-04-06 20:36:09.150325"], ["updated_at", "2018-04-06 20:36:09.150325"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "up_down_votes" ("upvote", "user_id", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["upvote", "t"], ["user_id", 1], ["sight_id", 1], ["created_at", "2018-04-06 20:36:09.175247"], ["updated_at", "2018-04-06 20:36:09.175247"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "up_down_votes" ("upvote", "user_id", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["upvote", "t"], ["user_id", 1], ["sight_id", 1], ["created_at", "2018-04-06 20:36:09.177787"], ["updated_at", "2018-04-06 20:36:09.177787"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (9.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.3ms)[0m  [1m[32mINSERT INTO "sights" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2018-04-06 20:36:09.193134"], ["updated_at", "2018-04-06 20:36:09.193134"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "x@example.tld"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "X"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "X"], ["LIMIT", 1]]
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "x@example.tld"], ["encrypted_password", "$2a$04$Vj2p0HTwgI7sqlUangrRUeBylyRZyrAHoansS1IO2TgMJwYmG9w6K"], ["username", "X"], ["created_at", "2018-04-06 20:36:09.201583"], ["updated_at", "2018-04-06 20:36:09.201583"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "up_down_votes" ("upvote", "user_id", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["upvote", "f"], ["user_id", 1], ["sight_id", 1], ["created_at", "2018-04-06 20:36:09.208465"], ["updated_at", "2018-04-06 20:36:09.208465"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "up_down_votes" ("upvote", "user_id", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["upvote", "f"], ["user_id", 1], ["sight_id", 1], ["created_at", "2018-04-06 20:36:09.211481"], ["updated_at", "2018-04-06 20:36:09.211481"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (8.6ms)[0m  [1m[31mrollback transaction[0m

@@ -1,0 +1,47 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Colgate Sustainability
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = favicon_link_tag 'favicon.ico'
+
+  %div.navbar.bg-white
+    %a.navbar-brand{ :href => root_path}= image_tag("sus_logo.jpg", :height => 50)
+    = link_to "Events", meetings_path, class: "nav-link nav-item"
+    = link_to "People", people_path, class: "nav-link nav-item"
+    = link_to "Leaderboard", leaderboard_path, class: "nav-link nav-item"
+    = link_to "About Us", about_path, class: "nav-link nav-item"
+    -if current_person
+      =link_to  "Signed in as #{current_person.first_name} #{current_person.last_name}", person_path(current_person.id)
+      %br
+      =link_to "Sign out", signout_path, id:"sign_out", class: "nav-link nav-item"
+    -else
+      =link_to "Sign in with Google",person_google_oauth2_omniauth_authorize_path, class: "nav-link nav-item"
+
+  %body
+    %br
+    %br
+    %br
+
+
+    -if flash[:notice] || flash[:error] || flash[:alert]
+      .flash
+        -if flash[:notice]
+          .alert.alert-info.centered= flash[:notice]
+        -if flash[:error]
+          .alert.alert-danger.centered= flash[:error]
+        -if flash[:alert]
+          .alert.alert-warning.centered= flash[:alert]
+    = yield
+    %footer.fixed-bottom.green-background
+      %div.footer.text-center
+        %f.main Colgate Sustainability Passport Program
+        %br
+        %f= link_to "Home", meetings_path, {:class => "text-white"}
+        %f.text-white •
+        %f= link_to "About", about_path, {:class => "text-white"}
+        %f.text-white •
+        %f= link_to "Contact Us", contact_path, {:class => "text-white"}

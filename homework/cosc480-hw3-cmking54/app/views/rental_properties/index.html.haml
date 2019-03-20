@@ -1,0 +1,28 @@
+#main.container
+    %h3.header Properties available for rent
+
+    %table.table
+        %thead
+            %tr
+                %th= link_to 'Property', rental_properties_path(:sort => 'title')
+                %th Description
+                %th= link_to 'Details', rental_properties_path(:sort => 'maxpersons') 
+                %th.right_align= link_to 'Distance from you', rental_properties_path
+                %th.right_align= link_to 'Price per night', rental_properties_path(:sort => 'price')
+        - @properties. each do |p|
+            %tr
+                %th.title= link_to(p.title, p)
+                %th= truncate(p.description, :separator => ' ', :length => 20)
+                - details = %Q{Sleeps #{p.maxpersons}, 
+                                with #{pluralize(p.bedrooms, 'bedroom')}, 
+                                #{pluralize(p.beds, 'bed')}, 
+                                and #{pluralize(p.bathrooms, 'bathroom')}. }
+                - details += "Pets are #{if p.pets_allowed then '' else 'not' end} allowed."
+                %th= details
+                - dist = p.distance_from @location
+                - if dist.nil?
+                    %th.right_align= 'Unknown'
+                - else
+                    %th.right_align= number_to_human dist
+                %th.right_align= number_to_currency p.price
+

@@ -1,0 +1,18 @@
+#main.container
+- p = @property
+%h2.center_align.bold= p.title
+%h3.center_align= p.description
+- details = %Q{Sleeps #{p.maxpersons},
+                with #{pluralize(p.bedrooms, 'bedroom')},
+                #{pluralize(p.beds, 'bed')},
+                and #{pluralize(p.bathrooms, 'bathroom')}. }
+- details += "Pets are #{if p.pets_allowed then '' else 'not' end} allowed."
+%h4.center_align.underlined= details
+- dist = p.distance_from @location
+- if dist.nil?
+    - dist = 'Unknown'
+- else
+    - dist = "#{number_to_human dist} miles away from you."
+- cost = "For Only #{number_to_currency p.price} a day!"
+%h5.bold.center_align= (dist + '                        ' + cost)
+%div= link_to('Back to rental properties list', rental_properties_path)

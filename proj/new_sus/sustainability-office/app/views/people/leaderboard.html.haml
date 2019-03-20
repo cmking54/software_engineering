@@ -1,0 +1,57 @@
+#main.container-fluid
+  %h3.tierheader Sustainability Champions: <small>(14+ Points)</small>
+  %table.table.table-responsive.table-bordered
+    %col.col1
+    %col.col2
+    %col.col3
+    %thead.thead-light
+      %tr
+        %th.col1 Rank
+        %th.col2 Name
+        %th.col3 Points
+
+    %tbody
+      -@champions.each_with_index do |u, index|
+        %tr.tablecontents
+          %td.place= "#{(index + 1).to_s + "."}"
+          %td.name= link_to "#{u.first_name} #{u.last_name}", person_path(u)
+          %td.points= "#{u.points}"
+  %br
+
+  %h3.tierheader Sustainability Advocates: <small>(10-13 Points)</small>
+  %table.table.table-responsive.table-bordered
+    %col.col1
+    %col.col2
+    %col.col3
+    %thead.thead-light
+      %tr
+        %th Rank
+        %th Name
+        %th Points
+
+    %tbody
+      -@advocates.each_with_index do |u, index|
+        %tr.tablecontents
+          %td.place= "#{(index + 1).to_s + "."}"
+          %td.name= link_to "#{u.first_name} #{u.last_name}", person_path(u)
+          %td.points= "#{u.points}"
+  %br
+
+  %h3.tierheader Sustainability Associates: <small>(6-9 Points)</small>
+  %table.table.table-responsive.table-bordered
+    %col.col1
+    %col.col2
+    %col.col3
+    %thead.thead-light
+      %tr
+        %th Rank
+        %th Name
+        %th Points
+
+    %tbody
+      -@associates.each_with_index do |u, index|
+        %tr.tablecontents
+          %td.place= "#{(index + 1).to_s + "."}"
+          %td.name= link_to "#{u.first_name} #{u.last_name}", person_path(u)
+          %td.points= "#{u.points}"
+  %br

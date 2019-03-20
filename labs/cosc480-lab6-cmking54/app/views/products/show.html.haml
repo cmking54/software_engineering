@@ -1,0 +1,33 @@
+#main
+  %table.products_table
+    %caption
+      Product details for
+      %span.productname= @product.name
+
+    %tr.products_header
+      %th Description
+      %th Appropriate ages
+      %th Price
+
+    %tr.product
+      %td.productdesc= @product.description
+      %td.productages= @product.age_range
+      %td.productprice= number_to_currency(@product.price)
+
+  %table.reviews_table
+    %caption
+      ="Average Rating: #{@product.average_rating.round 1}"
+
+    %tr.reviews_header
+      %th Stars 
+      %th Description
+      %th Submitted by
+
+    - @product.reviews.each do |review|
+      %tr.review
+        %td.reviewstars= review.stars
+        %td.reviewtext= review.review
+        - first, last = review.customer.first, review.customer.last
+        %td.reviewrating= "#{first[0]}. #{last}"
+
+  =link_to("Back to product list", products_path)

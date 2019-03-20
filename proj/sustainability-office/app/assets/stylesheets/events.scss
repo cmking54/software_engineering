@@ -1,0 +1,73 @@
+// Place all the styles related to the Events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import url(https://fonts.googleapis.com/css?family=Sumana);
+
+
+$color-primary-0: #E3E3DE;
+$color-font-0: #525252;
+$color-background-0: #FFFFFF;
+
+
+@mixin fonty($size) {
+    font-family:Garamond, Georgia, serif;
+    font-size: $size;
+    font-weight: 200;
+    font-style: normal;
+}
+
+body{
+  font-family:Garamond, Georgia, serif;
+  background-color: $color-background-0;
+
+  .header{
+    color: $color-font-0;
+    font-size: 14pt;
+    padding: 30px;
+  }
+
+  .recurringheader{
+    color: $color-font-0;
+    line-height: 90%;
+    position: relative;
+    top: 0px;
+    width: 90%;
+    left: 5%;
+  }
+
+  .recurring_events_table, .nonrecurring_events_table{
+    line-height: 120%;
+    position: relative;
+    top: 10px;
+    width: 80%;
+    left: 5%;
+    background-color: $color-primary-0;
+    color: $color-font-0;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: left;
+    @include fonty(20pt);
+  }
+
+  .eventbody, .eventheaders{
+    text-align: left;
+  }
+
+  .message {
+    color: red;
+    text-align: center;
+  }
+
+  .select-date {
+    display:flex;
+    flex-direction: row;
+    margin-bottom: 0px;
+  }
+
+  .add-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+
+}

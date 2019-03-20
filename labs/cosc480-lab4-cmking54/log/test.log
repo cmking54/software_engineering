@@ -1,0 +1,768 @@
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "nada"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:08:35.559644"], ["updated_at", "2018-02-23 19:08:35.559644"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (15.6ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "nada"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:08:35.563556"], ["updated_at", "2018-02-23 19:08:35.563556"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "coconut borer"], ["description", "nada"], ["price", 0.99], ["created_at", "2018-02-23 19:08:35.580355"], ["updated_at", "2018-02-23 19:08:35.580355"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "donut holer"], ["description", "nada"], ["price", 50.0], ["minimum_age_appropriate", 1], ["maximum_age_appropriate", 6], ["created_at", "2018-02-23 19:08:35.581485"], ["updated_at", "2018-02-23 19:08:35.581485"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:08:35 -0500
+Processing by ProductsController#index as HTML
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms)
+  [1m[35m (4.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "nada"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:08:35.645560"], ["updated_at", "2018-02-23 19:08:35.645560"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "nada"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:08:35.648645"], ["updated_at", "2018-02-23 19:08:35.648645"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "coconut borer"], ["description", "nada"], ["price", 0.99], ["created_at", "2018-02-23 19:08:35.652777"], ["updated_at", "2018-02-23 19:08:35.652777"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "donut holer"], ["description", "nada"], ["price", 50.0], ["minimum_age_appropriate", 1], ["maximum_age_appropriate", 6], ["created_at", "2018-02-23 19:08:35.654343"], ["updated_at", "2018-02-23 19:08:35.654343"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:08:35 -0500
+Processing by ProductsController#index as HTML
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+  [1m[35m (4.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "nada"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:08:35.668977"], ["updated_at", "2018-02-23 19:08:35.668977"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "nada"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:08:35.671782"], ["updated_at", "2018-02-23 19:08:35.671782"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "coconut borer"], ["description", "nada"], ["price", 0.99], ["created_at", "2018-02-23 19:08:35.675587"], ["updated_at", "2018-02-23 19:08:35.675587"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "donut holer"], ["description", "nada"], ["price", 50.0], ["minimum_age_appropriate", 1], ["maximum_age_appropriate", 6], ["created_at", "2018-02-23 19:08:35.676972"], ["updated_at", "2018-02-23 19:08:35.676972"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:08:35 -0500
+Processing by ProductsController#index as HTML
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+  [1m[35m (4.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "nada"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:08:35.692519"], ["updated_at", "2018-02-23 19:08:35.692519"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "nada"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:08:35.695508"], ["updated_at", "2018-02-23 19:08:35.695508"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "coconut borer"], ["description", "nada"], ["price", 0.99], ["created_at", "2018-02-23 19:08:35.699593"], ["updated_at", "2018-02-23 19:08:35.699593"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "donut holer"], ["description", "nada"], ["price", 50.0], ["minimum_age_appropriate", 1], ["maximum_age_appropriate", 6], ["created_at", "2018-02-23 19:08:35.701121"], ["updated_at", "2018-02-23 19:08:35.701121"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:08:35 -0500
+Processing by ProductsController#index as HTML
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+  [1m[35m (4.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "apple description"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:08:35.716023"], ["updated_at", "2018-02-23 19:08:35.716023"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "banana description"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:08:35.719605"], ["updated_at", "2018-02-23 19:08:35.719605"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:08:35 -0500
+Processing by ProductsController#index as HTML
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+  [1m[35m (4.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "apple description"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:08:35.737312"], ["updated_at", "2018-02-23 19:08:35.737312"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "banana description"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:08:35.740307"], ["updated_at", "2018-02-23 19:08:35.740307"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:08:35 -0500
+Processing by ProductsController#index as HTML
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+  [1m[35m (4.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "apple description"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:08:35.758634"], ["updated_at", "2018-02-23 19:08:35.758634"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "banana description"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:08:35.761734"], ["updated_at", "2018-02-23 19:08:35.761734"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:08:35 -0500
+Processing by ProductsController#index as HTML
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+  [1m[35m (4.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "nada"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:10:26.642385"], ["updated_at", "2018-02-23 19:10:26.642385"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "nada"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:10:26.646025"], ["updated_at", "2018-02-23 19:10:26.646025"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "coconut borer"], ["description", "nada"], ["price", 0.99], ["created_at", "2018-02-23 19:10:26.650662"], ["updated_at", "2018-02-23 19:10:26.650662"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "donut holer"], ["description", "nada"], ["price", 50.0], ["minimum_age_appropriate", 1], ["maximum_age_appropriate", 6], ["created_at", "2018-02-23 19:10:26.652293"], ["updated_at", "2018-02-23 19:10:26.652293"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:10:26 -0500
+Processing by ProductsController#index as HTML
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms)
+  [1m[35m (4.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (47.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "nada"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:10:26.712967"], ["updated_at", "2018-02-23 19:10:26.712967"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "nada"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:10:26.761582"], ["updated_at", "2018-02-23 19:10:26.761582"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "coconut borer"], ["description", "nada"], ["price", 0.99], ["created_at", "2018-02-23 19:10:26.766012"], ["updated_at", "2018-02-23 19:10:26.766012"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "donut holer"], ["description", "nada"], ["price", 50.0], ["minimum_age_appropriate", 1], ["maximum_age_appropriate", 6], ["created_at", "2018-02-23 19:10:26.767747"], ["updated_at", "2018-02-23 19:10:26.767747"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:10:26 -0500
+Processing by ProductsController#index as HTML
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+  [1m[35m (8.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "nada"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:10:26.787558"], ["updated_at", "2018-02-23 19:10:26.787558"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "nada"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:10:26.790273"], ["updated_at", "2018-02-23 19:10:26.790273"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "coconut borer"], ["description", "nada"], ["price", 0.99], ["created_at", "2018-02-23 19:10:26.794386"], ["updated_at", "2018-02-23 19:10:26.794386"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "donut holer"], ["description", "nada"], ["price", 50.0], ["minimum_age_appropriate", 1], ["maximum_age_appropriate", 6], ["created_at", "2018-02-23 19:10:26.795817"], ["updated_at", "2018-02-23 19:10:26.795817"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:10:26 -0500
+Processing by ProductsController#index as HTML
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+  [1m[35m (4.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "nada"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:10:26.810386"], ["updated_at", "2018-02-23 19:10:26.810386"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "nada"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:10:26.813212"], ["updated_at", "2018-02-23 19:10:26.813212"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "coconut borer"], ["description", "nada"], ["price", 0.99], ["created_at", "2018-02-23 19:10:26.817790"], ["updated_at", "2018-02-23 19:10:26.817790"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "donut holer"], ["description", "nada"], ["price", 50.0], ["minimum_age_appropriate", 1], ["maximum_age_appropriate", 6], ["created_at", "2018-02-23 19:10:26.819281"], ["updated_at", "2018-02-23 19:10:26.819281"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:10:26 -0500
+Processing by ProductsController#index as HTML
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+  [1m[35m (4.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "apple description"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:10:26.834191"], ["updated_at", "2018-02-23 19:10:26.834191"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "banana description"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:10:26.837782"], ["updated_at", "2018-02-23 19:10:26.837782"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:10:26 -0500
+Processing by ProductsController#index as HTML
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+  [1m[35m (5.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "apple description"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:10:26.856240"], ["updated_at", "2018-02-23 19:10:26.856240"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "banana description"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:10:26.859103"], ["updated_at", "2018-02-23 19:10:26.859103"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:10:26 -0500
+Processing by ProductsController#index as HTML
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+  [1m[35m (4.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "apple description"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:10:26.878008"], ["updated_at", "2018-02-23 19:10:26.878008"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "banana description"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:10:26.880900"], ["updated_at", "2018-02-23 19:10:26.880900"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:10:26 -0500
+Processing by ProductsController#index as HTML
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+  [1m[35m (27.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "nada"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:12:23.865323"], ["updated_at", "2018-02-23 19:12:23.865323"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "nada"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:12:23.868440"], ["updated_at", "2018-02-23 19:12:23.868440"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "coconut borer"], ["description", "nada"], ["price", 0.99], ["created_at", "2018-02-23 19:12:23.872422"], ["updated_at", "2018-02-23 19:12:23.872422"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "donut holer"], ["description", "nada"], ["price", 50.0], ["minimum_age_appropriate", 1], ["maximum_age_appropriate", 6], ["created_at", "2018-02-23 19:12:23.873741"], ["updated_at", "2018-02-23 19:12:23.873741"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:12:23 -0500
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (485.7ms)
+Completed 200 OK in 1417ms (Views: 1410.3ms | ActiveRecord: 0.2ms)
+  [1m[35m (4.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "nada"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:12:25.424479"], ["updated_at", "2018-02-23 19:12:25.424479"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "nada"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:12:25.427168"], ["updated_at", "2018-02-23 19:12:25.427168"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "coconut borer"], ["description", "nada"], ["price", 0.99], ["created_at", "2018-02-23 19:12:25.431526"], ["updated_at", "2018-02-23 19:12:25.431526"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "donut holer"], ["description", "nada"], ["price", 50.0], ["minimum_age_appropriate", 1], ["maximum_age_appropriate", 6], ["created_at", "2018-02-23 19:12:25.432896"], ["updated_at", "2018-02-23 19:12:25.432896"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:12:25 -0500
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (1.8ms)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.1ms)
+Started GET "/products?order=price" for 127.0.0.1 at 2018-02-23 14:12:25 -0500
+Processing by ProductsController#index as HTML
+  Parameters: {"order"=>"price"}
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY price[0m
+  Rendered products/index.html.haml within layouts/application (1.9ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.1ms)
+  [1m[35m (7.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "nada"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:12:25.456927"], ["updated_at", "2018-02-23 19:12:25.456927"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "nada"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:12:25.459589"], ["updated_at", "2018-02-23 19:12:25.459589"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "coconut borer"], ["description", "nada"], ["price", 0.99], ["created_at", "2018-02-23 19:12:25.464410"], ["updated_at", "2018-02-23 19:12:25.464410"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "donut holer"], ["description", "nada"], ["price", 50.0], ["minimum_age_appropriate", 1], ["maximum_age_appropriate", 6], ["created_at", "2018-02-23 19:12:25.465883"], ["updated_at", "2018-02-23 19:12:25.465883"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:12:25 -0500
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (1.7ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.1ms)
+Started GET "/products?order=age" for 127.0.0.1 at 2018-02-23 14:12:25 -0500
+Processing by ProductsController#index as HTML
+  Parameters: {"order"=>"age"}
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY minimum_age_appropriate[0m
+  Rendered products/index.html.haml within layouts/application (1.6ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms)
+  [1m[35m (8.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "nada"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:12:25.488266"], ["updated_at", "2018-02-23 19:12:25.488266"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "nada"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:12:25.490715"], ["updated_at", "2018-02-23 19:12:25.490715"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "coconut borer"], ["description", "nada"], ["price", 0.99], ["created_at", "2018-02-23 19:12:25.494539"], ["updated_at", "2018-02-23 19:12:25.494539"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "donut holer"], ["description", "nada"], ["price", 50.0], ["minimum_age_appropriate", 1], ["maximum_age_appropriate", 6], ["created_at", "2018-02-23 19:12:25.495764"], ["updated_at", "2018-02-23 19:12:25.495764"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:12:25 -0500
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (1.8ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.1ms)
+Started GET "/products?order=name" for 127.0.0.1 at 2018-02-23 14:12:25 -0500
+Processing by ProductsController#index as HTML
+  Parameters: {"order"=>"name"}
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (1.7ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.2ms)
+  [1m[35m (9.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "apple description"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:12:25.519895"], ["updated_at", "2018-02-23 19:12:25.519895"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "banana description"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:12:25.523009"], ["updated_at", "2018-02-23 19:12:25.523009"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:12:25 -0500
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (1.6ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.2ms)
+  [1m[35m (8.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "apple description"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:12:25.543745"], ["updated_at", "2018-02-23 19:12:25.543745"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "banana description"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:12:25.546285"], ["updated_at", "2018-02-23 19:12:25.546285"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:12:25 -0500
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms)
+Started GET "/products/1" for 127.0.0.1 at 2018-02-23 14:12:25 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering products/show.html.haml within layouts/application
+  Rendered products/show.html.haml within layouts/application (3.3ms)
+Completed 200 OK in 37ms (Views: 4.6ms | ActiveRecord: 0.2ms)
+  [1m[35m (10.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "apple description"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:12:25.674924"], ["updated_at", "2018-02-23 19:12:25.674924"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "banana description"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:12:25.677975"], ["updated_at", "2018-02-23 19:12:25.677975"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:12:25 -0500
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (1.7ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.1ms)
+Started GET "/products/2" for 127.0.0.1 at 2018-02-23 14:12:25 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering products/show.html.haml within layouts/application
+  Rendered products/show.html.haml within layouts/application (0.4ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.2ms)
+  [1m[35m (9.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "nada"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:15:38.433005"], ["updated_at", "2018-02-23 19:15:38.433005"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "nada"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:15:38.436600"], ["updated_at", "2018-02-23 19:15:38.436600"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "coconut borer"], ["description", "nada"], ["price", 0.99], ["created_at", "2018-02-23 19:15:38.441366"], ["updated_at", "2018-02-23 19:15:38.441366"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "donut holer"], ["description", "nada"], ["price", 50.0], ["minimum_age_appropriate", 1], ["maximum_age_appropriate", 6], ["created_at", "2018-02-23 19:15:38.442922"], ["updated_at", "2018-02-23 19:15:38.442922"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:15:38 -0500
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (83.4ms)
+Completed 200 OK in 207ms (Views: 200.5ms | ActiveRecord: 0.1ms)
+  [1m[35m (5.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "nada"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:15:38.703629"], ["updated_at", "2018-02-23 19:15:38.703629"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "nada"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:15:38.706947"], ["updated_at", "2018-02-23 19:15:38.706947"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "coconut borer"], ["description", "nada"], ["price", 0.99], ["created_at", "2018-02-23 19:15:38.711735"], ["updated_at", "2018-02-23 19:15:38.711735"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "donut holer"], ["description", "nada"], ["price", 50.0], ["minimum_age_appropriate", 1], ["maximum_age_appropriate", 6], ["created_at", "2018-02-23 19:15:38.713383"], ["updated_at", "2018-02-23 19:15:38.713383"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:15:38 -0500
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (3.2ms)
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.3ms)
+Started GET "/products?order=price" for 127.0.0.1 at 2018-02-23 14:15:38 -0500
+Processing by ProductsController#index as HTML
+  Parameters: {"order"=>"price"}
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY price[0m
+  Rendered products/index.html.haml within layouts/application (3.0ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.2ms)
+  [1m[35m (9.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "nada"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:15:38.744985"], ["updated_at", "2018-02-23 19:15:38.744985"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "nada"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:15:38.747793"], ["updated_at", "2018-02-23 19:15:38.747793"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "coconut borer"], ["description", "nada"], ["price", 0.99], ["created_at", "2018-02-23 19:15:38.752085"], ["updated_at", "2018-02-23 19:15:38.752085"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "donut holer"], ["description", "nada"], ["price", 50.0], ["minimum_age_appropriate", 1], ["maximum_age_appropriate", 6], ["created_at", "2018-02-23 19:15:38.753669"], ["updated_at", "2018-02-23 19:15:38.753669"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:15:38 -0500
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (2.0ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.1ms)
+Started GET "/products?order=age" for 127.0.0.1 at 2018-02-23 14:15:38 -0500
+Processing by ProductsController#index as HTML
+  Parameters: {"order"=>"age"}
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY minimum_age_appropriate[0m
+  Rendered products/index.html.haml within layouts/application (2.0ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.2ms)
+  [1m[35m (4.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (9.0ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "nada"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:15:38.774172"], ["updated_at", "2018-02-23 19:15:38.774172"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.9ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "nada"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:15:38.784739"], ["updated_at", "2018-02-23 19:15:38.784739"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "coconut borer"], ["description", "nada"], ["price", 0.99], ["created_at", "2018-02-23 19:15:38.789899"], ["updated_at", "2018-02-23 19:15:38.789899"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "donut holer"], ["description", "nada"], ["price", 50.0], ["minimum_age_appropriate", 1], ["maximum_age_appropriate", 6], ["created_at", "2018-02-23 19:15:38.791041"], ["updated_at", "2018-02-23 19:15:38.791041"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:15:38 -0500
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (1.7ms)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.1ms)
+Started GET "/products?order=name" for 127.0.0.1 at 2018-02-23 14:15:38 -0500
+Processing by ProductsController#index as HTML
+  Parameters: {"order"=>"name"}
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (1.7ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.2ms)
+  [1m[35m (4.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "apple description"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:15:38.810371"], ["updated_at", "2018-02-23 19:15:38.810371"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "banana description"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:15:38.813998"], ["updated_at", "2018-02-23 19:15:38.813998"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:15:38 -0500
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.1ms)
+  [1m[35m (8.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "apple description"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:15:38.833211"], ["updated_at", "2018-02-23 19:15:38.833211"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "banana description"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:15:38.835838"], ["updated_at", "2018-02-23 19:15:38.835838"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:15:38 -0500
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (1.7ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.2ms)
+Started GET "/products/1" for 127.0.0.1 at 2018-02-23 14:15:38 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering products/show.html.haml within layouts/application
+  Rendered products/show.html.haml within layouts/application (3.1ms)
+Completed 200 OK in 14ms (Views: 4.3ms | ActiveRecord: 0.1ms)
+  [1m[35m (8.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "apple description"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:15:38.873675"], ["updated_at", "2018-02-23 19:15:38.873675"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.9ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "banana description"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:15:38.876515"], ["updated_at", "2018-02-23 19:15:38.876515"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:15:38 -0500
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.2ms)
+Started GET "/products/2" for 127.0.0.1 at 2018-02-23 14:15:38 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering products/show.html.haml within layouts/application
+  Rendered products/show.html.haml within layouts/application (0.4ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+  [1m[35m (8.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "nada"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:17:12.074383"], ["updated_at", "2018-02-23 19:17:12.074383"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "nada"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:17:12.078130"], ["updated_at", "2018-02-23 19:17:12.078130"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "coconut borer"], ["description", "nada"], ["price", 0.99], ["created_at", "2018-02-23 19:17:12.082414"], ["updated_at", "2018-02-23 19:17:12.082414"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "donut holer"], ["description", "nada"], ["price", 50.0], ["minimum_age_appropriate", 1], ["maximum_age_appropriate", 6], ["created_at", "2018-02-23 19:17:12.083884"], ["updated_at", "2018-02-23 19:17:12.083884"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:17:12 -0500
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (81.8ms)
+Completed 200 OK in 203ms (Views: 196.5ms | ActiveRecord: 0.1ms)
+  [1m[35m (4.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (102.9ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "nada"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:17:12.338689"], ["updated_at", "2018-02-23 19:17:12.338689"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "nada"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:17:12.443149"], ["updated_at", "2018-02-23 19:17:12.443149"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "coconut borer"], ["description", "nada"], ["price", 0.99], ["created_at", "2018-02-23 19:17:12.447441"], ["updated_at", "2018-02-23 19:17:12.447441"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "donut holer"], ["description", "nada"], ["price", 50.0], ["minimum_age_appropriate", 1], ["maximum_age_appropriate", 6], ["created_at", "2018-02-23 19:17:12.448851"], ["updated_at", "2018-02-23 19:17:12.448851"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:17:12 -0500
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (2.2ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.3ms)
+Started GET "/products?order=price" for 127.0.0.1 at 2018-02-23 14:17:12 -0500
+Processing by ProductsController#index as HTML
+  Parameters: {"order"=>"price"}
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY price[0m
+  Rendered products/index.html.haml within layouts/application (2.0ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.1ms)
+  [1m[35m (7.9ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "nada"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:17:12.473966"], ["updated_at", "2018-02-23 19:17:12.473966"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "nada"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:17:12.476653"], ["updated_at", "2018-02-23 19:17:12.476653"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "coconut borer"], ["description", "nada"], ["price", 0.99], ["created_at", "2018-02-23 19:17:12.480147"], ["updated_at", "2018-02-23 19:17:12.480147"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "donut holer"], ["description", "nada"], ["price", 50.0], ["minimum_age_appropriate", 1], ["maximum_age_appropriate", 6], ["created_at", "2018-02-23 19:17:12.481314"], ["updated_at", "2018-02-23 19:17:12.481314"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:17:12 -0500
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (1.8ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.1ms)
+Started GET "/products?order=age" for 127.0.0.1 at 2018-02-23 14:17:12 -0500
+Processing by ProductsController#index as HTML
+  Parameters: {"order"=>"age"}
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY minimum_age_appropriate[0m
+  Rendered products/index.html.haml within layouts/application (1.7ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.2ms)
+  [1m[35m (9.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "nada"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:17:12.504995"], ["updated_at", "2018-02-23 19:17:12.504995"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "nada"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:17:12.507777"], ["updated_at", "2018-02-23 19:17:12.507777"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "coconut borer"], ["description", "nada"], ["price", 0.99], ["created_at", "2018-02-23 19:17:12.511316"], ["updated_at", "2018-02-23 19:17:12.511316"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "donut holer"], ["description", "nada"], ["price", 50.0], ["minimum_age_appropriate", 1], ["maximum_age_appropriate", 6], ["created_at", "2018-02-23 19:17:12.512457"], ["updated_at", "2018-02-23 19:17:12.512457"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:17:12 -0500
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (2.0ms)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.1ms)
+Started GET "/products?order=name" for 127.0.0.1 at 2018-02-23 14:17:12 -0500
+Processing by ProductsController#index as HTML
+  Parameters: {"order"=>"name"}
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (1.8ms)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.1ms)
+  [1m[35m (8.9ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "apple description"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:17:12.536413"], ["updated_at", "2018-02-23 19:17:12.536413"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "banana description"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:17:12.539240"], ["updated_at", "2018-02-23 19:17:12.539240"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:17:12 -0500
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (1.4ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.2ms)
+  [1m[35m (8.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "apple description"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:17:12.558178"], ["updated_at", "2018-02-23 19:17:12.558178"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "banana description"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:17:12.560909"], ["updated_at", "2018-02-23 19:17:12.560909"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:17:12 -0500
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (1.5ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms)
+Started GET "/products/1" for 127.0.0.1 at 2018-02-23 14:17:12 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering products/show.html.haml within layouts/application
+  Rendered products/show.html.haml within layouts/application (3.2ms)
+Completed 200 OK in 14ms (Views: 4.3ms | ActiveRecord: 0.1ms)
+  [1m[35m (8.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "apple corer"], ["description", "apple description"], ["price", 1.99], ["minimum_age_appropriate", 3], ["created_at", "2018-02-23 19:17:12.598111"], ["updated_at", "2018-02-23 19:17:12.598111"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "minimum_age_appropriate", "maximum_age_appropriate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "banana peeler"], ["description", "banana description"], ["price", 2.99], ["minimum_age_appropriate", 2], ["maximum_age_appropriate", 2], ["created_at", "2018-02-23 19:17:12.601187"], ["updated_at", "2018-02-23 19:17:12.601187"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/products" for 127.0.0.1 at 2018-02-23 14:17:12 -0500
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.haml within layouts/application
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT "products".* FROM "products" ORDER BY name[0m
+  Rendered products/index.html.haml within layouts/application (1.4ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms)
+Started GET "/products/2" for 127.0.0.1 at 2018-02-23 14:17:12 -0500
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProduct Load (0.1ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering products/show.html.haml within layouts/application
+  Rendered products/show.html.haml within layouts/application (0.3ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms)
+  [1m[35m (7.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m

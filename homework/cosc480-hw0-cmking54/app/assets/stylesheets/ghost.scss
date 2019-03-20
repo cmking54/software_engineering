@@ -1,0 +1,14 @@
+// Place all the styles related to the Ghost controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$universal_font: Times New Roman, sans-serif;
+$word_color: #a33;
+
+p {
+ font: 100% $universal_font;
+ color: $word_color;
+}
+
+body {
+ color: #f2f;
+}

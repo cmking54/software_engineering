@@ -1,0 +1,80 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import url(https://fonts.googleapis.com/css?family=Sumana);
+
+$color-primary-0: #E3E3DE;
+$color-font-0: #525252;
+$color-background-0: #FFFFFF;
+
+@mixin fonty($size) {
+  font-family:Garamond, Georgia, serif;
+  font-size: $size;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.tablecontents {
+  text-align: center;
+}
+
+.tierheader {
+  text-align: center;
+  padding: 20px;
+}
+
+#main {
+  margin-top: 30px;
+  background: white;
+}
+
+// .container {
+//   opacity: 0.8;
+// }
+
+body{
+  font-family:Garamond, Georgia, serif;
+  background-color: $color-background-0;
+
+  .registrees_table, .attendees_table{
+    position: relative;
+    top: 10px;
+    width: 80%;
+    left: 10%;
+    background-color: $color-primary-0;
+    color: $color-font-0;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: left;
+    @include fonty(15pt);
+  }
+
+  .col1 {
+  width: 50%;
+  }
+
+  .col2 {
+  width: 50%;
+  }
+
+  .col3 {
+    width: 50%;
+  }
+
+  th {
+    text-align: center;
+  }
+
+  .table-responsive {
+    width: 60%;
+    margin-left: 20%;
+  }
+
+  .profileheader{
+    color: $color-font-0;
+  }
+
+  .small-text-span{
+    @include fonty(10pt);
+  }
+}

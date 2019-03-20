@@ -1,0 +1,1295 @@
+Started GET "/" for 127.0.0.1 at 2018-04-20 13:32:32 -0400
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.1.6) lib/active_record/migration.rb:576:in `check_pending!'
+activerecord (5.1.6) lib/active_record/migration.rb:553:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.6) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.6.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.1) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.1) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.1) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (790.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (46.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateSights (20180305004701)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "sights" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180305004701"]]
+  [1m[35m (15.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreatePhotos (20180305004842)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "photos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "caption" varchar, "image_file_name" varchar, "image_content_type" varchar, "image_file_size" integer, "image_updated_at" datetime, "sight_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_676d85ea3c"
+FOREIGN KEY ("sight_id")
+  REFERENCES "sights" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_photos_on_sight_id" ON "photos" ("sight_id")[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180305004842"]]
+  [1m[35m (16.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to DeviseCreateUsers (20180306012159)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "username" varchar NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (29.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_username" ON "users" ("username")[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180306012159"]]
+  [1m[35m (28.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUpDownVotes (20180306012459)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "up_down_votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "upvote" boolean NOT NULL, "user_id" integer, "sight_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_c01880cffd"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_fba55dc243"
+FOREIGN KEY ("sight_id")
+  REFERENCES "sights" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_up_down_votes_on_user_id" ON "up_down_votes" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_up_down_votes_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_up_down_votes_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_up_down_votes_on_sight_id" ON "up_down_votes" ("sight_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180306012459"]]
+  [1m[35m (18.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-04-20 17:33:50.562995"], ["updated_at", "2018-04-20 17:33:50.562995"]]
+  [1m[35m (17.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_photos_on_sight_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_photos_on_sight_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_up_down_votes_on_sight_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_up_down_votes_on_sight_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_up_down_votes_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_up_down_votes_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_username' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_username' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "photos"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (212.6ms)[0m  [1m[35mCREATE TABLE "photos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "caption" varchar, "image_file_name" varchar, "image_content_type" varchar, "image_file_size" integer, "image_updated_at" datetime, "sight_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (18.9ms)[0m  [1m[35mCREATE  INDEX "index_photos_on_sight_id" ON "photos" ("sight_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "sights"[0m
+  [1m[35m (15.7ms)[0m  [1m[35mCREATE TABLE "sights" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "up_down_votes"[0m
+  [1m[35m (16.5ms)[0m  [1m[35mCREATE TABLE "up_down_votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "upvote" boolean NOT NULL, "user_id" integer, "sight_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (20.6ms)[0m  [1m[35mCREATE  INDEX "index_up_down_votes_on_sight_id" ON "up_down_votes" ("sight_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_up_down_votes_on_sight_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_up_down_votes_on_sight_id' AND type='index'
+[0m
+  [1m[35m (17.8ms)[0m  [1m[35mCREATE  INDEX "index_up_down_votes_on_user_id" ON "up_down_votes" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (18.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "username" varchar NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (16.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (18.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (18.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_username" ON "users" ("username")[0m
+  [1m[35m (16.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (17.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20180306012459)[0m
+  [1m[35m (18.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20180305004701),
+(20180305004842),
+(20180306012159);
+
+[0m
+  [1m[35m (18.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-04-20 17:33:56.437416"], ["updated_at", "2018-04-20 17:33:56.437416"]]
+  [1m[35m (14.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2018-04-20 17:33:56.508899"], ["key", "environment"]]
+  [1m[35m (17.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "sights" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "McGregory Hall Lounge"], ["description", "Everyone's favorite spot to study, sleep, relax, scribble on whiteboards, and take advantage of free food."], ["created_at", "2018-04-20 17:34:01.878025"], ["updated_at", "2018-04-20 17:34:01.878025"]]
+[paperclip] Trying to link app/assets/images/IMG_0888.jpg to /tmp/a10286f93ad51dc88f229dd45f90cf0920180420-1493-3mtwiy.jpg
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_0888.jpg, /tmp/a10286f93ad51dc88f229dd45f90cf0920180420-1493-3mtwiy.jpg); copying link app/assets/images/IMG_0888.jpg to /tmp/a10286f93ad51dc88f229dd45f90cf0920180420-1493-3mtwiy.jpg
+[paperclip] Trying to link /tmp/a10286f93ad51dc88f229dd45f90cf0920180420-1493-3mtwiy.jpg to /tmp/a10286f93ad51dc88f229dd45f90cf0920180420-1493-j5h3sf.jpg
+Command :: file -b --mime '/tmp/a10286f93ad51dc88f229dd45f90cf0920180420-1493-j5h3sf.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/a10286f93ad51dc88f229dd45f90cf0920180420-1493-3mtwiy.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/a10286f93ad51dc88f229dd45f90cf0920180420-1493-3mtwiy.jpg[0]'
+Command :: convert '/tmp/a10286f93ad51dc88f229dd45f90cf0920180420-1493-3mtwiy.jpg[0]' -auto-orient -resize "400x400>" '/tmp/0a02a07937e93615423642a2f008f0aa20180420-1493-2ysm6n'
+[paperclip] Trying to link /tmp/0a02a07937e93615423642a2f008f0aa20180420-1493-2ysm6n to /tmp/466225a34559b44b2e6e227eff38dcb820180420-1493-1m1vhkm
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/a10286f93ad51dc88f229dd45f90cf0920180420-1493-3mtwiy.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/a10286f93ad51dc88f229dd45f90cf0920180420-1493-3mtwiy.jpg[0]'
+Command :: convert '/tmp/a10286f93ad51dc88f229dd45f90cf0920180420-1493-3mtwiy.jpg[0]' -auto-orient -resize "100x100>" '/tmp/0a02a07937e93615423642a2f008f0aa20180420-1493-1ywqheo'
+[paperclip] Trying to link /tmp/0a02a07937e93615423642a2f008f0aa20180420-1493-1ywqheo to /tmp/95c6e879f5d7fa768a99290b2a980dd020180420-1493-5vip3
+[paperclip] Trying to link /tmp/a10286f93ad51dc88f229dd45f90cf0920180420-1493-3mtwiy.jpg to /tmp/a10286f93ad51dc88f229dd45f90cf0920180420-1493-1q0hh43.jpg
+Command :: file -b --mime '/tmp/a10286f93ad51dc88f229dd45f90cf0920180420-1493-1q0hh43.jpg'
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Space to work and lounge.  Photo taken when the lounge was first constructed."], ["image_file_name", "IMG_0888.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 1159015], ["image_updated_at", "2018-04-20 17:34:02.181932"], ["sight_id", 1], ["created_at", "2018-04-20 17:34:05.400902"], ["updated_at", "2018-04-20 17:34:05.400902"]]
+[paperclip] Trying to link app/assets/images/IMG_0889.jpg to /tmp/b791456298c0224acdb70d10c5373fc820180420-1493-ocjqm0.jpg
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_0889.jpg, /tmp/b791456298c0224acdb70d10c5373fc820180420-1493-ocjqm0.jpg); copying link app/assets/images/IMG_0889.jpg to /tmp/b791456298c0224acdb70d10c5373fc820180420-1493-ocjqm0.jpg
+[paperclip] Trying to link /tmp/b791456298c0224acdb70d10c5373fc820180420-1493-ocjqm0.jpg to /tmp/b791456298c0224acdb70d10c5373fc820180420-1493-13vp3xs.jpg
+Command :: file -b --mime '/tmp/b791456298c0224acdb70d10c5373fc820180420-1493-13vp3xs.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/b791456298c0224acdb70d10c5373fc820180420-1493-ocjqm0.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/b791456298c0224acdb70d10c5373fc820180420-1493-ocjqm0.jpg[0]'
+Command :: convert '/tmp/b791456298c0224acdb70d10c5373fc820180420-1493-ocjqm0.jpg[0]' -auto-orient -resize "400x400>" '/tmp/b729296af284dc200247a1ccaf25122b20180420-1493-m5tc98'
+[paperclip] Trying to link /tmp/b729296af284dc200247a1ccaf25122b20180420-1493-m5tc98 to /tmp/5087028e5603dff9f017228b43e7da3320180420-1493-1xhjmwx
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/b791456298c0224acdb70d10c5373fc820180420-1493-ocjqm0.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/b791456298c0224acdb70d10c5373fc820180420-1493-ocjqm0.jpg[0]'
+Command :: convert '/tmp/b791456298c0224acdb70d10c5373fc820180420-1493-ocjqm0.jpg[0]' -auto-orient -resize "100x100>" '/tmp/b729296af284dc200247a1ccaf25122b20180420-1493-15nxy70'
+[paperclip] Trying to link /tmp/b729296af284dc200247a1ccaf25122b20180420-1493-15nxy70 to /tmp/cf0b4848a16ebaa7664d38ed83a8496520180420-1493-vwg87u
+[paperclip] Trying to link /tmp/b791456298c0224acdb70d10c5373fc820180420-1493-ocjqm0.jpg to /tmp/b791456298c0224acdb70d10c5373fc820180420-1493-1wjl86n.jpg
+Command :: file -b --mime '/tmp/b791456298c0224acdb70d10c5373fc820180420-1493-1wjl86n.jpg'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Another photo taken when the lounge was first constructed."], ["image_file_name", "IMG_0889.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 1017510], ["image_updated_at", "2018-04-20 17:34:05.454230"], ["sight_id", 1], ["created_at", "2018-04-20 17:34:07.428990"], ["updated_at", "2018-04-20 17:34:07.428990"]]
+[paperclip] Trying to link app/assets/images/IMG_7270.JPG to /tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-1493-19as9g3.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7270.JPG, /tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-1493-19as9g3.JPG); copying link app/assets/images/IMG_7270.JPG to /tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-1493-19as9g3.JPG
+[paperclip] Trying to link /tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-1493-19as9g3.JPG to /tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-1493-1ln14na.JPG
+Command :: file -b --mime '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-1493-1ln14na.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-1493-19as9g3.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-1493-19as9g3.JPG[0]'
+Command :: convert '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-1493-19as9g3.JPG[0]' -auto-orient -resize "400x400>" '/tmp/859b743250bc6101dc46701147a0500120180420-1493-1fklxhy'
+[paperclip] Trying to link /tmp/859b743250bc6101dc46701147a0500120180420-1493-1fklxhy to /tmp/6a87a48f04e15fb5718081096cdf186c20180420-1493-13pdfbx
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-1493-19as9g3.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-1493-19as9g3.JPG[0]'
+Command :: convert '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-1493-19as9g3.JPG[0]' -auto-orient -resize "100x100>" '/tmp/859b743250bc6101dc46701147a0500120180420-1493-gvgb9b'
+[paperclip] Trying to link /tmp/859b743250bc6101dc46701147a0500120180420-1493-gvgb9b to /tmp/8853ba87098b45a04ad123f9ca3b4dfe20180420-1493-1l4p776
+[paperclip] Trying to link /tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-1493-19as9g3.JPG to /tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-1493-1tugyoe.JPG
+Command :: file -b --mime '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-1493-1tugyoe.JPG'
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Spacious and whiteboardy!"], ["image_file_name", "IMG_7270.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 969916], ["image_updated_at", "2018-04-20 17:34:07.477942"], ["sight_id", 1], ["created_at", "2018-04-20 17:34:09.742279"], ["updated_at", "2018-04-20 17:34:09.742279"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "sights" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Taylor Lake"], ["description", "This is a lake?  Really?  Yes, by the strict definition of lake, this qualifies.  Sadly, Adam and Eve the swans have gone elsewhere and all we are left with are Canadian geese and the occasional mallard duck."], ["created_at", "2018-04-20 17:34:09.774249"], ["updated_at", "2018-04-20 17:34:09.774249"]]
+[paperclip] Trying to link app/assets/images/IMG_7278.JPG to /tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-1493-qfgpay.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7278.JPG, /tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-1493-qfgpay.JPG); copying link app/assets/images/IMG_7278.JPG to /tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-1493-qfgpay.JPG
+[paperclip] Trying to link /tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-1493-qfgpay.JPG to /tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-1493-1lvdl5t.JPG
+Command :: file -b --mime '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-1493-1lvdl5t.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-1493-qfgpay.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-1493-qfgpay.JPG[0]'
+Command :: convert '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-1493-qfgpay.JPG[0]' -auto-orient -resize "400x400>" '/tmp/ff2be5a55db39fd17cbd4adebfce89db20180420-1493-pbg7ho'
+[paperclip] Trying to link /tmp/ff2be5a55db39fd17cbd4adebfce89db20180420-1493-pbg7ho to /tmp/283082b2d4fe932d943124cb26ced6d720180420-1493-1x35603
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-1493-qfgpay.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-1493-qfgpay.JPG[0]'
+Command :: convert '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-1493-qfgpay.JPG[0]' -auto-orient -resize "100x100>" '/tmp/ff2be5a55db39fd17cbd4adebfce89db20180420-1493-l051fj'
+[paperclip] Trying to link /tmp/ff2be5a55db39fd17cbd4adebfce89db20180420-1493-l051fj to /tmp/a1de88452f0c2288a29760e450b78dfc20180420-1493-76zexy
+[paperclip] Trying to link /tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-1493-qfgpay.JPG to /tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-1493-1x7lro8.JPG
+Command :: file -b --mime '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-1493-1x7lro8.JPG'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "The willow path, adjacent to Taylor Lake."], ["image_file_name", "IMG_7278.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 1200565], ["image_updated_at", "2018-04-20 17:34:09.783787"], ["sight_id", 2], ["created_at", "2018-04-20 17:34:11.193989"], ["updated_at", "2018-04-20 17:34:11.193989"]]
+[paperclip] Trying to link app/assets/images/IMG_7279.JPG to /tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-1493-7ze1qw.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7279.JPG, /tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-1493-7ze1qw.JPG); copying link app/assets/images/IMG_7279.JPG to /tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-1493-7ze1qw.JPG
+[paperclip] Trying to link /tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-1493-7ze1qw.JPG to /tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-1493-tppopz.JPG
+Command :: file -b --mime '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-1493-tppopz.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-1493-7ze1qw.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-1493-7ze1qw.JPG[0]'
+Command :: convert '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-1493-7ze1qw.JPG[0]' -auto-orient -resize "400x400>" '/tmp/539406fa72a7571d9396cb00fc21288f20180420-1493-1vgyy9p'
+[paperclip] Trying to link /tmp/539406fa72a7571d9396cb00fc21288f20180420-1493-1vgyy9p to /tmp/91b4899eb75515a9c7121c86b44c4d9d20180420-1493-14hmwbl
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-1493-7ze1qw.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-1493-7ze1qw.JPG[0]'
+Command :: convert '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-1493-7ze1qw.JPG[0]' -auto-orient -resize "100x100>" '/tmp/539406fa72a7571d9396cb00fc21288f20180420-1493-10mm9wx'
+[paperclip] Trying to link /tmp/539406fa72a7571d9396cb00fc21288f20180420-1493-10mm9wx to /tmp/84451f4f09992703d5eebf14d750abc720180420-1493-134359a
+[paperclip] Trying to link /tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-1493-7ze1qw.JPG to /tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-1493-cqg9zk.JPG
+Command :: file -b --mime '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-1493-cqg9zk.JPG'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "The ice on Taylor Lake recedes in July, just."], ["image_file_name", "IMG_7279.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 1017661], ["image_updated_at", "2018-04-20 17:34:11.235681"], ["sight_id", 2], ["created_at", "2018-04-20 17:34:12.641967"], ["updated_at", "2018-04-20 17:34:12.641967"]]
+[paperclip] Trying to link app/assets/images/IMG_7280.JPG to /tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-1493-15cl0hw.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7280.JPG, /tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-1493-15cl0hw.JPG); copying link app/assets/images/IMG_7280.JPG to /tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-1493-15cl0hw.JPG
+[paperclip] Trying to link /tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-1493-15cl0hw.JPG to /tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-1493-1184dih.JPG
+Command :: file -b --mime '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-1493-1184dih.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-1493-15cl0hw.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-1493-15cl0hw.JPG[0]'
+Command :: convert '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-1493-15cl0hw.JPG[0]' -auto-orient -resize "400x400>" '/tmp/0244fa4dc9fab29582aac93bb374976d20180420-1493-1xczx56'
+[paperclip] Trying to link /tmp/0244fa4dc9fab29582aac93bb374976d20180420-1493-1xczx56 to /tmp/5b997a03a3877d9f40f663c752768c3f20180420-1493-j3d9ke
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-1493-15cl0hw.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-1493-15cl0hw.JPG[0]'
+Command :: convert '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-1493-15cl0hw.JPG[0]' -auto-orient -resize "100x100>" '/tmp/0244fa4dc9fab29582aac93bb374976d20180420-1493-7t18cy'
+[paperclip] Trying to link /tmp/0244fa4dc9fab29582aac93bb374976d20180420-1493-7t18cy to /tmp/4a537151113d55cc34b54fcd7293583020180420-1493-2cclv
+[paperclip] Trying to link /tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-1493-15cl0hw.JPG to /tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-1493-1y5o9xo.JPG
+Command :: file -b --mime '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-1493-1y5o9xo.JPG'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Resident aliens from Canada enjoying the lake."], ["image_file_name", "IMG_7280.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 713817], ["image_updated_at", "2018-04-20 17:34:12.685361"], ["sight_id", 2], ["created_at", "2018-04-20 17:34:14.045960"], ["updated_at", "2018-04-20 17:34:14.045960"]]
+[paperclip] Trying to link app/assets/images/IMG_7281.JPG to /tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-1493-1x6w6m8.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7281.JPG, /tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-1493-1x6w6m8.JPG); copying link app/assets/images/IMG_7281.JPG to /tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-1493-1x6w6m8.JPG
+[paperclip] Trying to link /tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-1493-1x6w6m8.JPG to /tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-1493-bwgd8k.JPG
+Command :: file -b --mime '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-1493-bwgd8k.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-1493-1x6w6m8.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-1493-1x6w6m8.JPG[0]'
+Command :: convert '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-1493-1x6w6m8.JPG[0]' -auto-orient -resize "400x400>" '/tmp/656c7846c3d475755122eabdb748cf5f20180420-1493-b4aug9'
+[paperclip] Trying to link /tmp/656c7846c3d475755122eabdb748cf5f20180420-1493-b4aug9 to /tmp/65a46bec70798f6a41acc86d6ced0bd220180420-1493-1xf8bj0
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-1493-1x6w6m8.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-1493-1x6w6m8.JPG[0]'
+Command :: convert '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-1493-1x6w6m8.JPG[0]' -auto-orient -resize "100x100>" '/tmp/656c7846c3d475755122eabdb748cf5f20180420-1493-tny013'
+[paperclip] Trying to link /tmp/656c7846c3d475755122eabdb748cf5f20180420-1493-tny013 to /tmp/6d068e6397303d992ebed7a94d87aee720180420-1493-obme4p
+[paperclip] Trying to link /tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-1493-1x6w6m8.JPG to /tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-1493-ycfdvh.JPG
+Command :: file -b --mime '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-1493-ycfdvh.JPG'
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Resident aliens from Canada enjoying the lake."], ["image_file_name", "IMG_7281.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 596646], ["image_updated_at", "2018-04-20 17:34:14.087678"], ["sight_id", 2], ["created_at", "2018-04-20 17:34:15.477797"], ["updated_at", "2018-04-20 17:34:15.477797"]]
+[paperclip] Trying to link app/assets/images/IMG_7282.JPG to /tmp/d156b98973eb7018edc9653dd5f599c120180420-1493-ta09o7.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7282.JPG, /tmp/d156b98973eb7018edc9653dd5f599c120180420-1493-ta09o7.JPG); copying link app/assets/images/IMG_7282.JPG to /tmp/d156b98973eb7018edc9653dd5f599c120180420-1493-ta09o7.JPG
+[paperclip] Trying to link /tmp/d156b98973eb7018edc9653dd5f599c120180420-1493-ta09o7.JPG to /tmp/d156b98973eb7018edc9653dd5f599c120180420-1493-1taqrvr.JPG
+Command :: file -b --mime '/tmp/d156b98973eb7018edc9653dd5f599c120180420-1493-1taqrvr.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/d156b98973eb7018edc9653dd5f599c120180420-1493-ta09o7.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/d156b98973eb7018edc9653dd5f599c120180420-1493-ta09o7.JPG[0]'
+Command :: convert '/tmp/d156b98973eb7018edc9653dd5f599c120180420-1493-ta09o7.JPG[0]' -auto-orient -resize "400x400>" '/tmp/9175b217a8ebce115e439a94f38a4a2520180420-1493-1hh9tpw'
+[paperclip] Trying to link /tmp/9175b217a8ebce115e439a94f38a4a2520180420-1493-1hh9tpw to /tmp/5c79c7845205cb1313fb8775416543b420180420-1493-lkihwv
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/d156b98973eb7018edc9653dd5f599c120180420-1493-ta09o7.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/d156b98973eb7018edc9653dd5f599c120180420-1493-ta09o7.JPG[0]'
+Command :: convert '/tmp/d156b98973eb7018edc9653dd5f599c120180420-1493-ta09o7.JPG[0]' -auto-orient -resize "100x100>" '/tmp/9175b217a8ebce115e439a94f38a4a2520180420-1493-a7wddk'
+[paperclip] Trying to link /tmp/9175b217a8ebce115e439a94f38a4a2520180420-1493-a7wddk to /tmp/64b1ad0ac8af7bc1264fe5bea877ab6120180420-1493-iekmiu
+[paperclip] Trying to link /tmp/d156b98973eb7018edc9653dd5f599c120180420-1493-ta09o7.JPG to /tmp/d156b98973eb7018edc9653dd5f599c120180420-1493-goo2hv.JPG
+Command :: file -b --mime '/tmp/d156b98973eb7018edc9653dd5f599c120180420-1493-goo2hv.JPG'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Looking across Taylor Lake."], ["image_file_name", "IMG_7282.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 641984], ["image_updated_at", "2018-04-20 17:34:15.518483"], ["sight_id", 2], ["created_at", "2018-04-20 17:34:16.880040"], ["updated_at", "2018-04-20 17:34:16.880040"]]
+[paperclip] Trying to link app/assets/images/IMG_7283.JPG to /tmp/6fcf3845b62919ec56cddef71752172a20180420-1493-7q16kx.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7283.JPG, /tmp/6fcf3845b62919ec56cddef71752172a20180420-1493-7q16kx.JPG); copying link app/assets/images/IMG_7283.JPG to /tmp/6fcf3845b62919ec56cddef71752172a20180420-1493-7q16kx.JPG
+[paperclip] Trying to link /tmp/6fcf3845b62919ec56cddef71752172a20180420-1493-7q16kx.JPG to /tmp/6fcf3845b62919ec56cddef71752172a20180420-1493-1mkvs37.JPG
+Command :: file -b --mime '/tmp/6fcf3845b62919ec56cddef71752172a20180420-1493-1mkvs37.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/6fcf3845b62919ec56cddef71752172a20180420-1493-7q16kx.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/6fcf3845b62919ec56cddef71752172a20180420-1493-7q16kx.JPG[0]'
+Command :: convert '/tmp/6fcf3845b62919ec56cddef71752172a20180420-1493-7q16kx.JPG[0]' -auto-orient -resize "400x400>" '/tmp/c94d73b8010e36d12f0dc9068222c55620180420-1493-1gg9bzb'
+[paperclip] Trying to link /tmp/c94d73b8010e36d12f0dc9068222c55620180420-1493-1gg9bzb to /tmp/ee26d83b6e2011f022374b6632bc7aea20180420-1493-1relm2w
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/6fcf3845b62919ec56cddef71752172a20180420-1493-7q16kx.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/6fcf3845b62919ec56cddef71752172a20180420-1493-7q16kx.JPG[0]'
+Command :: convert '/tmp/6fcf3845b62919ec56cddef71752172a20180420-1493-7q16kx.JPG[0]' -auto-orient -resize "100x100>" '/tmp/c94d73b8010e36d12f0dc9068222c55620180420-1493-17hksdy'
+[paperclip] Trying to link /tmp/c94d73b8010e36d12f0dc9068222c55620180420-1493-17hksdy to /tmp/de29ea8ca077d58d4767c2296bda8b2520180420-1493-q2ju8z
+[paperclip] Trying to link /tmp/6fcf3845b62919ec56cddef71752172a20180420-1493-7q16kx.JPG to /tmp/6fcf3845b62919ec56cddef71752172a20180420-1493-ul9akc.JPG
+Command :: file -b --mime '/tmp/6fcf3845b62919ec56cddef71752172a20180420-1493-ul9akc.JPG'
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Payne Creek feeding into Taylor Lake, providing some evidence for the lakehood of said lake."], ["image_file_name", "IMG_7283.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 737389], ["image_updated_at", "2018-04-20 17:34:16.923959"], ["sight_id", 2], ["created_at", "2018-04-20 17:34:18.311992"], ["updated_at", "2018-04-20 17:34:18.311992"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "sights" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Cooley Library"], ["description", "Colgate University's best kept secret.  Complete with a mosh pit of learning."], ["created_at", "2018-04-20 17:34:18.339861"], ["updated_at", "2018-04-20 17:34:18.339861"]]
+[paperclip] Trying to link app/assets/images/IMG_7271.JPG to /tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-1493-uce258.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7271.JPG, /tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-1493-uce258.JPG); copying link app/assets/images/IMG_7271.JPG to /tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-1493-uce258.JPG
+[paperclip] Trying to link /tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-1493-uce258.JPG to /tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-1493-ohlafe.JPG
+Command :: file -b --mime '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-1493-ohlafe.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-1493-uce258.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-1493-uce258.JPG[0]'
+Command :: convert '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-1493-uce258.JPG[0]' -auto-orient -resize "400x400>" '/tmp/ff8b8b9e72a235f585c0af81735fc05720180420-1493-dn5fpt'
+[paperclip] Trying to link /tmp/ff8b8b9e72a235f585c0af81735fc05720180420-1493-dn5fpt to /tmp/de7d252d26c6e9730217d1e8a752d57c20180420-1493-pes6iv
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-1493-uce258.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-1493-uce258.JPG[0]'
+Command :: convert '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-1493-uce258.JPG[0]' -auto-orient -resize "100x100>" '/tmp/ff8b8b9e72a235f585c0af81735fc05720180420-1493-qyww4c'
+[paperclip] Trying to link /tmp/ff8b8b9e72a235f585c0af81735fc05720180420-1493-qyww4c to /tmp/ea65e6f0a52b883753e21daff689976220180420-1493-xca50z
+[paperclip] Trying to link /tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-1493-uce258.JPG to /tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-1493-xgr2x1.JPG
+Command :: file -b --mime '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-1493-xgr2x1.JPG'
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Enter all who dare."], ["image_file_name", "IMG_7271.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 515982], ["image_updated_at", "2018-04-20 17:34:18.348089"], ["sight_id", 3], ["created_at", "2018-04-20 17:34:19.735180"], ["updated_at", "2018-04-20 17:34:19.735180"]]
+[paperclip] Trying to link app/assets/images/IMG_7272.JPG to /tmp/8a17189e065c0bb3bbbbc3f97210683720180420-1493-1fe8r39.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7272.JPG, /tmp/8a17189e065c0bb3bbbbc3f97210683720180420-1493-1fe8r39.JPG); copying link app/assets/images/IMG_7272.JPG to /tmp/8a17189e065c0bb3bbbbc3f97210683720180420-1493-1fe8r39.JPG
+[paperclip] Trying to link /tmp/8a17189e065c0bb3bbbbc3f97210683720180420-1493-1fe8r39.JPG to /tmp/8a17189e065c0bb3bbbbc3f97210683720180420-1493-1o86au0.JPG
+Command :: file -b --mime '/tmp/8a17189e065c0bb3bbbbc3f97210683720180420-1493-1o86au0.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/8a17189e065c0bb3bbbbc3f97210683720180420-1493-1fe8r39.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/8a17189e065c0bb3bbbbc3f97210683720180420-1493-1fe8r39.JPG[0]'
+Command :: convert '/tmp/8a17189e065c0bb3bbbbc3f97210683720180420-1493-1fe8r39.JPG[0]' -auto-orient -resize "400x400>" '/tmp/a488a182b5192fc9bd0463066052d91420180420-1493-j921o2'
+[paperclip] Trying to link /tmp/a488a182b5192fc9bd0463066052d91420180420-1493-j921o2 to /tmp/3e2602984ada8db06b7254f7020ce4b320180420-1493-2h3djr
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/8a17189e065c0bb3bbbbc3f97210683720180420-1493-1fe8r39.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/8a17189e065c0bb3bbbbc3f97210683720180420-1493-1fe8r39.JPG[0]'
+Command :: convert '/tmp/8a17189e065c0bb3bbbbc3f97210683720180420-1493-1fe8r39.JPG[0]' -auto-orient -resize "100x100>" '/tmp/a488a182b5192fc9bd0463066052d91420180420-1493-8hcclt'
+[paperclip] Trying to link /tmp/a488a182b5192fc9bd0463066052d91420180420-1493-8hcclt to /tmp/502248673d51f6a5ba0011f7358837eb20180420-1493-dr4b1f
+[paperclip] Trying to link /tmp/8a17189e065c0bb3bbbbc3f97210683720180420-1493-1fe8r39.JPG to /tmp/8a17189e065c0bb3bbbbc3f97210683720180420-1493-17yurs6.JPG
+Command :: file -b --mime '/tmp/8a17189e065c0bb3bbbbc3f97210683720180420-1493-17yurs6.JPG'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "A distinguishing feature of the Cooley library.  Music, unfortunately, not included."], ["image_file_name", "IMG_7272.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 499513], ["image_updated_at", "2018-04-20 17:34:19.772728"], ["sight_id", 3], ["created_at", "2018-04-20 17:34:21.127511"], ["updated_at", "2018-04-20 17:34:21.127511"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "sights" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Hamilton Village Green"], ["description", "In winter, a good place to sculpt snow creatures.  In the summer, a good place to have a picnic.  Great place to bring takeaway from Maxwells, F&S, or HWF to enjoy on a nice day."], ["created_at", "2018-04-20 17:34:21.159745"], ["updated_at", "2018-04-20 17:34:21.159745"]]
+[paperclip] Trying to link app/assets/images/IMG_7274.JPG to /tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180420-1493-17ahdhb.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7274.JPG, /tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180420-1493-17ahdhb.JPG); copying link app/assets/images/IMG_7274.JPG to /tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180420-1493-17ahdhb.JPG
+[paperclip] Trying to link /tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180420-1493-17ahdhb.JPG to /tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180420-1493-1bysa25.JPG
+Command :: file -b --mime '/tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180420-1493-1bysa25.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180420-1493-17ahdhb.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180420-1493-17ahdhb.JPG[0]'
+Command :: convert '/tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180420-1493-17ahdhb.JPG[0]' -auto-orient -resize "400x400>" '/tmp/81721c6b6042d9c0f39f039df36b962f20180420-1493-1ejlayr'
+[paperclip] Trying to link /tmp/81721c6b6042d9c0f39f039df36b962f20180420-1493-1ejlayr to /tmp/17f1c0d1e4ee33ef7bca0096576c113d20180420-1493-1jxto6j
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180420-1493-17ahdhb.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180420-1493-17ahdhb.JPG[0]'
+Command :: convert '/tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180420-1493-17ahdhb.JPG[0]' -auto-orient -resize "100x100>" '/tmp/81721c6b6042d9c0f39f039df36b962f20180420-1493-tmoijt'
+[paperclip] Trying to link /tmp/81721c6b6042d9c0f39f039df36b962f20180420-1493-tmoijt to /tmp/064b17afdabd30dc80faefdcc9f6e4a920180420-1493-1ez93pt
+[paperclip] Trying to link /tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180420-1493-17ahdhb.JPG to /tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180420-1493-yqjegt.JPG
+Command :: file -b --mime '/tmp/7323b7576d8fdeb6d2e04cd9a7678d2620180420-1493-yqjegt.JPG'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Village green, dressed in white."], ["image_file_name", "IMG_7274.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 878463], ["image_updated_at", "2018-04-20 17:34:21.168400"], ["sight_id", 4], ["created_at", "2018-04-20 17:34:22.533235"], ["updated_at", "2018-04-20 17:34:22.533235"]]
+[paperclip] Trying to link app/assets/images/IMG_7275.JPG to /tmp/3aa3d9d069b826fb3313acc79f7d9ef720180420-1493-bepyod.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7275.JPG, /tmp/3aa3d9d069b826fb3313acc79f7d9ef720180420-1493-bepyod.JPG); copying link app/assets/images/IMG_7275.JPG to /tmp/3aa3d9d069b826fb3313acc79f7d9ef720180420-1493-bepyod.JPG
+[paperclip] Trying to link /tmp/3aa3d9d069b826fb3313acc79f7d9ef720180420-1493-bepyod.JPG to /tmp/3aa3d9d069b826fb3313acc79f7d9ef720180420-1493-19oyly9.JPG
+Command :: file -b --mime '/tmp/3aa3d9d069b826fb3313acc79f7d9ef720180420-1493-19oyly9.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/3aa3d9d069b826fb3313acc79f7d9ef720180420-1493-bepyod.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/3aa3d9d069b826fb3313acc79f7d9ef720180420-1493-bepyod.JPG[0]'
+Command :: convert '/tmp/3aa3d9d069b826fb3313acc79f7d9ef720180420-1493-bepyod.JPG[0]' -auto-orient -resize "400x400>" '/tmp/5d1fd4db34c238974095c9633c1459e920180420-1493-1ta6qmk'
+[paperclip] Trying to link /tmp/5d1fd4db34c238974095c9633c1459e920180420-1493-1ta6qmk to /tmp/f4ed08c7c4cd20dc464bc41103d908dc20180420-1493-1ozp1gq
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/3aa3d9d069b826fb3313acc79f7d9ef720180420-1493-bepyod.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/3aa3d9d069b826fb3313acc79f7d9ef720180420-1493-bepyod.JPG[0]'
+Command :: convert '/tmp/3aa3d9d069b826fb3313acc79f7d9ef720180420-1493-bepyod.JPG[0]' -auto-orient -resize "100x100>" '/tmp/5d1fd4db34c238974095c9633c1459e920180420-1493-11tft0s'
+[paperclip] Trying to link /tmp/5d1fd4db34c238974095c9633c1459e920180420-1493-11tft0s to /tmp/a94f725f9db51aec577ca4b247feae3420180420-1493-1qncrit
+[paperclip] Trying to link /tmp/3aa3d9d069b826fb3313acc79f7d9ef720180420-1493-bepyod.JPG to /tmp/3aa3d9d069b826fb3313acc79f7d9ef720180420-1493-12kn6vv.JPG
+Command :: file -b --mime '/tmp/3aa3d9d069b826fb3313acc79f7d9ef720180420-1493-12kn6vv.JPG'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "A lovely fountain, which only spouts ice.  That happens all year round, it seems."], ["image_file_name", "IMG_7275.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 710766], ["image_updated_at", "2018-04-20 17:34:22.576205"], ["sight_id", 4], ["created_at", "2018-04-20 17:34:23.967836"], ["updated_at", "2018-04-20 17:34:23.967836"]]
+[paperclip] Trying to link app/assets/images/IMG_7276.JPG to /tmp/591e65513c5d67285f28a04c418316fa20180420-1493-cc7sqa.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7276.JPG, /tmp/591e65513c5d67285f28a04c418316fa20180420-1493-cc7sqa.JPG); copying link app/assets/images/IMG_7276.JPG to /tmp/591e65513c5d67285f28a04c418316fa20180420-1493-cc7sqa.JPG
+[paperclip] Trying to link /tmp/591e65513c5d67285f28a04c418316fa20180420-1493-cc7sqa.JPG to /tmp/591e65513c5d67285f28a04c418316fa20180420-1493-iamcy8.JPG
+Command :: file -b --mime '/tmp/591e65513c5d67285f28a04c418316fa20180420-1493-iamcy8.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/591e65513c5d67285f28a04c418316fa20180420-1493-cc7sqa.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/591e65513c5d67285f28a04c418316fa20180420-1493-cc7sqa.JPG[0]'
+Command :: convert '/tmp/591e65513c5d67285f28a04c418316fa20180420-1493-cc7sqa.JPG[0]' -auto-orient -resize "400x400>" '/tmp/acacdfb7ecc4dcc7a1a9e9e54f56a0c620180420-1493-v29fzj'
+[paperclip] Trying to link /tmp/acacdfb7ecc4dcc7a1a9e9e54f56a0c620180420-1493-v29fzj to /tmp/691271fa94afd222e303017c982d184a20180420-1493-1rzruzy
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/591e65513c5d67285f28a04c418316fa20180420-1493-cc7sqa.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/591e65513c5d67285f28a04c418316fa20180420-1493-cc7sqa.JPG[0]'
+Command :: convert '/tmp/591e65513c5d67285f28a04c418316fa20180420-1493-cc7sqa.JPG[0]' -auto-orient -resize "100x100>" '/tmp/acacdfb7ecc4dcc7a1a9e9e54f56a0c620180420-1493-10c3emb'
+[paperclip] Trying to link /tmp/acacdfb7ecc4dcc7a1a9e9e54f56a0c620180420-1493-10c3emb to /tmp/2c7e9e5a04131595ec163cccc9f12de320180420-1493-upw6fa
+[paperclip] Trying to link /tmp/591e65513c5d67285f28a04c418316fa20180420-1493-cc7sqa.JPG to /tmp/591e65513c5d67285f28a04c418316fa20180420-1493-1ux5z72.JPG
+Command :: file -b --mime '/tmp/591e65513c5d67285f28a04c418316fa20180420-1493-1ux5z72.JPG'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "For concerts on the village green in the summer, they just push the snow aside and play."], ["image_file_name", "IMG_7276.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 992666], ["image_updated_at", "2018-04-20 17:34:24.006977"], ["sight_id", 4], ["created_at", "2018-04-20 17:34:25.395540"], ["updated_at", "2018-04-20 17:34:25.395540"]]
+[paperclip] Trying to link app/assets/images/IMG_7277.JPG to /tmp/7af207537e25cfb86b51118c8b6217e720180420-1493-1gmkvfp.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7277.JPG, /tmp/7af207537e25cfb86b51118c8b6217e720180420-1493-1gmkvfp.JPG); copying link app/assets/images/IMG_7277.JPG to /tmp/7af207537e25cfb86b51118c8b6217e720180420-1493-1gmkvfp.JPG
+[paperclip] Trying to link /tmp/7af207537e25cfb86b51118c8b6217e720180420-1493-1gmkvfp.JPG to /tmp/7af207537e25cfb86b51118c8b6217e720180420-1493-1hs13yx.JPG
+Command :: file -b --mime '/tmp/7af207537e25cfb86b51118c8b6217e720180420-1493-1hs13yx.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/7af207537e25cfb86b51118c8b6217e720180420-1493-1gmkvfp.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/7af207537e25cfb86b51118c8b6217e720180420-1493-1gmkvfp.JPG[0]'
+Command :: convert '/tmp/7af207537e25cfb86b51118c8b6217e720180420-1493-1gmkvfp.JPG[0]' -auto-orient -resize "400x400>" '/tmp/370bcd4d671558b5248cfaf53807c05020180420-1493-1tp272q'
+[paperclip] Trying to link /tmp/370bcd4d671558b5248cfaf53807c05020180420-1493-1tp272q to /tmp/59ab55256726732616629b71acdab4f720180420-1493-4boowr
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/7af207537e25cfb86b51118c8b6217e720180420-1493-1gmkvfp.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/7af207537e25cfb86b51118c8b6217e720180420-1493-1gmkvfp.JPG[0]'
+Command :: convert '/tmp/7af207537e25cfb86b51118c8b6217e720180420-1493-1gmkvfp.JPG[0]' -auto-orient -resize "100x100>" '/tmp/370bcd4d671558b5248cfaf53807c05020180420-1493-1ibb99r'
+[paperclip] Trying to link /tmp/370bcd4d671558b5248cfaf53807c05020180420-1493-1ibb99r to /tmp/2409fbef468852b528b19ce41d4f8ab620180420-1493-hyeffd
+[paperclip] Trying to link /tmp/7af207537e25cfb86b51118c8b6217e720180420-1493-1gmkvfp.JPG to /tmp/7af207537e25cfb86b51118c8b6217e720180420-1493-5kp826.JPG
+Command :: file -b --mime '/tmp/7af207537e25cfb86b51118c8b6217e720180420-1493-5kp826.JPG'
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Some great old trees on the green, looking fierce and bare."], ["image_file_name", "IMG_7277.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 1004348], ["image_updated_at", "2018-04-20 17:34:25.438451"], ["sight_id", 4], ["created_at", "2018-04-20 17:34:27.002208"], ["updated_at", "2018-04-20 17:34:27.002208"]]
+  [1m[35m (65.6ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for 127.0.0.1 at 2018-04-20 13:35:34 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (16.6ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.6ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.8ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (184.3ms)
+Completed 200 OK in 3296ms (Views: 2424.8ms | ActiveRecord: 25.8ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-04-20 13:35:46 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (479.5ms)
+Completed 200 OK in 759ms (Views: 517.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-04-20 13:36:00 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 50ms (Views: 49.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-04-20 13:36:40 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ojPCoBVIAOjS3wHT2HkQ0RxdHGVUi1vpt2KgFAFffOmenNBNG7CYdSpdILZlF9owGfjIJR73VWycbevBg7xFlQ==", "user"=>{"username"=>"sampleton", "email"=>"a@g.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "a@g.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "sampleton"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "sampleton"], ["LIMIT", 1]]
+  [1m[35mSQL (3.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["email", "a@g.com"], ["encrypted_password", "$2a$11$ncCNZlJWXj2Y./I972CRVuiXb0PTlaCbtteF0MZsv4Fs6B6dtSI4."], ["username", "sampleton"], ["created_at", "2018-04-20 17:36:41.054961"], ["updated_at", "2018-04-20 17:36:41.054961"]]
+  [1m[35m (71.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["sign_in_count", 1], ["current_sign_in_at", "2018-04-20 17:36:41.133954"], ["last_sign_in_at", "2018-04-20 17:36:41.133954"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2018-04-20 17:36:41.134911"], ["id", 1]]
+  [1m[35m (15.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 386ms (ActiveRecord: 92.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-04-20 13:36:41 -0400
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.5ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (40.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 86ms (Views: 73.8ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/sights/1" for 127.0.0.1 at 2018-04-20 13:36:53 -0400
+Processing by SightsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSight Load (0.4ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sights/show.html.haml within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  Rendered sights/show.html.haml within layouts/application (19.7ms)
+Completed 200 OK in 316ms (Views: 57.2ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/sights/1/upvote" for 127.0.0.1 at 2018-04-20 13:36:58 -0400
+Processing by UpDownVotesController#upvote as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSight Load (0.1ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sights/1" for 127.0.0.1 at 2018-04-20 13:37:15 -0400
+Processing by SightsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sights/show.html.haml within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  Rendered sights/show.html.haml within layouts/application (21.0ms)
+Completed 200 OK in 68ms (Views: 61.9ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/sights/1/upvote" for 127.0.0.1 at 2018-04-20 13:37:19 -0400
+Processing by UpDownVotesController#upvote as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/sights/1/upvote" for 127.0.0.1 at 2018-04-20 13:37:21 -0400
+Processing by UpDownVotesController#upvote as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+Completed 200 OK in 12ms (Views: 0.1ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/sights/1/upvote" for 127.0.0.1 at 2018-04-20 13:37:23 -0400
+Processing by UpDownVotesController#upvote as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sights/1" for 127.0.0.1 at 2018-04-20 13:37:26 -0400
+Processing by SightsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSight Load (0.4ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sights/show.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  Rendered sights/show.html.haml within layouts/application (20.0ms)
+Completed 200 OK in 58ms (Views: 51.6ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/sights" for 127.0.0.1 at 2018-04-20 13:37:35 -0400
+Processing by SightsController#index as HTML
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT count(upvote) as count_upvote, sights.* FROM "sights" INNER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE (upvote = 't') GROUP BY sights.id ORDER BY count_upvote DESC[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[34mSELECT "sights"."id" AS t0_r0, "sights"."title" AS t0_r1, "sights"."description" AS t0_r2, "sights"."created_at" AS t0_r3, "sights"."updated_at" AS t0_r4, "up_down_votes"."id" AS t1_r0, "up_down_votes"."upvote" AS t1_r1, "up_down_votes"."user_id" AS t1_r2, "up_down_votes"."sight_id" AS t1_r3, "up_down_votes"."created_at" AS t1_r4, "up_down_votes"."updated_at" AS t1_r5 FROM "sights" LEFT OUTER JOIN "up_down_votes" ON "up_down_votes"."sight_id" = "sights"."id" WHERE "up_down_votes"."sight_id" IS NULL[0m
+  Rendering sights/index.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 2]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 2]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 3]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 4]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 4]]
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."sight_id" = ? ORDER BY RANDOM() LIMIT ?[0m  [["sight_id", 4], ["LIMIT", 1]]
+  Rendered sights/index.html.haml within layouts/application (49.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 99ms (Views: 85.5ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/sights/1" for 127.0.0.1 at 2018-04-20 13:37:39 -0400
+Processing by SightsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSight Load (0.4ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sights/show.html.haml within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  Rendered sights/show.html.haml within layouts/application (17.9ms)
+Completed 200 OK in 58ms (Views: 51.0ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/sights/1/upvote" for 127.0.0.1 at 2018-04-20 13:37:40 -0400
+Processing by UpDownVotesController#upvote as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSight Load (0.4ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/sights/1/upvote" for 127.0.0.1 at 2018-04-20 13:39:15 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UpDownVotesController#upvote as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+Completed 200 OK in 82ms (Views: 0.4ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/sights/1" for 127.0.0.1 at 2018-04-20 13:39:18 -0400
+Processing by SightsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sights/show.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  Rendered sights/show.html.haml within layouts/application (52.6ms)
+Completed 200 OK in 410ms (Views: 401.8ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/sights/1/upvote" for 127.0.0.1 at 2018-04-20 13:39:28 -0400
+Processing by UpDownVotesController#upvote as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSight Load (0.1ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/sights/1" for 127.0.0.1 at 2018-04-20 13:42:31 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SightsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sights/show.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  Rendered sights/show.html.haml within layouts/application (106.3ms)
+Completed 200 OK in 511ms (Views: 439.5ms | ActiveRecord: 6.5ms)
+
+
+Started POST "/sights/1/upvote" for 127.0.0.1 at 2018-04-20 13:42:34 -0400
+Processing by UpDownVotesController#upvote as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "up_down_votes" ("upvote", "user_id", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["upvote", "t"], ["user_id", 1], ["sight_id", 1], ["created_at", "2018-04-20 17:42:34.108501"], ["updated_at", "2018-04-20 17:42:34.108501"]]
+  [1m[35m (14.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+Completed 200 OK in 47ms (Views: 0.3ms | ActiveRecord: 19.5ms)
+
+
+Started GET "/sights/1" for 127.0.0.1 at 2018-04-20 13:42:36 -0400
+Processing by SightsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSight Load (0.4ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sights/show.html.haml within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  Rendered sights/show.html.haml within layouts/application (18.6ms)
+Completed 200 OK in 60ms (Views: 54.7ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/sights/1/downvote" for 127.0.0.1 at 2018-04-20 13:43:04 -0400
+Processing by UpDownVotesController#downvote as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.1ms)[0m  [1m[32mINSERT INTO "up_down_votes" ("upvote", "user_id", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["upvote", "f"], ["user_id", 1], ["sight_id", 1], ["created_at", "2018-04-20 17:43:04.856637"], ["updated_at", "2018-04-20 17:43:04.856637"]]
+  [1m[35m (77.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+Completed 200 OK in 94ms (Views: 0.2ms | ActiveRecord: 80.2ms)
+
+
+Started GET "/sights/1" for 127.0.0.1 at 2018-04-20 13:43:07 -0400
+Processing by SightsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sights/show.html.haml within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.5ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  Rendered sights/show.html.haml within layouts/application (20.2ms)
+Completed 200 OK in 63ms (Views: 56.6ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/sights/1/upvote" for 127.0.0.1 at 2018-04-20 13:59:35 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UpDownVotesController#upvote as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "up_down_votes" ("upvote", "user_id", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["upvote", "t"], ["user_id", 1], ["sight_id", 1], ["created_at", "2018-04-20 17:59:36.232359"], ["updated_at", "2018-04-20 17:59:36.232359"]]
+  [1m[35m (14.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+Completed 200 OK in 147ms (Views: 0.3ms | ActiveRecord: 21.5ms)
+
+
+Started POST "/sights/1/upvote" for 127.0.0.1 at 2018-04-20 13:59:38 -0400
+Processing by UpDownVotesController#upvote as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (54.0ms)[0m  [1m[32mINSERT INTO "up_down_votes" ("upvote", "user_id", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["upvote", "t"], ["user_id", 1], ["sight_id", 1], ["created_at", "2018-04-20 17:59:38.936838"], ["updated_at", "2018-04-20 17:59:38.936838"]]
+  [1m[35m (41.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+Completed 200 OK in 122ms (Views: 0.2ms | ActiveRecord: 96.3ms)
+
+
+Started GET "/sights/1" for 127.0.0.1 at 2018-04-20 13:59:41 -0400
+Processing by SightsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering sights/show.html.haml within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."sight_id" = ?[0m  [["sight_id", 1]]
+  Rendered sights/show.html.haml within layouts/application (51.9ms)
+Completed 200 OK in 657ms (Views: 648.4ms | ActiveRecord: 3.7ms)
+
+
+Started POST "/sights/1/downvote" for 127.0.0.1 at 2018-04-20 13:59:43 -0400
+Processing by UpDownVotesController#downvote as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "up_down_votes" ("upvote", "user_id", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["upvote", "f"], ["user_id", 1], ["sight_id", 1], ["created_at", "2018-04-20 17:59:43.361927"], ["updated_at", "2018-04-20 17:59:43.361927"]]
+  [1m[35m (12.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+Completed 200 OK in 31ms (Views: 0.2ms | ActiveRecord: 16.2ms)
+
+
+Started POST "/sights/1/upvote" for 127.0.0.1 at 2018-04-20 13:59:44 -0400
+Processing by UpDownVotesController#upvote as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.4ms)[0m  [1m[32mINSERT INTO "up_down_votes" ("upvote", "user_id", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["upvote", "t"], ["user_id", 1], ["sight_id", 1], ["created_at", "2018-04-20 17:59:44.684596"], ["updated_at", "2018-04-20 17:59:44.684596"]]
+  [1m[35m (71.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+Completed 200 OK in 91ms (Views: 0.2ms | ActiveRecord: 76.5ms)
+
+
+Started POST "/sights/1/downvote" for 127.0.0.1 at 2018-04-20 13:59:46 -0400
+Processing by UpDownVotesController#downvote as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSight Load (0.3ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "up_down_votes" ("upvote", "user_id", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["upvote", "f"], ["user_id", 1], ["sight_id", 1], ["created_at", "2018-04-20 17:59:46.118585"], ["updated_at", "2018-04-20 17:59:46.118585"]]
+  [1m[35m (74.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+Completed 200 OK in 92ms (Views: 0.3ms | ActiveRecord: 78.7ms)
+
+
+Started POST "/sights/1/downvote" for 127.0.0.1 at 2018-04-20 13:59:46 -0400
+Processing by UpDownVotesController#downvote as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mSight Load (0.2ms)[0m  [1m[34mSELECT  "sights".* FROM "sights" WHERE "sights"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.1ms)[0m  [1m[32mINSERT INTO "up_down_votes" ("upvote", "user_id", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["upvote", "f"], ["user_id", 1], ["sight_id", 1], ["created_at", "2018-04-20 17:59:46.603732"], ["updated_at", "2018-04-20 17:59:46.603732"]]
+  [1m[35m (11.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 't')[0m  [["sight_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "up_down_votes" WHERE "up_down_votes"."sight_id" = ? AND (upvote = 'f')[0m  [["sight_id", 1]]
+Completed 200 OK in 28ms (Views: 0.2ms | ActiveRecord: 14.9ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (31.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (15.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateSights (20180305004701)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "sights" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180305004701"]]
+  [1m[35m (15.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreatePhotos (20180305004842)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "photos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "caption" varchar, "image_file_name" varchar, "image_content_type" varchar, "image_file_size" integer, "image_updated_at" datetime, "sight_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_676d85ea3c"
+FOREIGN KEY ("sight_id")
+  REFERENCES "sights" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_photos_on_sight_id" ON "photos" ("sight_id")[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180305004842"]]
+  [1m[35m (15.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to DeviseCreateUsers (20180306012159)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "username" varchar NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_username" ON "users" ("username")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180306012159"]]
+  [1m[35m (25.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUpDownVotes (20180306012459)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "up_down_votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "upvote" boolean NOT NULL, "user_id" integer, "sight_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_c01880cffd"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_fba55dc243"
+FOREIGN KEY ("sight_id")
+  REFERENCES "sights" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_up_down_votes_on_user_id" ON "up_down_votes" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_up_down_votes_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_up_down_votes_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_up_down_votes_on_sight_id" ON "up_down_votes" ("sight_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180306012459"]]
+  [1m[35m (18.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateComments (20180420180048)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "comment" text, "user_id" integer, "sight_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_6d776429c3"
+FOREIGN KEY ("sight_id")
+  REFERENCES "sights" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_user_id" ON "comments" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_sight_id" ON "comments" ("sight_id")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180420180048"]]
+  [1m[35m (18.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (363.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-04-20 18:39:23.916037"], ["updated_at", "2018-04-20 18:39:23.916037"]]
+  [1m[35m (84.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_sight_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_sight_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_photos_on_sight_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_photos_on_sight_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_up_down_votes_on_sight_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_up_down_votes_on_sight_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_up_down_votes_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_up_down_votes_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_username' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_username' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (41.5ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "comment" text, "user_id" integer, "sight_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (15.5ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_sight_id" ON "comments" ("sight_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_sight_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_sight_id' AND type='index'
+[0m
+  [1m[35m (15.3ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_user_id" ON "comments" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "photos"[0m
+  [1m[35m (15.1ms)[0m  [1m[35mCREATE TABLE "photos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "caption" varchar, "image_file_name" varchar, "image_content_type" varchar, "image_file_size" integer, "image_updated_at" datetime, "sight_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (20.6ms)[0m  [1m[35mCREATE  INDEX "index_photos_on_sight_id" ON "photos" ("sight_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "sights"[0m
+  [1m[35m (16.1ms)[0m  [1m[35mCREATE TABLE "sights" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "up_down_votes"[0m
+  [1m[35m (18.6ms)[0m  [1m[35mCREATE TABLE "up_down_votes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "upvote" boolean NOT NULL, "user_id" integer, "sight_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (18.1ms)[0m  [1m[35mCREATE  INDEX "index_up_down_votes_on_sight_id" ON "up_down_votes" ("sight_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_up_down_votes_on_sight_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_up_down_votes_on_sight_id' AND type='index'
+[0m
+  [1m[35m (19.8ms)[0m  [1m[35mCREATE  INDEX "index_up_down_votes_on_user_id" ON "up_down_votes" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (15.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "username" varchar NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar, "last_sign_in_ip" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (18.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (17.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (16.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_username" ON "users" ("username")[0m
+  [1m[35m (121.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (14.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20180420180048)[0m
+  [1m[35m (18.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20180305004701),
+(20180305004842),
+(20180306012159),
+(20180306012459);
+
+[0m
+  [1m[35m (25.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-04-20 18:39:30.228611"], ["updated_at", "2018-04-20 18:39:30.228611"]]
+  [1m[35m (16.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2018-04-20 18:39:30.253826"], ["key", "environment"]]
+  [1m[35m (14.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (8.6ms)[0m  [1m[32mINSERT INTO "sights" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "McGregory Hall Lounge"], ["description", "Everyone's favorite spot to study, sleep, relax, scribble on whiteboards, and take advantage of free food."], ["created_at", "2018-04-20 18:39:35.594959"], ["updated_at", "2018-04-20 18:39:35.594959"]]
+[paperclip] Trying to link app/assets/images/IMG_0888.jpg to /tmp/a10286f93ad51dc88f229dd45f90cf0920180420-2317-1965o3j.jpg
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_0888.jpg, /tmp/a10286f93ad51dc88f229dd45f90cf0920180420-2317-1965o3j.jpg); copying link app/assets/images/IMG_0888.jpg to /tmp/a10286f93ad51dc88f229dd45f90cf0920180420-2317-1965o3j.jpg
+[paperclip] Trying to link /tmp/a10286f93ad51dc88f229dd45f90cf0920180420-2317-1965o3j.jpg to /tmp/a10286f93ad51dc88f229dd45f90cf0920180420-2317-1bogg34.jpg
+Command :: file -b --mime '/tmp/a10286f93ad51dc88f229dd45f90cf0920180420-2317-1bogg34.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/a10286f93ad51dc88f229dd45f90cf0920180420-2317-1965o3j.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/a10286f93ad51dc88f229dd45f90cf0920180420-2317-1965o3j.jpg[0]'
+Command :: convert '/tmp/a10286f93ad51dc88f229dd45f90cf0920180420-2317-1965o3j.jpg[0]' -auto-orient -resize "400x400>" '/tmp/e563fa5e7c283c188ca64cfae1f5385420180420-2317-mcdqsw'
+[paperclip] Trying to link /tmp/e563fa5e7c283c188ca64cfae1f5385420180420-2317-mcdqsw to /tmp/80bbf9d449801b54f0f48208dd5df10c20180420-2317-1u47d6u
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/a10286f93ad51dc88f229dd45f90cf0920180420-2317-1965o3j.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/a10286f93ad51dc88f229dd45f90cf0920180420-2317-1965o3j.jpg[0]'
+Command :: convert '/tmp/a10286f93ad51dc88f229dd45f90cf0920180420-2317-1965o3j.jpg[0]' -auto-orient -resize "100x100>" '/tmp/e563fa5e7c283c188ca64cfae1f5385420180420-2317-oj7kq8'
+[paperclip] Trying to link /tmp/e563fa5e7c283c188ca64cfae1f5385420180420-2317-oj7kq8 to /tmp/d7c8cb54a7e81c1fbd97ead8638110a020180420-2317-5wpzhf
+[paperclip] Trying to link /tmp/a10286f93ad51dc88f229dd45f90cf0920180420-2317-1965o3j.jpg to /tmp/a10286f93ad51dc88f229dd45f90cf0920180420-2317-1wpoe72.jpg
+Command :: file -b --mime '/tmp/a10286f93ad51dc88f229dd45f90cf0920180420-2317-1wpoe72.jpg'
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Space to work and lounge.  Photo taken when the lounge was first constructed."], ["image_file_name", "IMG_0888.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 1159015], ["image_updated_at", "2018-04-20 18:39:35.640725"], ["sight_id", 1], ["created_at", "2018-04-20 18:39:37.651518"], ["updated_at", "2018-04-20 18:39:37.651518"]]
+[paperclip] Trying to link app/assets/images/IMG_0889.jpg to /tmp/b791456298c0224acdb70d10c5373fc820180420-2317-1l6ovxl.jpg
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_0889.jpg, /tmp/b791456298c0224acdb70d10c5373fc820180420-2317-1l6ovxl.jpg); copying link app/assets/images/IMG_0889.jpg to /tmp/b791456298c0224acdb70d10c5373fc820180420-2317-1l6ovxl.jpg
+[paperclip] Trying to link /tmp/b791456298c0224acdb70d10c5373fc820180420-2317-1l6ovxl.jpg to /tmp/b791456298c0224acdb70d10c5373fc820180420-2317-eqixvy.jpg
+Command :: file -b --mime '/tmp/b791456298c0224acdb70d10c5373fc820180420-2317-eqixvy.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/b791456298c0224acdb70d10c5373fc820180420-2317-1l6ovxl.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/b791456298c0224acdb70d10c5373fc820180420-2317-1l6ovxl.jpg[0]'
+Command :: convert '/tmp/b791456298c0224acdb70d10c5373fc820180420-2317-1l6ovxl.jpg[0]' -auto-orient -resize "400x400>" '/tmp/4ad73a02a3c9bab27a7b673460e1a9bb20180420-2317-ycwi4l'
+[paperclip] Trying to link /tmp/4ad73a02a3c9bab27a7b673460e1a9bb20180420-2317-ycwi4l to /tmp/2b40abd8dd4e2eab9361bea7c7e25b5020180420-2317-16nf9e4
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/b791456298c0224acdb70d10c5373fc820180420-2317-1l6ovxl.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/b791456298c0224acdb70d10c5373fc820180420-2317-1l6ovxl.jpg[0]'
+Command :: convert '/tmp/b791456298c0224acdb70d10c5373fc820180420-2317-1l6ovxl.jpg[0]' -auto-orient -resize "100x100>" '/tmp/4ad73a02a3c9bab27a7b673460e1a9bb20180420-2317-1d4l9bc'
+[paperclip] Trying to link /tmp/4ad73a02a3c9bab27a7b673460e1a9bb20180420-2317-1d4l9bc to /tmp/63c0ab689a8d410b5c75d6d31ba46b8020180420-2317-rcrvct
+[paperclip] Trying to link /tmp/b791456298c0224acdb70d10c5373fc820180420-2317-1l6ovxl.jpg to /tmp/b791456298c0224acdb70d10c5373fc820180420-2317-1qflna.jpg
+Command :: file -b --mime '/tmp/b791456298c0224acdb70d10c5373fc820180420-2317-1qflna.jpg'
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Another photo taken when the lounge was first constructed."], ["image_file_name", "IMG_0889.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 1017510], ["image_updated_at", "2018-04-20 18:39:37.689839"], ["sight_id", 1], ["created_at", "2018-04-20 18:39:39.752230"], ["updated_at", "2018-04-20 18:39:39.752230"]]
+[paperclip] Trying to link app/assets/images/IMG_7270.JPG to /tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-2317-1hbcdxq.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7270.JPG, /tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-2317-1hbcdxq.JPG); copying link app/assets/images/IMG_7270.JPG to /tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-2317-1hbcdxq.JPG
+[paperclip] Trying to link /tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-2317-1hbcdxq.JPG to /tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-2317-15tkyri.JPG
+Command :: file -b --mime '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-2317-15tkyri.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-2317-1hbcdxq.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-2317-1hbcdxq.JPG[0]'
+Command :: convert '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-2317-1hbcdxq.JPG[0]' -auto-orient -resize "400x400>" '/tmp/e89d262c5f96a64e682c6e2c9956a5a420180420-2317-m5e9jj'
+[paperclip] Trying to link /tmp/e89d262c5f96a64e682c6e2c9956a5a420180420-2317-m5e9jj to /tmp/9f4df72c58c2b49cf8aedf4003eb83fb20180420-2317-1gqhxo6
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-2317-1hbcdxq.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-2317-1hbcdxq.JPG[0]'
+Command :: convert '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-2317-1hbcdxq.JPG[0]' -auto-orient -resize "100x100>" '/tmp/e89d262c5f96a64e682c6e2c9956a5a420180420-2317-jh0eta'
+[paperclip] Trying to link /tmp/e89d262c5f96a64e682c6e2c9956a5a420180420-2317-jh0eta to /tmp/175b0d7b61e7b2387c81cfd0f631550d20180420-2317-1q7s5n1
+[paperclip] Trying to link /tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-2317-1hbcdxq.JPG to /tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-2317-15srp7b.JPG
+Command :: file -b --mime '/tmp/2ec00e2c1e155185c5492e20ca5f6b7520180420-2317-15srp7b.JPG'
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Spacious and whiteboardy!"], ["image_file_name", "IMG_7270.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 969916], ["image_updated_at", "2018-04-20 18:39:39.787054"], ["sight_id", 1], ["created_at", "2018-04-20 18:39:41.367824"], ["updated_at", "2018-04-20 18:39:41.367824"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "sights" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Taylor Lake"], ["description", "This is a lake?  Really?  Yes, by the strict definition of lake, this qualifies.  Sadly, Adam and Eve the swans have gone elsewhere and all we are left with are Canadian geese and the occasional mallard duck."], ["created_at", "2018-04-20 18:39:41.393519"], ["updated_at", "2018-04-20 18:39:41.393519"]]
+[paperclip] Trying to link app/assets/images/IMG_7278.JPG to /tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-2317-5luigu.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7278.JPG, /tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-2317-5luigu.JPG); copying link app/assets/images/IMG_7278.JPG to /tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-2317-5luigu.JPG
+[paperclip] Trying to link /tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-2317-5luigu.JPG to /tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-2317-2wcrbq.JPG
+Command :: file -b --mime '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-2317-2wcrbq.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-2317-5luigu.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-2317-5luigu.JPG[0]'
+Command :: convert '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-2317-5luigu.JPG[0]' -auto-orient -resize "400x400>" '/tmp/d6c187fe946230b65a1a2b97bde8158620180420-2317-1fsvv1s'
+[paperclip] Trying to link /tmp/d6c187fe946230b65a1a2b97bde8158620180420-2317-1fsvv1s to /tmp/2f0a658b4e489b1b1791c3fe87a40e3320180420-2317-mthtji
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-2317-5luigu.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-2317-5luigu.JPG[0]'
+Command :: convert '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-2317-5luigu.JPG[0]' -auto-orient -resize "100x100>" '/tmp/d6c187fe946230b65a1a2b97bde8158620180420-2317-1wvk5lj'
+[paperclip] Trying to link /tmp/d6c187fe946230b65a1a2b97bde8158620180420-2317-1wvk5lj to /tmp/31be7dbfcbf1f1964a0d2c97f2b50f4720180420-2317-vgp9bu
+[paperclip] Trying to link /tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-2317-5luigu.JPG to /tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-2317-1kwlzed.JPG
+Command :: file -b --mime '/tmp/e3c5f0e515a665ebb2468a086aaf495e20180420-2317-1kwlzed.JPG'
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "The willow path, adjacent to Taylor Lake."], ["image_file_name", "IMG_7278.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 1200565], ["image_updated_at", "2018-04-20 18:39:41.404383"], ["sight_id", 2], ["created_at", "2018-04-20 18:39:42.823556"], ["updated_at", "2018-04-20 18:39:42.823556"]]
+[paperclip] Trying to link app/assets/images/IMG_7279.JPG to /tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-2317-7p7ugm.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7279.JPG, /tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-2317-7p7ugm.JPG); copying link app/assets/images/IMG_7279.JPG to /tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-2317-7p7ugm.JPG
+[paperclip] Trying to link /tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-2317-7p7ugm.JPG to /tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-2317-1p7y7be.JPG
+Command :: file -b --mime '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-2317-1p7y7be.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-2317-7p7ugm.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-2317-7p7ugm.JPG[0]'
+Command :: convert '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-2317-7p7ugm.JPG[0]' -auto-orient -resize "400x400>" '/tmp/915e4edf94f4f4b20ada33023de261bb20180420-2317-1ey9pvj'
+[paperclip] Trying to link /tmp/915e4edf94f4f4b20ada33023de261bb20180420-2317-1ey9pvj to /tmp/e82fa2bec31691dd951d13390ba2642220180420-2317-1iq7t96
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-2317-7p7ugm.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-2317-7p7ugm.JPG[0]'
+Command :: convert '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-2317-7p7ugm.JPG[0]' -auto-orient -resize "100x100>" '/tmp/915e4edf94f4f4b20ada33023de261bb20180420-2317-1xq8deg'
+[paperclip] Trying to link /tmp/915e4edf94f4f4b20ada33023de261bb20180420-2317-1xq8deg to /tmp/2871c43690d4b02c884f1ea687d7d53320180420-2317-edllsr
+[paperclip] Trying to link /tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-2317-7p7ugm.JPG to /tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-2317-wfufp2.JPG
+Command :: file -b --mime '/tmp/04c1eba4d1916ebe888e91e20ae49f6320180420-2317-wfufp2.JPG'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "The ice on Taylor Lake recedes in July, just."], ["image_file_name", "IMG_7279.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 1017661], ["image_updated_at", "2018-04-20 18:39:42.860492"], ["sight_id", 2], ["created_at", "2018-04-20 18:39:44.241906"], ["updated_at", "2018-04-20 18:39:44.241906"]]
+[paperclip] Trying to link app/assets/images/IMG_7280.JPG to /tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-2317-1fwj9qx.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7280.JPG, /tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-2317-1fwj9qx.JPG); copying link app/assets/images/IMG_7280.JPG to /tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-2317-1fwj9qx.JPG
+[paperclip] Trying to link /tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-2317-1fwj9qx.JPG to /tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-2317-mngwuw.JPG
+Command :: file -b --mime '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-2317-mngwuw.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-2317-1fwj9qx.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-2317-1fwj9qx.JPG[0]'
+Command :: convert '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-2317-1fwj9qx.JPG[0]' -auto-orient -resize "400x400>" '/tmp/3fb6b5dcd167ff7812c4493678656c6720180420-2317-1n5n70d'
+[paperclip] Trying to link /tmp/3fb6b5dcd167ff7812c4493678656c6720180420-2317-1n5n70d to /tmp/4e97615a474dc6a0d777800c00ccde9320180420-2317-172bdc8
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-2317-1fwj9qx.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-2317-1fwj9qx.JPG[0]'
+Command :: convert '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-2317-1fwj9qx.JPG[0]' -auto-orient -resize "100x100>" '/tmp/3fb6b5dcd167ff7812c4493678656c6720180420-2317-f4rpee'
+[paperclip] Trying to link /tmp/3fb6b5dcd167ff7812c4493678656c6720180420-2317-f4rpee to /tmp/2ffc5f7a96d4be48fe50adfaecb4ef6f20180420-2317-1vifa0c
+[paperclip] Trying to link /tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-2317-1fwj9qx.JPG to /tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-2317-12mbse0.JPG
+Command :: file -b --mime '/tmp/90219f8bbf2fd5a47e7414636fbf1eb820180420-2317-12mbse0.JPG'
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Resident aliens from Canada enjoying the lake."], ["image_file_name", "IMG_7280.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 713817], ["image_updated_at", "2018-04-20 18:39:44.287158"], ["sight_id", 2], ["created_at", "2018-04-20 18:39:45.677412"], ["updated_at", "2018-04-20 18:39:45.677412"]]
+[paperclip] Trying to link app/assets/images/IMG_7281.JPG to /tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-2317-fbgs5o.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7281.JPG, /tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-2317-fbgs5o.JPG); copying link app/assets/images/IMG_7281.JPG to /tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-2317-fbgs5o.JPG
+[paperclip] Trying to link /tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-2317-fbgs5o.JPG to /tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-2317-y29iyl.JPG
+Command :: file -b --mime '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-2317-y29iyl.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-2317-fbgs5o.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-2317-fbgs5o.JPG[0]'
+Command :: convert '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-2317-fbgs5o.JPG[0]' -auto-orient -resize "400x400>" '/tmp/2c367c73473630d822f2816a5d4d264a20180420-2317-16iji23'
+[paperclip] Trying to link /tmp/2c367c73473630d822f2816a5d4d264a20180420-2317-16iji23 to /tmp/6d4b68b427120035f36b6369b6d1c3d920180420-2317-1mctmgx
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-2317-fbgs5o.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-2317-fbgs5o.JPG[0]'
+Command :: convert '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-2317-fbgs5o.JPG[0]' -auto-orient -resize "100x100>" '/tmp/2c367c73473630d822f2816a5d4d264a20180420-2317-gn6n7o'
+[paperclip] Trying to link /tmp/2c367c73473630d822f2816a5d4d264a20180420-2317-gn6n7o to /tmp/067e575ca952b9fab0defeb0bb0a214d20180420-2317-1xlrw9n
+[paperclip] Trying to link /tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-2317-fbgs5o.JPG to /tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-2317-1ae1y2g.JPG
+Command :: file -b --mime '/tmp/1125a054fece2c8d17a17d9e9dbc1bf520180420-2317-1ae1y2g.JPG'
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Resident aliens from Canada enjoying the lake."], ["image_file_name", "IMG_7281.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 596646], ["image_updated_at", "2018-04-20 18:39:45.712352"], ["sight_id", 2], ["created_at", "2018-04-20 18:39:47.092881"], ["updated_at", "2018-04-20 18:39:47.092881"]]
+[paperclip] Trying to link app/assets/images/IMG_7282.JPG to /tmp/d156b98973eb7018edc9653dd5f599c120180420-2317-l2fp38.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7282.JPG, /tmp/d156b98973eb7018edc9653dd5f599c120180420-2317-l2fp38.JPG); copying link app/assets/images/IMG_7282.JPG to /tmp/d156b98973eb7018edc9653dd5f599c120180420-2317-l2fp38.JPG
+[paperclip] Trying to link /tmp/d156b98973eb7018edc9653dd5f599c120180420-2317-l2fp38.JPG to /tmp/d156b98973eb7018edc9653dd5f599c120180420-2317-1m7gwl4.JPG
+Command :: file -b --mime '/tmp/d156b98973eb7018edc9653dd5f599c120180420-2317-1m7gwl4.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/d156b98973eb7018edc9653dd5f599c120180420-2317-l2fp38.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/d156b98973eb7018edc9653dd5f599c120180420-2317-l2fp38.JPG[0]'
+Command :: convert '/tmp/d156b98973eb7018edc9653dd5f599c120180420-2317-l2fp38.JPG[0]' -auto-orient -resize "400x400>" '/tmp/e66044233c912c2af278ca987595235020180420-2317-zdpcrf'
+[paperclip] Trying to link /tmp/e66044233c912c2af278ca987595235020180420-2317-zdpcrf to /tmp/74877926450157f378139bdd93827ca620180420-2317-xc9c5c
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/d156b98973eb7018edc9653dd5f599c120180420-2317-l2fp38.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/d156b98973eb7018edc9653dd5f599c120180420-2317-l2fp38.JPG[0]'
+Command :: convert '/tmp/d156b98973eb7018edc9653dd5f599c120180420-2317-l2fp38.JPG[0]' -auto-orient -resize "100x100>" '/tmp/e66044233c912c2af278ca987595235020180420-2317-1m9jc6x'
+[paperclip] Trying to link /tmp/e66044233c912c2af278ca987595235020180420-2317-1m9jc6x to /tmp/455d2b354b086b014cf28cf30afd3a8720180420-2317-2i38pb
+[paperclip] Trying to link /tmp/d156b98973eb7018edc9653dd5f599c120180420-2317-l2fp38.JPG to /tmp/d156b98973eb7018edc9653dd5f599c120180420-2317-11gl185.JPG
+Command :: file -b --mime '/tmp/d156b98973eb7018edc9653dd5f599c120180420-2317-11gl185.JPG'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Looking across Taylor Lake."], ["image_file_name", "IMG_7282.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 641984], ["image_updated_at", "2018-04-20 18:39:47.125648"], ["sight_id", 2], ["created_at", "2018-04-20 18:39:48.476500"], ["updated_at", "2018-04-20 18:39:48.476500"]]
+[paperclip] Trying to link app/assets/images/IMG_7283.JPG to /tmp/6fcf3845b62919ec56cddef71752172a20180420-2317-gp71uu.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7283.JPG, /tmp/6fcf3845b62919ec56cddef71752172a20180420-2317-gp71uu.JPG); copying link app/assets/images/IMG_7283.JPG to /tmp/6fcf3845b62919ec56cddef71752172a20180420-2317-gp71uu.JPG
+[paperclip] Trying to link /tmp/6fcf3845b62919ec56cddef71752172a20180420-2317-gp71uu.JPG to /tmp/6fcf3845b62919ec56cddef71752172a20180420-2317-hssvp.JPG
+Command :: file -b --mime '/tmp/6fcf3845b62919ec56cddef71752172a20180420-2317-hssvp.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/6fcf3845b62919ec56cddef71752172a20180420-2317-gp71uu.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/6fcf3845b62919ec56cddef71752172a20180420-2317-gp71uu.JPG[0]'
+Command :: convert '/tmp/6fcf3845b62919ec56cddef71752172a20180420-2317-gp71uu.JPG[0]' -auto-orient -resize "400x400>" '/tmp/4efbfbe73d967a75cb8cea486eaad2fc20180420-2317-1dagrca'
+[paperclip] Trying to link /tmp/4efbfbe73d967a75cb8cea486eaad2fc20180420-2317-1dagrca to /tmp/694b20607cd13f1e66ec56bcfc82c77e20180420-2317-2fx1dz
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/6fcf3845b62919ec56cddef71752172a20180420-2317-gp71uu.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/6fcf3845b62919ec56cddef71752172a20180420-2317-gp71uu.JPG[0]'
+Command :: convert '/tmp/6fcf3845b62919ec56cddef71752172a20180420-2317-gp71uu.JPG[0]' -auto-orient -resize "100x100>" '/tmp/4efbfbe73d967a75cb8cea486eaad2fc20180420-2317-mpq8ry'
+[paperclip] Trying to link /tmp/4efbfbe73d967a75cb8cea486eaad2fc20180420-2317-mpq8ry to /tmp/54e5abadb7985e9726c203bc9c9487a820180420-2317-5quz5p
+[paperclip] Trying to link /tmp/6fcf3845b62919ec56cddef71752172a20180420-2317-gp71uu.JPG to /tmp/6fcf3845b62919ec56cddef71752172a20180420-2317-j83r0z.JPG
+Command :: file -b --mime '/tmp/6fcf3845b62919ec56cddef71752172a20180420-2317-j83r0z.JPG'
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Payne Creek feeding into Taylor Lake, providing some evidence for the lakehood of said lake."], ["image_file_name", "IMG_7283.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 737389], ["image_updated_at", "2018-04-20 18:39:48.507956"], ["sight_id", 2], ["created_at", "2018-04-20 18:39:49.857664"], ["updated_at", "2018-04-20 18:39:49.857664"]]
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "sights" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Cooley Library"], ["description", "Colgate University's best kept secret.  Complete with a mosh pit of learning."], ["created_at", "2018-04-20 18:39:49.881998"], ["updated_at", "2018-04-20 18:39:49.881998"]]
+[paperclip] Trying to link app/assets/images/IMG_7271.JPG to /tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-2317-1g3squ3.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7271.JPG, /tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-2317-1g3squ3.JPG); copying link app/assets/images/IMG_7271.JPG to /tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-2317-1g3squ3.JPG
+[paperclip] Trying to link /tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-2317-1g3squ3.JPG to /tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-2317-nvki8g.JPG
+Command :: file -b --mime '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-2317-nvki8g.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-2317-1g3squ3.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-2317-1g3squ3.JPG[0]'
+Command :: convert '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-2317-1g3squ3.JPG[0]' -auto-orient -resize "400x400>" '/tmp/1f96a02e4b667d17301ffda046fccec420180420-2317-9do62x'
+[paperclip] Trying to link /tmp/1f96a02e4b667d17301ffda046fccec420180420-2317-9do62x to /tmp/c930f7a188454d3b8d60c095f75ca64520180420-2317-hzq6iz
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-2317-1g3squ3.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-2317-1g3squ3.JPG[0]'
+Command :: convert '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-2317-1g3squ3.JPG[0]' -auto-orient -resize "100x100>" '/tmp/1f96a02e4b667d17301ffda046fccec420180420-2317-1nzrr4'
+[paperclip] Trying to link /tmp/1f96a02e4b667d17301ffda046fccec420180420-2317-1nzrr4 to /tmp/e3459fce25035d1ed23f4f80ee7fb5e920180420-2317-sgi6yg
+[paperclip] Trying to link /tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-2317-1g3squ3.JPG to /tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-2317-mu0s1e.JPG
+Command :: file -b --mime '/tmp/0ae3d26657fcd9c2f587b0ac22c42f2920180420-2317-mu0s1e.JPG'
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "photos" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "sight_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["caption", "Enter all who dare."], ["image_file_name", "IMG_7271.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 515982], ["image_updated_at", "2018-04-20 18:39:49.890347"], ["sight_id", 3], ["created_at", "2018-04-20 18:39:51.271410"], ["updated_at", "2018-04-20 18:39:51.271410"]]
+[paperclip] Trying to link app/assets/images/IMG_7272.JPG to /tmp/8a17189e065c0bb3bbbbc3f97210683720180420-2317-z73gws.JPG
+[paperclip] Link failed with Invalid cross-device link @ rb_file_s_link - (app/assets/images/IMG_7272.JPG, /tmp/8a17189e065c0bb3bbbbc3f97210683720180420-2317-z73gws.JPG); copying link app/assets/images/IMG_7272.JPG to /tmp/8a17189e065c0bb3bbbbc3f97210683720180420-2317-z73gws.JPG
+[paperclip] Trying to link /tmp/8a17189e065c0bb3bbbbc3f97210683720180420-2317-z73gws.JPG to /tmp/8a17189e065c0bb3bbbbc3f97210683720180420-2317-112snvw.JPG
+Command :: file -b --mime '/tmp/8a17189e065c0bb3bbbbc3f97210683720180420-2317-112snvw.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/8a17189e065c0bb3bbbbc3f97210683720180420-2317-z73gws.JPG[0]' 2>/dev/null
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
